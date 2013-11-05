@@ -2,7 +2,7 @@ package TestngExample.O2Project.Tests
 
 import TestngExample.O2Project.pages.GoogleHomePage
 import TestngExample.O2Project.pages.GoogleResultsPage
-import TestngExample.O2Project.pages.WikipediaPage
+
 import geb.Browser
 
 /**
