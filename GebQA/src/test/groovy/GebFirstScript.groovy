@@ -8,7 +8,7 @@ import geb.Browser
  * To change this template use File | Settings | File Templates.
  */
 Browser.drive {
-    go("http://localhost:8080/upgrade/signIn/")
+    go("http://google.co.uk")
     assert  title == "O2 | Upgrade | O2 | Upgrade | Sign In"
     close()
 }

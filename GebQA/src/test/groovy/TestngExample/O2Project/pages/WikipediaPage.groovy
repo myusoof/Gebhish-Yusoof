@@ -10,5 +10,5 @@ import geb.Page
  * To change this template use File | Settings | File Templates.
  */
 class WikipediaPage extends Page{
-    static at = {title == "Wikipedia"}
+    static at = {title.startsWith("Wikipedia")}
 }

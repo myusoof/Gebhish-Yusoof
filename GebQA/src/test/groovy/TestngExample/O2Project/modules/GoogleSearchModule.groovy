@@ -1,6 +1,6 @@
 package TestngExample.O2Project.modules
 
-import TestngExample.O2Project.pages.GoogleResultPage
+
 import geb.Module
 
 /**
