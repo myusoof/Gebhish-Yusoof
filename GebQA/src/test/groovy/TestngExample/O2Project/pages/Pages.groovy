@@ -16,6 +16,19 @@ import geb.Module
 // modules are reusable fragments that can be used across pages that can be paramaterised
 // here we are using a module to model the search function on the home and results pages
 
+class GoogleSearchModule extends Module{
+    def buttonvalue
+
+
+    static content = {
+        field { $("input", name: "q") }
+
+        button(to: GoogleResultPage) {
+            $("input", value : buttonvalue)
+        }
+    }
+}
+
 class GoogleHomePage extends Page {
 
     // pages can define their location, either absolutely or relative to a base
