@@ -2,6 +2,7 @@ apply plugin : 'groovy'
 apply plugin : 'java'
 apply plugin : 'idea'
 apply from : 'external-dependencies.gradle'
+apply from : 'ide-support.gradle'
 
 allprojects{
     repositories{
