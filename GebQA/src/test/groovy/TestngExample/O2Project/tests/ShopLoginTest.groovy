@@ -23,6 +23,7 @@ class ShopLoginTest {
             password.value("password")
             signIn.click()
             at MyAccountsPage
+            page.$("div", id: "contentFull").find {$("h2")}
         }
     }
 }
