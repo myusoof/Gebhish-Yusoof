@@ -11,7 +11,9 @@ import geb.Page
  */
 class O2LoginPage extends Page {
     static url = "http://localhost:8080/upgrade/"
-    static at = {title}
+    static at = {
+        title == "O2 | Upgrade | O2 | Upgrade | Sign In"
+    }
     static content = {
         username {$("input", 0, name:"USERNAME", id:"user_name" )}
         password {$("input",0, name:"PASSWORD", id: "user_password")}

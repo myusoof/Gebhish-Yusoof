@@ -13,7 +13,7 @@ class MyAccountsPage extends Page {
 
     static at = { title == "O2 | Upgrade | My accounts"}
     static content ={
-        welcomeText {$("div", id: "contentFull").find {$("h2")}}
+        welcomeText {$("div", id: "contentFull").find('h2')}
     }
 
 }

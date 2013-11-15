@@ -18,12 +18,14 @@ class ShopLoginTest {
     void shopLogin(){
         Browser.drive {
             to O2LoginPage
-            assert at(O2LoginPage).title == "O2 | Upgrade | O2 | Upgrade | Sign In"
+            //assert at(O2LoginPage).title == "O2 | Upgrade | O2 | Upgrade | Sign In"
             username.value("ID-002003")
             password.value("password")
             signIn.click()
             at MyAccountsPage
-            page.$("div", id: "contentFull").find {$("h2")}
+            welcomeText.text() == "Hi Mike Howes"
+            List<Object> value = $("div", id: "accountWrapper" ).find("form").find("span", class: "detailValue").text()
+            println value
         }
     }
 }
