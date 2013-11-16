@@ -24,6 +24,7 @@ class DiffShopLoginTest extends O2BaseSteps {
         browser.to O2LoginPage
         String winHandleBefore = getCurrentWindows()
         //assert at(O2LoginPage).title == "O2 | Upgrade | O2 | Upgrade | Sign In"
+        println browser.welcome.text()
         browser.forgotUsernameLink.click()
 
         HashSet<String> allOpenedWindows = getAllCurrentWindows()

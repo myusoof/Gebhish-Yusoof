@@ -11,6 +11,9 @@ import geb.Page
  */
 class ForgotUsernamePasswordReminderPage extends Page {
     static at = {
-        driver.getCurrentUrl() == "http://www.o2.co.uk/registrationusernameandpasswordreminder"
+        (driver.getCurrentUrl() == "http://www.o2.co.uk/registrationusernameandpasswordreminder"
+        ||
+        driver.getCurrentUrl() == "https://accounts.o2.co.uk/forgottendetails/retrieveusername"
+        )
     }
 }
