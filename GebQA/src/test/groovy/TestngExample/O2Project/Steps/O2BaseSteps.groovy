@@ -12,17 +12,19 @@ import org.openqa.selenium.firefox.FirefoxDriver
  * To change this template use File | Settings | File Templates.
  */
 class O2BaseSteps {
-    Browser browser = new Browser(driver: new FirefoxDriver(), baseUrl: "http://localhost:8080/" )
+
+    Browser browser
+    BrowserWrapper browserWrapper = new BrowserWrapper(browser)
 
     String getCurrentWindows(){
-        browser.driver.getWindowHandle()
+        browserWrapper.browser.driver.getWindowHandle()
     }
 
     HashSet<String> getAllCurrentWindows(){
-        browser.driver.getWindowHandles()
+        browserWrapper.browser.driver.getWindowHandles()
     }
     void switchToWindow(String windowId){
-        browser.driver.switchTo().window(windowId)
+        browserWrapper.browser.driver.switchTo().window(windowId)
 
     }
 }

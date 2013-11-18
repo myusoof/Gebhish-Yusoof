@@ -10,7 +10,7 @@ import geb.Page
  * To change this template use File | Settings | File Templates.
  */
 class O2LoginPage extends Page {
-    static url = "http://localhost:8080/upgrade/signin"
+    static url = "signin"
     static at = {
         title == "O2 | Upgrade | O2 | Upgrade | Sign In"
     }
@@ -22,11 +22,11 @@ class O2LoginPage extends Page {
         password {$("input",0, name:"PASSWORD", id: "user_password")}
         registerButtom {$("#qa-registration")}
 
-        forgottenUsernameAndPasswordBoth(to: ForgotUsernameReminderPage){$("p", class : "arrowRight").find("a")}
+        allForgottenUsernameAndPasswordBoth {$("p", class : "arrowRight").find("a")}
 
-        forgotUsernameLink(at: ForgotUsernameReminderPage) {forgottenUsernameAndPasswordBoth[1]}
-        forgotPasswordLink(at: ForgotPasswordReminderPage) {forgottenUsernameAndPasswordBoth[2]}
-        forgotBothLink(at: ForgotUsernamePasswordReminderPage) {forgottenUsernameAndPasswordBoth[3]}
+        forgotUsernameLink {allForgottenUsernameAndPasswordBoth[1]}
+        forgotPasswordLink {allForgottenUsernameAndPasswordBoth[2]}
+        forgotBothLink {allForgottenUsernameAndPasswordBoth[3]}
         signIn (to: MyAccountsPage ) {$("input",type: "submit", value: "Sign in")}
     }
 }
