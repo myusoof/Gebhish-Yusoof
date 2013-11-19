@@ -13,6 +13,8 @@ import org.openqa.selenium.firefox.FirefoxDriver
 class BrowserWrapper {
     Browser browser = new Browser(driver: new FirefoxDriver(), baseUrl: "http://localhost:8080/upgrade/" )
     def listener = new O2PageChangeListener()
+
+
     BrowserWrapper(Browser browser){
       browser = this.browser
       browser.registerPageChangeListener(listener)

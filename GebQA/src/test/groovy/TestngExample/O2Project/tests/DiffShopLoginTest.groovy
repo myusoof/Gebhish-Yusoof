@@ -22,13 +22,13 @@ class DiffShopLoginTest extends O2BaseSteps {
     @Test
     void testToTestLinksInO2LoginPage(){
         browserWrapper.browser.to O2LoginPage
-        assert browserWrapper.browser.at(O2LoginPage)
+        browserWrapper.browser.at(O2LoginPage)
         browserWrapper.browser.forgotUsernameLink.click()
-        browserWrapper.browser.withWindow(
+/*        browserWrapper.browser.withWindow(
                 {browserWrapper.browser.driver.getCurrentUrl() ==
                         "http://www.o2.co.uk/registrationusernamereminder"}, close: true){
             println browserWrapper.browser.driver.title
-        }
+        }*/
         HashSet<String> allOpenedWindows = browserWrapper.browser.getAvailableWindows()
         switchToWindow(allOpenedWindows[1])
         browserWrapper.browser.at ForgotUsernameReminderPage
