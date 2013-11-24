@@ -60,12 +60,14 @@ class DiffShopLoginTest extends O2BaseSteps {
         switchToWindow(allOpenedWindows[0])
         browserWrapper.browser.at O2LoginPage
 
-        browserWrapper.browser.username.value("ID-002003")
+        /*browserWrapper.browser.username.value("ID-002003")
         browserWrapper.browser.password.value("password")
 
-        browserWrapper.browser.signIn.click()
+        browserWrapper.browser.signIn("submit").click(MyAccountsPage)*/
 
-        browserWrapper.browser.at MyAccountsPage
+        browserWrapper.browser.function_signIn "ID-002003", "password"
+//        browserWrapper.browser.at MyAccountsPage
+        browserWrapper.browser.difId.text()
         browserWrapper.browser.welcomeText.text() == "Hi Mike Howes"
         assert ["07007002003", "07997992003"] ==  browserWrapper.browser.mobileNumberField
         println browserWrapper.browser.driver.findElement(By.xpath("//*[@id=\"accountWrapper\"]/form[1]/div/div/div[3]/input")).getAttribute("value")
