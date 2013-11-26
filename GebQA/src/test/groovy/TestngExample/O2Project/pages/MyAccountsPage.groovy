@@ -13,9 +13,12 @@ class MyAccountsPage extends Page {
 
     static at = { title == "O2 | Upgrade | My accounts"}
     static content ={
+        difId(required : false) {$("input#yusoof")}
         welcomeText {$("div", id: "contentFull").find('h2')}
 
         mobileNumberField {$("span.detailValue").collect{ it.text()}}
+
+        upgradePhone {phoneNumber -> $("#accountWrapper").has("form", action : ~/.*${phoneNumber}.*/).find(type: "submit")}
     }
 
 }

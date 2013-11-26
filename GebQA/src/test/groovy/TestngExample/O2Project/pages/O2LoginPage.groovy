@@ -1,6 +1,8 @@
 package TestngExample.O2Project.pages
 
 import geb.Page
+import org.openqa.selenium.Keys
+import org.openqa.selenium.interactions.Actions
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,6 +16,7 @@ class O2LoginPage extends Page {
     static at = {
         title == "O2 | Upgrade | O2 | Upgrade | Sign In"
     }
+
     static content = {
         welcome {$("#qa-login").find("h1")}
         refreshText {$(".bannerPromo").find("p")}
@@ -27,6 +30,14 @@ class O2LoginPage extends Page {
         forgotUsernameLink {allForgottenUsernameAndPasswordBoth[1]}
         forgotPasswordLink {allForgottenUsernameAndPasswordBoth[2]}
         forgotBothLink {allForgottenUsernameAndPasswordBoth[3]}
-        signIn (to: MyAccountsPage ) {$("input",type: "submit", value: "Sign in")}
+        signIn (to: MyAccountsPage ) {submit ->$("input",type: submit, value: "Sign in")}
+
+    }
+
+    void function_signIn(String usernameValue, String passwordValue){
+        username.value usernameValue
+        password.value passwordValue
+        signIn("submit").click()
     }
 }
+
