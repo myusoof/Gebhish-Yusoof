@@ -16,6 +16,7 @@ class O2BaseSteps {
     Browser browser
     BrowserWrapper browserWrapper = new BrowserWrapper(browser)
 
+
     String getCurrentWindows(){
         browserWrapper.browser.driver.getWindowHandle()
     }

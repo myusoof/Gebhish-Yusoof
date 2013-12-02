@@ -14,7 +14,7 @@ import org.openqa.selenium.interactions.Actions
 class O2LoginPage extends Page {
     static url = "signin"
     static at = {
-        title == "O2 | Upgrade | O2 | Upgrade | Sign In"
+        title == "O2 | Upgrade | Sign In"
     }
 
     static content = {
@@ -36,6 +36,8 @@ class O2LoginPage extends Page {
 
     void function_signIn(String usernameValue, String passwordValue){
         username.value usernameValue
+        $("input", 0, name:"USERNAME", id:"user_name" ).text() << Keys.chord(Keys.CONTROL, "c")
+        $("input", 0, name:"USERNAME", id:"user_name" ) << Keys.chord(Keys.CONTROL, "v")
         password.value passwordValue
         signIn("submit").click()
     }
