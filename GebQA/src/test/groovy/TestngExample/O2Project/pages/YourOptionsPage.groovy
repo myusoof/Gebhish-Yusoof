@@ -1,5 +1,6 @@
 package TestngExample.O2Project.pages
 
+import TestngExample.O2Project.module.SignInOutModule
 import geb.Page
 
 /**
@@ -17,5 +18,7 @@ class YourOptionsPage extends Page{
     static content = {
         letsGoHandsetUpgradeButton {$(".btn-style.btn-secondary-dark").filter("a", href: ~/.*phone.*/)}
         //letsGoHandsetUpgradeButton {$(".btn-style btn-secondary-dark").has("a", href: ~/.*phone.*/)}
+
+        signOutLink {module SignInOutModule}
     }
 }

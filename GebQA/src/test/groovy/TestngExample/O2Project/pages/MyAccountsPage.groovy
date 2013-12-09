@@ -1,5 +1,6 @@
 package TestngExample.O2Project.pages
 
+import TestngExample.O2Project.module.SignInOutModule
 import geb.Page
 
 /**
@@ -19,6 +20,8 @@ class MyAccountsPage extends Page {
         mobileNumberField {$("span.detailValue").collect{ it.text()}}
 
         upgradePhone {phoneNumber -> $("#accountWrapper").has("form", action : ~/.*${phoneNumber}.*/).find(type: "submit")}
+
+        signOutLink {module : SignInOutModule}
     }
 
 }
