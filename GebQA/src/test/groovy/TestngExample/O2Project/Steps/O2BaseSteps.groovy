@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver
 class O2BaseSteps {
 
     Browser browser
-    BrowserWrapper browserWrapper = new BrowserWrapper(browser)
+    BrowserWrapper browserWrapper
 
 
     String getCurrentWindows(){

@@ -1,5 +1,6 @@
 package TestngExample.O2Project.tests
 
+import TestngExample.O2Project.Steps.BrowserWrapper
 import TestngExample.O2Project.Steps.O2BaseSteps
 import TestngExample.O2Project.pages.ForgotPasswordReminderPage
 import TestngExample.O2Project.pages.ForgotUsernamePasswordReminderPage
@@ -22,6 +23,11 @@ import org.testng.annotations.Test
  * To change this template use File | Settings | File Templates.
  */
 class DiffShopLoginTest extends O2BaseSteps {
+
+    @BeforeTest
+    void beforeTest(){
+    browserWrapper = new BrowserWrapper(browser)
+    }
 
     @Test
     void testToTestLinksInO2LoginPage(){
@@ -106,7 +112,6 @@ class DiffShopLoginTest extends O2BaseSteps {
             selectPhoneWithModel("2220 Slide Purple").click()
         }
     }
-
 
     @AfterTest
     void afterTest(){
