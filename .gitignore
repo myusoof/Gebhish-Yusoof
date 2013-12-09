@@ -1,9 +1,19 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
-*.iml
+target
+.classpath
+.project
+.cache
+bin
+/buildSrc
+dependencies
+build
+.gradle
+.idea
+.idea_modules
+.worksheet
+.settings
 *.ipr
+*.iml
 *.iws
+*.class
+/out
+log

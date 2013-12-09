@@ -56,6 +56,12 @@ class HandsetToDeviceConversion {
         fileOutput.write(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(deviceJson))
     }
 
+    static exampleObjectToMapperConversion(File fileInput, File fileOutput){
+        objectMapper = new ObjectMapper()
+        Map<String, Object> mapper = objectMapper.readValue(fileInput, new TypeReference<Map<String, Object>>() {})
+
+    }
+
     static tariffToPlanConverter(File fileInput,File fileOutput){
         fileOutput.createNewFile()
         objectMapper = new ObjectMapper();
