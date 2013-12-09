@@ -17,19 +17,28 @@ class SimplicityPage extends Page{
         title == "O2 | Simplicity tariffs"
     }
 
+    def getTabDefault(){
+        return "#tabsDefault"
+    }
 
+    def getA(){
+        return "a"
+    }
+
+    def value = 1
     static content =  {
 
+        //cache
+        testingOfCache(cache : true){value}
         //simo tariff or plan tariff
-        activePlanTab {$("#tabsDefault").find(".activeTab")}
-
-        selectPlanTypeOf {tabText -> $("#tabsDefault ul li").find(text: "${tabText}")}
+        activePlanTab {$(tabDefault).find(".activeTab")}
+        selectPlanTypeOf(required : false) {tabText -> $("#tabsDefault ul li").find(text: "${tabText}")}
         //either 3G or 4G tab is selected
-        coverageTab {coverageName ->$("#coverage li").not(".active").find("a", text: coverageName)}
+        requiredFalse (required: false) {$("testTheRequired")}
+        coverageTab {coverageName ->$("#coverage li").not(".active").find(a , text: coverageName)}
         getNthElementSelected {nth ->$("#tariffTable tbody tr:nth-child(${nth})")}
 
         addbuttonOnNthPlan {n -> getNthElementSelected(n).find("td:nth-child(7) .buy-tariff-form")}
-
 
         getMonthlyCostInNthLine {n -> getNthElementSelected(n).find("td:nth-child(1)")}
         getTariffLengthInNthLine {n -> getNthElementSelected(n).find("td:nth-child(2)")}
@@ -38,5 +47,4 @@ class SimplicityPage extends Page{
         getTariffDataInNthLine {n -> getNthElementSelected(n).find("td:nth-child(5)")}
         getTariffExtrasInNthLine {n -> getNthElementSelected(n).find("td:nth-child(6)")}
     }
-
 }

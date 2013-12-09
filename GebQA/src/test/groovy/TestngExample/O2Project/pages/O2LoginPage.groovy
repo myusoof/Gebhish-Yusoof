@@ -30,14 +30,14 @@ class O2LoginPage extends Page {
         forgotUsernameLink {allForgottenUsernameAndPasswordBoth[1]}
         forgotPasswordLink {allForgottenUsernameAndPasswordBoth[2]}
         forgotBothLink {allForgottenUsernameAndPasswordBoth[3]}
-        signIn (to: MyAccountsPage ) {submit ->$("input",type: submit, value: "Sign in")}
+        signIn (to: [MyAccountsPage] ) {submit ->$("input",type: submit, value: "Sign in")}
 
     }
 
     void function_signIn(String usernameValue, String passwordValue){
         username.value usernameValue
-        $("input", 0, name:"USERNAME", id:"user_name" ).text() << Keys.chord(Keys.CONTROL, "c")
-        $("input", 0, name:"USERNAME", id:"user_name" ) << Keys.chord(Keys.CONTROL, "v")
+        /*$("input", 0, name:"USERNAME", id:"user_name" ).text() << Keys.chord(Keys.CONTROL, "c")
+        $("input", 0, name:"USERNAME", id:"user_name" ) << Keys.chord(Keys.CONTROL, "v")*/
         password.value passwordValue
         signIn("submit").click()
     }

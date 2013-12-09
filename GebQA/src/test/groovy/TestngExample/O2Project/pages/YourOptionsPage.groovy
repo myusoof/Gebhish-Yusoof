@@ -11,10 +11,11 @@ import geb.Page
  */
 class YourOptionsPage extends Page{
     static at = {
-        driver.title.equals("O2 | Upgrade | Your upgrade options")
+        title == "O2 | Upgrade | Your upgrade options"
     }
 
     static content = {
-        letsGoHandsetUpgradeButton {$(".btn-style btn-secondary-dark").has("a", href: ~/.*phone.*/)}
+        letsGoHandsetUpgradeButton {$(".btn-style.btn-secondary-dark").filter("a", href: ~/.*phone.*/)}
+        //letsGoHandsetUpgradeButton {$(".btn-style btn-secondary-dark").has("a", href: ~/.*phone.*/)}
     }
 }

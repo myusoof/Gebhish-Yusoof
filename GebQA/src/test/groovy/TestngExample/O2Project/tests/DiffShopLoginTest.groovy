@@ -6,9 +6,12 @@ import TestngExample.O2Project.pages.ForgotUsernamePasswordReminderPage
 import TestngExample.O2Project.pages.ForgotUsernameReminderPage
 import TestngExample.O2Project.pages.MyAccountsPage
 import TestngExample.O2Project.pages.O2LoginPage
+import TestngExample.O2Project.pages.PhonePage
 import TestngExample.O2Project.pages.YourOptionsPage
 import org.openqa.selenium.By
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.testng.annotations.AfterTest
+import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
 
 /**
@@ -73,11 +76,39 @@ class DiffShopLoginTest extends O2BaseSteps {
         assert ["07007002003", "07997992003"] ==  browserWrapper.browser.mobileNumberField
         //println browserWrapper.browser.driver.findElement(By.xpath("//*[@id=\"accountWrapper\"]/form[1]/div/div/div[3]/input")).getAttribute("value")
         browserWrapper.browser.page.upgradePhone("447007002003").click(YourOptionsPage)
-        browserWrapper.browser.page.at YourOptionsPage
+        browserWrapper.browser.at YourOptionsPage
         //browserWrapper.browser.$("#accountWrapper").has("form", action : ~/.*447007002003.*/).find(type: "submit").click()
         assert browserWrapper.browser.page.$(".staticPage").text() == "Your Options"
         browserWrapper.browser.letsGoHandsetUpgradeButton.click()
         browserWrapper.browser.removePageChangeListener(browserWrapper.listener)
+    }
+
+    @Test
+    void UpgradeHandsetOption(){
+        browserWrapper.browser.with {
+            to O2LoginPage
+            at(O2LoginPage)
+            function_signIn "ID-002003", "password"
+            at MyAccountsPage
+            difId.text()
+            welcomeText.text() == "Hi Mike Howes"
+            assert ["07007002003", "07997992003"] ==  mobileNumberField
+            //println driver.findElement(By.xpath("//*[@id=\"accountWrapper\"]/form[1]/div/div/div[3]/input")).getAttribute("value")
+            page.upgradePhone("447007002003").click(YourOptionsPage)
+            at YourOptionsPage
+            //$("#accountWrapper").has("form", action : ~/.*447007002003.*/).find(type: "submit").click()
+            assert page.$(".staticPage").text() == "Your Options"
+            letsGoHandsetUpgradeButton.click(PhonePage)
+            at PhonePage
+            assert activeTab.text() == "Pay Monthly"
+            selectTab("Pay Monthly").click()
+            selectPhoneWithModel("2220 Slide Purple").click()
+        }
+    }
+
+
+    @AfterTest
+    void afterTest(){
         browserWrapper.browser.quit()
     }
 }

@@ -3,6 +3,7 @@ package TestngExample.O2Project.tests
 import TestngExample.O2Project.Steps.O2BaseSteps
 import TestngExample.O2Project.pages.SimplicityPage
 import org.openqa.selenium.Keys
+import geb.Browser
 import org.testng.annotations.Test
 
 /**
@@ -20,7 +21,12 @@ class SimplicityTest extends O2BaseSteps {
             to SimplicityPage
             at SimplicityPage
             selectPlanTypeOf("Phone tariffs").click()
-            selectPlanTypeOf("Sim only tariffs").click()
+            page.selectPlanTypeOf("Sim only tariffs").click()
+
+            println testingOfCache
+            page.value = 2
+            println testingOfCache
+            requiredFalse.click()
             assert getMonthlyCostInNthLine("3").text() == "£13.50"
             assert getTariffLengthInNthLine("3").text() == "30 Days"
             assert getTariffMinutesInNthLine("3").text() == "100\nminutes"
