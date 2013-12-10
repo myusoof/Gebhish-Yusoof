@@ -10,7 +10,7 @@ import geb.Page
  * Time: 15:17
  * To change this template use File | Settings | File Templates.
  */
-class GoogleHomePage extends Page {
+class GoogleHomePage extends O2BasePage {
 
     // pages can define their location, either absolutely or relative to a base
     static url = "http://google.com/ncr"

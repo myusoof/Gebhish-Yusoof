@@ -10,7 +10,7 @@ import geb.Page
  * Time: 22:59
  * To change this template use File | Settings | File Templates.
  */
-class MyAccountsPage extends Page {
+class MyAccountsPage extends O2BasePage {
 
     static at = { title == "O2 | Upgrade | My accounts"}
     static content ={

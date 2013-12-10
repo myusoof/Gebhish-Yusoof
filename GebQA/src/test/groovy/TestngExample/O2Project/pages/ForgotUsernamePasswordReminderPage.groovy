@@ -9,7 +9,7 @@ import geb.Page
  * Time: 15:04
  * To change this template use File | Settings | File Templates.
  */
-class ForgotUsernamePasswordReminderPage extends Page {
+class ForgotUsernamePasswordReminderPage extends O2BasePage {
     static at = {
         (driver.getCurrentUrl() == "http://www.o2.co.uk/registrationusernameandpasswordreminder"
         ||

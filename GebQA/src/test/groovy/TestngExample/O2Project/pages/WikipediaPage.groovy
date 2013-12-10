@@ -9,6 +9,6 @@ import geb.Page
  * Time: 15:18
  * To change this template use File | Settings | File Templates.
  */
-class WikipediaPage extends Page {
+class WikipediaPage extends O2BasePage {
     static at = { title.startsWith("Wikipedia") }
 }

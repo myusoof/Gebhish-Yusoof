@@ -11,7 +11,7 @@ import org.openqa.selenium.interactions.Actions
  * Time: 21:38
  * To change this template use File | Settings | File Templates.
  */
-class O2LoginPage extends Page {
+class O2LoginPage extends O2BasePage {
     static url = "signIn/"
     static at = {
         title == "O2 | Upgrade | Sign In"

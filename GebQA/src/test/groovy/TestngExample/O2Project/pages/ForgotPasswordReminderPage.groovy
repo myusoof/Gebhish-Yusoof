@@ -9,7 +9,7 @@ import geb.Page
  * Time: 15:04
  * To change this template use File | Settings | File Templates.
  */
-class ForgotPasswordReminderPage extends Page {
+class ForgotPasswordReminderPage extends O2BasePage {
     static url = "http://www.o2.co.uk/registrationpasswordreminder"
     static at = {
         url.equals("http://www.o2.co.uk/registrationpasswordreminder")

@@ -9,7 +9,7 @@ import geb.Page
  * Time: 00:32
  * To change this template use File | Settings | File Templates.
  */
-class SimplicityPage extends Page{
+class SimplicityPage extends O2BasePage{
 
     static url = "store/simplicity/"
 

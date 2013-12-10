@@ -10,7 +10,7 @@ import geb.Page
  * Time: 00:45
  * To change this template use File | Settings | File Templates.
  */
-class YourOptionsPage extends Page{
+class YourOptionsPage extends O2BasePage{
     static at = {
         title == "O2 | Upgrade | Your upgrade options"
     }

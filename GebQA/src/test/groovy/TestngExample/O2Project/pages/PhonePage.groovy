@@ -9,7 +9,7 @@ import geb.Page
  * Time: 22:59
  * To change this template use File | Settings | File Templates.
  */
-class PhonePage extends Page{
+class PhonePage extends O2BasePage{
 
     static at = {
         title == "O2 | Upgrade | Phones"

@@ -10,7 +10,7 @@ import geb.Page
  * Time: 15:17
  * To change this template use File | Settings | File Templates.
  */
-class GoogleResultsPage extends Page {
+class GoogleResultsPage extends O2BasePage {
     static at = { title.endsWith "Google Search" }
     static content = {
         // reuse our previously defined module
