@@ -13,6 +13,7 @@ import geb.Module
 class SignInOutModule extends Module{
 
     static content = {
-       signOutLink(to: O2LoginPage) {$(".signOut")}
+
+        signOutButton(to: O2LoginPage) {$(".signOut")}
     }
 }

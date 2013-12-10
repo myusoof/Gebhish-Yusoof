@@ -87,7 +87,7 @@ class DiffShopLoginTest extends O2BaseSteps {
         //browserWrapper.browser.$("#accountWrapper").has("form", action : ~/.*447007002003.*/).find(type: "submit").click()
         assert browserWrapper.browser.page.$(".staticPage").text() == "Your Options"
         browserWrapper.browser.letsGoHandsetUpgradeButton.click()
-        browserWrapper.browser.signOutLinkModule.signOutLink.click()
+        browserWrapper.browser.signOutLink.signOutButton.click()
         browserWrapper.browser.removePageChangeListener(browserWrapper.listener)
     }
 
