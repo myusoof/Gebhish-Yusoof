@@ -23,7 +23,7 @@ class O2LoginPage extends O2BasePage {
         signInText {$(".bannerPromo").find("h2")}
         username {$("input", 0, name:"USERNAME", id:"user_name" )}
         password {$("input",0, name:"PASSWORD", id: "user_password")}
-        registerButtom {$("#qa-registration")}
+        registerButton {$("#qa-registration")}
 
         allForgottenUsernameAndPasswordBoth {$("p", class : "arrowRight").find("a")}
 

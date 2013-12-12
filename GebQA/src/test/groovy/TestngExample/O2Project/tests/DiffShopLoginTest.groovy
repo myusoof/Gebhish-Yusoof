@@ -33,7 +33,7 @@ class DiffShopLoginTest extends O2BaseSteps {
     void testToTestLinksInO2LoginPage(){
 
         browserWrapper.browser.to O2LoginPage
-        browserWrapper.browser.at(O2LoginPage)
+        println browserWrapper.browser.at(O2LoginPage)
         browserWrapper.browser.forgotUsernameLink.click()
 /*        browserWrapper.browser.withWindow(
                 {browserWrapper.browser.driver.getCurrentUrl() ==
@@ -80,6 +80,7 @@ class DiffShopLoginTest extends O2BaseSteps {
         browserWrapper.browser.at MyAccountsPage
         browserWrapper.browser.difId.text()
         browserWrapper.browser.welcomeText.text() == "Hi Mike Howes"
+        assert browserWrapper.browser.welcomeText_1.text() == browserWrapper.browser.welcomeText.text()
         assert ["07007002003", "07997992003"] ==  browserWrapper.browser.mobileNumberField
         //println browserWrapper.browser.driver.findElement(By.xpath("//*[@id=\"accountWrapper\"]/form[1]/div/div/div[3]/input")).getAttribute("value")
         browserWrapper.browser.page.upgradePhone("447007002003").click(YourOptionsPage)
@@ -106,9 +107,10 @@ class DiffShopLoginTest extends O2BaseSteps {
             at YourOptionsPage
             //$("#accountWrapper").has("form", action : ~/.*447007002003.*/).find(type: "submit").click()
             assert page.$(".staticPage").text() == "Your Options"
-            letsGoHandsetUpgradeButton.click(PhonePage)
+            letsGoHandsetUpgradeButtonAlaises.click(PhonePage)
             at PhonePage
             assert activeTab.text() == "Pay Monthly"
+            println activeTab_1.text() == activeTab.text()
             selectTab("Pay Monthly").click()
             selectPhoneWithModel("2220 Slide Purple").click()
         }

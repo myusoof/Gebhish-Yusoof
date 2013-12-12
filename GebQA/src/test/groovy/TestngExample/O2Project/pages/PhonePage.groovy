@@ -17,6 +17,7 @@ class PhonePage extends O2BasePage{
 
     static content = {
         activeTab {$(".activeTab a")}
+        activeTab_1 {alaises: activeTab}
         selectTab {tabText -> $("#tabsDefault li").filter(".activeTab").find(text: tabText)}
         selectPhoneWithModel {modelName ->$("a").has(class : "model", text: modelName)}
     }

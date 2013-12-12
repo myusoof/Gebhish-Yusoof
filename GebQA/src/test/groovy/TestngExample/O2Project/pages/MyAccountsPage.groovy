@@ -16,6 +16,7 @@ class MyAccountsPage extends O2BasePage {
     static content ={
         difId(required : false) {$("input#yusoof")}
         welcomeText {$("div", id: "contentFull").find('h2')}
+        welcomeText_1 {alaises: welcomeText}
 
         mobileNumberField {$("span.detailValue").collect{ it.text()}}
 

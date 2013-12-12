@@ -17,6 +17,7 @@ class YourOptionsPage extends O2BasePage{
 
     static content = {
         letsGoHandsetUpgradeButton {$(".btn-style.btn-secondary-dark").filter("a", href: ~/.*phone.*/)}
+        letsGoHandsetUpgradeButtonAlaises{alaises: letsGoHandsetUpgradeButton}
         //letsGoHandsetUpgradeButton {$(".btn-style btn-secondary-dark").has("a", href: ~/.*phone.*/)}
 
         signOutLink {module SignInOutModule}
