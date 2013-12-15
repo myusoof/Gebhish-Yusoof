@@ -3,6 +3,9 @@ package TestngExample.O2Project.tests
 import TestngExample.O2Project.Steps.BrowserWrapper
 import TestngExample.O2Project.Steps.O2BaseSteps
 import TestngExample.O2Project.pages.AcquisitionShopHomePage
+import TestngExample.O2Project.pages.ShopDetailPage
+import TestngExample.O2Project.pages.ShopDetailUrl
+import geb.Page
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
 
@@ -22,9 +25,12 @@ class AcquisitionTests extends  O2BaseSteps{
 
     @Test
     void BasicAcquisitionTest(){
-     browserWrapper.browser.with {
+        def shopDetailUrl = new ShopDetailUrl(model: "apple",brand: "iphone-5-64gb-purple-cca")
+        browserWrapper.browser.with {
          to AcquisitionShopHomePage
-
+         at AcquisitionShopHomePage
+         //to ShopDetailPage, "apple", "iphone-5-64gb-purple-cca/"
+         to ShopDetailPage, shopDetailUrl
          quit()
      }
     }

@@ -9,17 +9,18 @@ import geb.Page
  * Time: 00:06
  * To change this template use File | Settings | File Templates.
  */
-class ShopDetailPage extends Page{
-    static url = "store/"
-    static at = {title.endsWith("Buy now on Pay Monthly")}
-
-    def shopDetailUrl = new ShopDetailUrl(model: "apple", "iphone-5-64gb-purple-cca")
-    String convertToPath(){
-    }
-}
-
 class ShopDetailUrl {
     String model
     String brand
 
 }
+
+class ShopDetailPage extends Page{
+    static url = "store/phones/"
+    static at = { title.contains("Buy")}
+
+    String convertToPath(ShopDetailUrl shopDetailUrl){
+        shopDetailUrl.model + "/" + shopDetailUrl.brand + "/"
+    }
+}
+
