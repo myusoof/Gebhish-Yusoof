@@ -4,4 +4,5 @@ apply plugin : 'idea'
 
 dependencies{
     compile  groovy, gebhish, seleniumFirefox, seleniumSupport, testng, jackson, jacksonJaxRs, jacksonDataType
+    compile 'org.quartz-scheduler:quartz:1.7.3'
 }
