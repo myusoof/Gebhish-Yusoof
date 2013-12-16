@@ -27,11 +27,11 @@ class AcquisitionTests extends  O2BaseSteps{
     void BasicAcquisitionTest(){
         def shopDetailUrl = new ShopDetailUrl(model: "apple",brand: "iphone-5-64gb-purple-cca")
         browserWrapper.browser.with {
-         to AcquisitionShopHomePage
-         at AcquisitionShopHomePage
-         //to ShopDetailPage, "apple", "iphone-5-64gb-purple-cca/"
-         to ShopDetailPage, shopDetailUrl
-         quit()
-     }
-    }
+            to AcquisitionShopHomePage
+            at AcquisitionShopHomePage
+            to ShopDetailPage, "apple", "iphone-5-64gb-purple-cca/"
+            to ShopDetailPage, shopDetailUrl
+            quit()
+            }
+        }
 }

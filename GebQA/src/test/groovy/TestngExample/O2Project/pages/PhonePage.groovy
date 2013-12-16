@@ -1,5 +1,6 @@
 package TestngExample.O2Project.pages
 
+import TestngExample.O2Project.module.BaseModule
 import geb.Page
 
 /**
@@ -19,15 +20,8 @@ class PhonePage extends O2BasePage{
         activeTab {$(".activeTab a")}
         activeTab_1 {alaises: activeTab}
         selectTab {tabText -> $("#tabsDefault li").filter(".activeTab").find(text: tabText)}
-        selectPhoneWithModel {modelName ->$("a").has(class : "model", text: modelName)}
-    }
+        selectPhoneWithModel1 {modelName -> module BaseModule, modelName : modelName}
+        //selectPhoneWithModel {modelName ->$("a").has(class : "model", text: modelName)}
 
-    class BrandAndModelName{
-        String brand
-        String model
-
-        String convertToPath(){
-
-        }
     }
 }

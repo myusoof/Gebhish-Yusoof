@@ -116,6 +116,31 @@ class DiffShopLoginTest extends O2BaseSteps {
         }
     }
 
+    @Test
+    void moduleTest(){
+        browserWrapper.browser.with {
+            to O2LoginPage
+            at(O2LoginPage)
+            function_signIn "ID-002003", "password"
+            at MyAccountsPage
+            difId.text()
+            welcomeText.text() == "Hi Mike Howes"
+            assert ["07007002003", "07997992003"] ==  mobileNumberField
+            //println driver.findElement(By.xpath("//*[@id=\"accountWrapper\"]/form[1]/div/div/div[3]/input")).getAttribute("value")
+            page.upgradePhone("447007002003").click(YourOptionsPage)
+            at YourOptionsPage
+            //$("#accountWrapper").has("form", action : ~/.*447007002003.*/).find(type: "submit").click()
+            assert page.$(".staticPage").text() == "Your Options"
+            letsGoHandsetUpgradeButtonAlaises.click(PhonePage)
+            at PhonePage
+            assert activeTab.text() == "Pay Monthly"
+            println activeTab_1.text() == activeTab.text()
+            selectTab("Pay Monthly").click()
+            //selectPhoneWithModel.selectPhoneWithModel1("2220 Slide Purple").click()
+            selectPhoneWithModel1("2220 Slide Purple").selectPhoneWithModel.click()
+        }
+    }
+
     @AfterTest
     void afterTest(){
         browserWrapper.browser.quit()
