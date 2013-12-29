@@ -45,6 +45,17 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.seleniumhq.selenium/selenium-chrome-driver/2.31.0/jar/ae0c85967302907ee04a79be0cc65e2ca182967b/selenium-chrome-driver-2.31.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.seleniumhq.selenium/selenium-chrome-driver/2.31.0/source/fe46032515a9e09805d1542df0691e957e3da95b/selenium-chrome-driver-2.31.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.seleniumhq.selenium/selenium-support/2.31.0/jar/d05e02db0efa62a897c52256321add1bb09137d/selenium-support-2.31.0.jar!/" />
         </CLASSES>
         <JAVADOC />

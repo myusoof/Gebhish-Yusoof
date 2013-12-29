@@ -11,5 +11,6 @@ allprojects{
 }
 
 dependencies{
-    compile  groovy, gebhish, seleniumFirefox, seleniumSupport, testng,jackson, jacksonJaxRs, jacksonDataType
+    compile  groovy, gebhish, seleniumFirefox, seleniumSupport, seleniumChrome, seleniumhtmlunit, testng,jackson, jacksonJaxRs, jacksonDataType
 }
+

@@ -31,6 +31,8 @@ class AcquisitionTests extends  O2BaseSteps{
             at AcquisitionShopHomePage
             to ShopDetailPage, "apple", "iphone-5-64gb-purple-cca/"
             to ShopDetailPage, shopDetailUrl
+            println config.driver
+            println config.isCacheDriver()
             quit()
             }
         }
