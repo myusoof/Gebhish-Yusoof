@@ -34,6 +34,6 @@ class AcquisitionTests extends  O2BaseSteps{
             println config.driver
             println config.isCacheDriver()
             quit()
-            }
         }
+    }
 }
