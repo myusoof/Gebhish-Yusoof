@@ -17,3 +17,6 @@ import org.openqa.selenium.remote.RemoteWebDriver
 //driver = 'htmlunit'
 //driver = 'org.openqa.selenium.chrome.ChromeDriver'
 //driver = {new RemoteWebDriver(DesiredCapabilities.firefox())}
+
+System.setProperty("webdriver.chrome.driver", "/home/ee/Downloads/personal/chromedriver")
+driver = 'org.openqa.selenium.chrome.ChromeDriver'
