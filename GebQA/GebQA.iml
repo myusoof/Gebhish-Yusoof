@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/groovy" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
@@ -50,6 +51,17 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.seleniumhq.selenium/selenium-htmlunit-driver/2.31.0/source/563cebd993ed5dccac55c2553d4d8cff6cd88595/selenium-htmlunit-driver-2.31.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.seleniumhq.selenium/selenium-chrome-driver/2.31.0/jar/ae0c85967302907ee04a79be0cc65e2ca182967b/selenium-chrome-driver-2.31.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.seleniumhq.selenium/selenium-chrome-driver/2.31.0/source/fe46032515a9e09805d1542df0691e957e3da95b/selenium-chrome-driver-2.31.0-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -563,17 +575,6 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/joda-time/joda-time/2.1/source/e4fb55e2e35656974d78363afaa19720670ce867/joda-time-2.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.seleniumhq.selenium/selenium-chrome-driver/2.31.0/jar/ae0c85967302907ee04a79be0cc65e2ca182967b/selenium-chrome-driver-2.31.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.seleniumhq.selenium/selenium-chrome-driver/2.31.0/source/fe46032515a9e09805d1542df0691e957e3da95b/selenium-chrome-driver-2.31.0-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

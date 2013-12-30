@@ -4,5 +4,5 @@ apply plugin : 'idea'
 
 
 dependencies{
-    compile  groovy, gebhish, seleniumFirefox, seleniumhtmlunit, seleniumSupport, testng,jackson, jacksonJaxRs, jacksonDataType
+    compile  groovy, gebhish, seleniumFirefox, seleniumhtmlunit, seleniumChrome, seleniumSupport, testng,jackson, jacksonJaxRs, jacksonDataType
 }
