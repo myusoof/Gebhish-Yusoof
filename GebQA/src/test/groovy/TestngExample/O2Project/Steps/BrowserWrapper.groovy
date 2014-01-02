@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver
  * To change this template use File | Settings | File Templates.
  */
 class BrowserWrapper {
-    Browser browser = new Browser(baseUrl: "http://localhost:8080/upgrade/" )
+    Browser browser = new Browser()
     def listener = new O2PageChangeListener()
 
 
