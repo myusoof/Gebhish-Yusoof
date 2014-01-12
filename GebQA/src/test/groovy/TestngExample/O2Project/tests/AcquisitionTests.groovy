@@ -27,9 +27,15 @@ class AcquisitionTests extends  O2BaseSteps{
     void BasicAcquisitionTest(){
         def shopDetailUrl = new ShopDetailUrl(model: "apple",brand: "iphone-5-64gb-purple-cca")
         browserWrapper.browser.with {
+            downloadBytes()
             to AcquisitionShopHomePage
             at AcquisitionShopHomePage
             to ShopDetailPage, "apple", "iphone-5-64gb-purple-cca/"
+            println driver.executeScript("return arguments[0];", "Invoking javascript with driver instance")
+            println driver.executeScript("return mboxCopyright;")
+            println driver.executeScript("return mboxUrlBuilder;")
+            println js."mboxCopyright"
+            println "Yusoof " + js."document.title"
             to ShopDetailPage, shopDetailUrl
             //to demonstrate unexpected page functionality
             println js.exec("return document.title")

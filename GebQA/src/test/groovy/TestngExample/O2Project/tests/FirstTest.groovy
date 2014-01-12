@@ -20,10 +20,29 @@ class FirstTest {
             to GoogleHomePage
             assert at(GoogleHomePage)
             search.field.value("wikipedia")
-            waitFor { at GoogleResultsPage }
+            waitFor(message : "test message") { at GoogleResultsPage }
             assert firstResultLink.text() == "Wikipedia"
             firstResultLink.click()
             waitFor { at WikipediaPage }
         }
     }
+
+    @Test
+    void theSecondTest(){
+        Browser.drive {
+            cleanReportGroupDir()
+            to GoogleHomePage
+            reportGroup("google")
+            report("google home page")
+            assert at(GoogleHomePage)
+            search.field.value("selenium:pdf")
+            searchButton.click()
+            waitFor(message : "test message") { at GoogleResultsPage }
+            def bytes = downloadBytes(pdfSecondLink.@href)
+            println bytes
+            close()
+
+        }
+    }
+
 }

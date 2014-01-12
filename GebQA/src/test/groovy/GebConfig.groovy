@@ -45,6 +45,11 @@ reportOnTestFailureOnly = true
         }
     }
 }*/
+waiting {
+    timeout = 10
+    retryInterval = 0.5
+}
+
 environments {
     // when system property 'geb.env' is set to 'win-ie' use a remote IE driver
     'firefox' {
