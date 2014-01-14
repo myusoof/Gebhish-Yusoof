@@ -16,7 +16,6 @@ class O2LoginPage extends O2BasePage {
     static at = {
         title == "O2 | Upgrade | Sign In"
     }
-
     static content = {
         welcome {$("#qa-login").find("h1")}
         refreshText {$(".bannerPromo").find("p")}

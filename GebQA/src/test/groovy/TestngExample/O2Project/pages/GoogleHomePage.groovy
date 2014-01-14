@@ -21,5 +21,6 @@ class GoogleHomePage extends O2BasePage {
     static content = {
         // include the previously defined module
         search { module GoogleSearchModule, buttonValue: "Google Search" }
+        searchButton {$("#gbqfb")}
     }
 }
