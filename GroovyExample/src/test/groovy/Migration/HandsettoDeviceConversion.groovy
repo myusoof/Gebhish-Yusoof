@@ -17,11 +17,11 @@ class HandsetToDeviceConversion {
     static ObjectMapper objectMapper
     public static void main(String ...args){
         def p = ~/.*\.json/
-        def fileInput = new File("/home/yusoof/projects/o2/Ecom_Fakes/ecommFixtures/src/main/resources/handsets")
+        def fileInput = new File("/home/ee/projects/o2/productCatalogueData_master/catalogueData/prepaySims")
 
         fileInput.eachFileMatch(p){
-            String outputPath =  "/home/yusoof/projects/o2/Ecom_Fakes/ecommFixtures/src/main/resources/handsets-devices"
-            handsetToDeviceConverter(it,new File("${outputPath}/${it.name}"))
+            String outputPath =  "/home/ee/projects/o2/productCatalogueData_master/catalogueData/prepaySimsToPlan"
+            prepaySimToPlanConverter(it,new File("${outputPath}/${it.name}"))
         }
     }
 
@@ -32,6 +32,18 @@ class HandsetToDeviceConversion {
         def device = new Device(id: map.id)
         def jsonBuilder = new JsonBuilder()
         jsonBuilder(device)
+        println jsonBuilder.toPrettyString()
+        fileOutput.write(jsonBuilder.toPrettyString())
+    }
+
+
+    static prepaySimToPlanConverter(File fileInput,File fileOutput ){
+        objectMapper = new ObjectMapper();
+        Map<String, Object> map = objectMapper.readValue(fileInput,new TypeReference<Map<String, Object>>() {});
+        fileOutput.createNewFile()
+        Map prepayMap = prepaySimToPlan(map)
+        def jsonBuilder = new JsonBuilder()
+        jsonBuilder(prepayMap)
         println jsonBuilder.toPrettyString()
         fileOutput.write(jsonBuilder.toPrettyString())
     }
@@ -85,6 +97,30 @@ class HandsetToDeviceConversion {
         deviceJson["4gEnabledBuildVersions"] = []
 
         deviceJson
+    }
+
+
+    static Map prepaySimToPlan(Map prepaySimJson) {
+        Map fulfillmentData = prepaySimJson.fulfillmentData
+        Map planJson = [
+                *: prepaySimJson,
+                type: "Handset",
+                productID: fulfillmentData.otherProducts[0].productId,
+                extraInformation: prepaySimJson.description,
+                fulfillmentData: [
+                        productType: fulfillmentData.otherProducts[0].productType,
+                        productName: fulfillmentData.otherProducts[0].productName,
+                        otherProducts: [ [
+                                productType: fulfillmentData.productType,
+                                productId: prepaySimJson.sku.code,
+                                productName: fulfillmentData.productName
+                        ] ]
+                ]
+        ]
+        planJson.remove("sku")
+        planJson.remove("description")
+
+        planJson
     }
 
     enum HandsetDataType {
