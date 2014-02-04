@@ -8,15 +8,15 @@ package Migration
  * To change this template use File | Settings | File Templates.
  */
 class GivenWhenThen {
-     void given(func, args = null){
-         callClosure(func, args)
+    void given(func, args = null) {
+        callClosure(func, args)
     }
 
 
-    def callClosure= { func, args ->
-        if(args == null){
+    def callClosure = { func, args ->
+        if (args == null) {
             func()
-        }        else{
+        } else {
             func.call(args)
         }
 

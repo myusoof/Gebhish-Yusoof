@@ -1,2 +1,3 @@
 include 'GebQA'
 include 'GroovyExample'
+include 'RestClientExample'

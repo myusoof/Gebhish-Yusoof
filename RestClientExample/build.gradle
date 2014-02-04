@@ -1,16 +1,7 @@
 apply plugin : 'groovy'
-apply plugin : 'java'
 apply plugin : 'idea'
-apply from : 'external-dependencies.gradle'
-apply from : 'ide-support.gradle'
-
-allprojects{
-    repositories{
-        mavenCentral()
-    }
-}
+apply plugin : 'java'
 
 dependencies{
     compile restClient, groovy, gebhish, seleniumFirefox, seleniumSupport, seleniumChrome, seleniumhtmlunit, testng,jackson, jacksonJaxRs, jacksonDataType
 }
-
