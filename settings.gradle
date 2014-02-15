@@ -1,3 +1,5 @@
 include 'GebQA'
 include 'GroovyExample'
 include 'RestClientExample'
+include 'Htmltutorial'
+include 'JavaScriptModule'
