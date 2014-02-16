@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Second JavaScript Title</title>
+    <style>
+        body{
+            font-family: Arial;
+            background-color: black;
+        }
+    </style>
+</head>
+<body Text = white>
+    <script type = "text/javascript">
+       var daye = new Date();
+        if(daye.getHours() <12){
+            document.writeln("Good Morning");
+            document.writeln("<br>")
+        }else if(daye.getHours() >12 && daye.getHours() <18){
+            document.writeln("Good Afternoon");
+            document.writeln("<br>");
+        }else{
+            document.writeln("Good Evening");
+            document.writeln("<br> <br>");
+        }
+
+        switch(daye.getMonth()){
+            case 0:
+                document.writeln("This is First month");
+                document.writeln("<br>")
+                break;
+            case 1:
+                document.writeln("This is Second month");
+                document.writeln("<br>");
+                break;
+            default :
+                document.writeln("This is other than jan and feb");
+                document.writeln("<br>")
+        }
+    </script>
+    <script type="text/javascript">
+        for(var i =0; i <=1024; i+=4){
+            document.write(i + " ");
+        }
+    </script>
+</body>
+</html>
