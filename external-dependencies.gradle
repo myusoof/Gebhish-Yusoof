@@ -13,5 +13,7 @@ ext{
     jacksonJaxRs = "com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:${jacksonVersion}"
     jacksonDataType = "com.fasterxml.jackson.datatype:jackson-datatype-joda:${jacksonVersion}"
     restClient = 'org.codehaus.groovy.modules.http-builder:http-builder:0.5.0-RC2'
-    poiFramework = 'org.apache.poi:poi:3.10-beta2'
+    poiFramework1 = 'org.apache.poi:poi:3.10-beta2'
+    poiFramework = 'org.apache.poi:poi-ooxml:3.5-beta5'
+    restClient = [group: 'org.codehaus.groovy.modules.http-builder', name: 'http-builder', version: '0.6']
 }
