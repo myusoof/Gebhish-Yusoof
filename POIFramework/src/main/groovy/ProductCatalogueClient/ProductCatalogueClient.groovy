@@ -8,10 +8,9 @@ package ProductCatalogueClient
  * To change this template use File | Settings | File Templates.
  */
 class ProductCatalogueClient extends RestClient{
-    RestClient contextFreeShopClient = new RestClient("http://localhost:8080/")
-    ProductCatalogueClient(Object defaultURI) {
+        ProductCatalogueClient(Object defaultURI) {
         super(defaultURI)
-        this.setHeaders(['X-TouchPoint': 'cfu', 'X-UserId': 'QATest', 'X-IdType': 'Test'])
+        this.setHeaders(['X-TouchPoint': 'cfu', 'X-IdType': 'IdentityUID','Content-Type': 'application/json','X-UserId': 'QATest','X-Channel': 'ConsumerUpgrade'])
     }
 
 
