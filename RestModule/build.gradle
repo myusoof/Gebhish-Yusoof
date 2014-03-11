@@ -1,0 +1,8 @@
+apply plugin : 'java'
+apply plugin : 'groovy'
+apply plugin : 'idea'
+
+
+dependencies{
+    compile  groovy, gebhish, seleniumFirefox, seleniumhtmlunit, seleniumChrome, seleniumSupport, testng,jackson, jacksonJaxRs, jacksonDataType, poiFramework, restClient
+}

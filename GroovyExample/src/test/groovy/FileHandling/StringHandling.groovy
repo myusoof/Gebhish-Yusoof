@@ -15,5 +15,6 @@ class StringHandling {
             sb.append(i+ " ")
         }
         println sb.toString()
+        println sb.hashCode()
     }
 }

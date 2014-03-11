@@ -11,6 +11,6 @@ allprojects{
 }
 
 dependencies{
-    compile restClient, groovy, gebhish, seleniumFirefox, seleniumSupport, seleniumChrome, seleniumhtmlunit, testng,jackson, jacksonJaxRs, jacksonDataType
+    compile restClient, groovy, gebhish, seleniumFirefox, seleniumSupport, seleniumChrome, seleniumhtmlunit, testng,jackson, jacksonJaxRs, jacksonDataType, jExcel
 }
 
