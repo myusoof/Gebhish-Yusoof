@@ -14,7 +14,8 @@ import org.testng.annotations.Test
  * To change this template use File | Settings | File Templates.
  */
 class OrderPlacementTest {
-    RestClient agentShopClient = new RestClient("https://ecom:ecom@prodcat.ref.o2.co.uk/")
+    //RestClient agentShopClient = new RestClient("https://ecom:ecom@prodcat.ref.o2.co.uk/")
+    RestClient agentShopClient = new RestClient("http://localhost:8080/")
 
     @BeforeClass
     void setup(){
@@ -23,18 +24,23 @@ class OrderPlacementTest {
     @Test
     void getTheOrderPlaced(){
         def productDetails = [
-                ["447521118362","T:CR5911:100Mins:24M:100MB:GBP8:S1:CCA", "B:CR5911:100MB:DataWiFi:BlackBerry7:INC:bolton", "1RISAMBN"]]
+                ["447999000100","upgrade:Q1:09:O2:15:24M:promo", "standard_webdaily_pid", "5HTHD7XN"]]
         def response = agentShopClient.get(path: "productService/admin/monitoring")
         println response.status
         productDetails.each {
             def customerResponse = agentShopClient.get(path: "customerService/customers;type=msisdn/${it.get(0)}")
             println customerResponse.data
-            println getPortalIdBasketIdForGivenMsisdn(it.get(0)).portalId
-            println getObjectIdForGivenSkuorProductId("plan",it.get(1))
-            println getDataAllowanceIdForGivenProductId(it.get(2))
-            println getObjectIdForGivenSkuorProductId("device", it.get(3))
-
-            createPrivateBasketForaMsisdn()
+            def portalId =  getPortalIdBasketIdForGivenMsisdn(it.get(0)).portalId
+            def planId =  getObjectIdForGivenSkuorProductId("plan",it.get(1))
+            def dataAllowanceId =  getDataAllowanceIdForGivenProductId(it.get(2))
+            def deviceId = getObjectIdForGivenSkuorProductId("device", it.get(3))
+            def productIds = [plan : planId, device: deviceId, dataallowance: dataAllowanceId]
+            def privateBasketId = createPrivateBasketForaMsisdn(it.get(0))
+            println privateBasketId
+            addProductsToBasket(privateBasketId, productIds)
+            def orderId = createOrder(privateBasketId)
+            continueToOrder(orderId)
+            preSubmitOrder(orderId)
         }
     }
 
@@ -76,19 +82,29 @@ class OrderPlacementTest {
         }
     }
 
-    protected void addProductsToBasket(String basketLink, List<Object> products) {
+    protected void addProductsToBasket(String basketId,productIds) {
         //Adding the product items to basket
-        products.each {
-            assert agentShopClient.post(path: "${basketLink}/add/${it.basketRef}").status == 204
+        productIds.each {product, Id ->
+            assert agentShopClient.post(path: "basketService/baskets/${basketId}/add/${product}/${Id}").status == 204
         }
-
-        def basketResponse = client.get(path: basketLink)
-        assert basketResponse.status == 200
     }
 
     protected String createPrivateBasketForaMsisdn(msisdn){
        def response = agentShopClient.post(path:"basketService/baskets/createPrivateBasket;by=msisdn/${msisdn}").data
-       response.links.find{it.rel == "urn:o2:privateBasket"}.id
+       response.id
+    }
+
+    protected String createOrder(basketId){
+        def response = agentShopClient.post(path: "orderService/orders", body: [basketId : basketId])
+        response.id
+    }
+    protected String continueToOrder(orderId){
+        def response = agentShopClient.get(path: "orderService/orders/${orderId}").data
+        response.id
+    }
+    protected String preSubmitOrder(orderId){
+        def order = agentShopClient.post(path: "/orderService/orders/${orderId}/preSubmitOrder").data
+        order
     }
 
 }

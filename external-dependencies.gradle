@@ -17,4 +17,7 @@ ext{
     poiFramework = 'org.apache.poi:poi-ooxml:3.5-beta5'
     restClient = [group: 'org.codehaus.groovy.modules.http-builder', name: 'http-builder', version: '0.6']
     jExcel = 'net.sourceforge.jexcelapi:jxl:2.6.12'
+    jerseyVersion = "1.9.1"
+    jersey = ["com.sun.jersey:jersey-server:${jerseyVersion}", "com.sun.jersey:jersey-core:${jerseyVersion}", "com.sun.jersey:jersey-client:${jerseyVersion}"]
+    jerseyMultipart = "com.sun.jersey.contribs:jersey-multipart:${jerseyVersion}"
 }
