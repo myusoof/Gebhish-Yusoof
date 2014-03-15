@@ -6,3 +6,21 @@ apply plugin : 'idea'
 dependencies{
     compile  groovy, gebhish, seleniumFirefox, seleniumhtmlunit, seleniumChrome, seleniumSupport, testng,jackson, jacksonJaxRs, jacksonDataType, poiFramework, restClient, jersey, jerseyMultipart
 }
+
+def functionalTest = { String baseServiceUrl ->
+    description = 'Use this task to run acceptance tests against Local(localhost) environment'
+    useTestNG() {
+        suiteXmlBuilder().suite(name: 'functional-tests') {
+            test(name: "all") {
+                packages {
+                    'package'(name: '*.*')
+                }
+            }
+        }
+    }
+    inputs.property("alwaysExecute", java.util.UUID.randomUUID())
+}
+
+task 'qae2e'(type: Test) {
+    functionalTest.delegate = delegate
+}
