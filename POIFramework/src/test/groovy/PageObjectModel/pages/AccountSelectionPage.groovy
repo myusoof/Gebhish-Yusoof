@@ -21,6 +21,10 @@ class AccountSelectionPage extends WebDriverUtils {
                 break
             }
         }
-        new UpgradeOptionsPage()
+        if(driver.findElement(By.cssSelector("#devicesTab")).isDisplayed()){
+            new DeviceListHomePage()
+        }else{
+            new UpgradeOptionsPage()
+        }
     }
 }
