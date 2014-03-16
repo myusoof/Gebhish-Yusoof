@@ -22,9 +22,21 @@ class DeviceListHomePage extends WebDriverUtils{
         driver.findElement(By.cssSelector("#buy-${id}")).click()
     }
 
-    void addDataAllowanceToBasket(String id){
+    void addDataAllowanceToBasket(type, String id,String dataAllowanceProductId){
         sleep(2000)
-        driver.findElementByXPath(".//*[@id='${id}']/img").click()
+        if(type != "simo"){
+            driver.findElementByXPath(".//*[@id='${id}']/img").click()
+        }else{
+            if(dataAllowanceProductId.contains("Smartphone")){
+
+            }else if(dataAllowanceProductId.contains("iPhone")){
+
+            }else if(dataAllowanceProductId.concat("BlackBerry")){
+
+            }
+            driver.findElement(By.cssSelector())
+            driver.findElement(By.cssSelector(""))
+        }
     }
 
 
