@@ -10,7 +10,7 @@ import org.openqa.selenium.By
  * Time: 21:59
  * To change this template use File | Settings | File Templates.
  */
-class OrderConfirmationPage extends WebDriverUtils{
+class OrderConfirmationPage extends WebDriverUtils implements Page{
     String verifyOrderSubmittedSuccessfully(){
         sleep(5000)
         assert driver.findElement(By.cssSelector(".sectionHeading")).getText() == "Order confirmed"

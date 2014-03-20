@@ -10,7 +10,7 @@ import org.openqa.selenium.By
  * Time: 16:42
  * To change this template use File | Settings | File Templates.
  */
-class UpgradeOptionsPage extends WebDriverUtils{
+class UpgradeOptionsPage extends WebDriverUtils implements Page{
 
     DeviceListHomePage clickOnUpgradeForFreeButton(handsetCCAOrSimo){
         driver.findElement(By.cssSelector("#${handsetCCAOrSimo}.upgradeOpt.eligibleOpt>div a")).click()

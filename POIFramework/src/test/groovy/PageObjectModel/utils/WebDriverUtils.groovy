@@ -17,7 +17,7 @@ class WebDriverUtils {
     static WebDriver driver = new FirefoxDriver()
 
     static void webBrowserStart(baseUrl, msisdn){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         driver.get("${baseUrl}/search?msisdn=${msisdn}&portalId=&fun=&PartnerId=o2&submit=Search")
     }
 }

@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils
  */
 class ProductDetails {
 
-    RestClient agentShopClient = new RestClient("http://localhost:8080/")
+    RestClient agentShopClient = new RestClient("https://ecom:ecom@prodcat.ref.o2.co.uk/")
     public ProductDetails(){
         agentShopClient.setHeaders(['X-TouchPoint': 'agent', 'X-IdType': 'WebSealAccessManagerUserId','Content-Type': 'application/json','X-UserId': 'QATest','X-Channel': 'VoiceUpgrade'])
     }

@@ -10,7 +10,7 @@ import org.openqa.selenium.By
  * Time: 21:56
  * To change this template use File | Settings | File Templates.
  */
-class DeliveryDetailsPage extends WebDriverUtils{
+class DeliveryDetailsPage extends WebDriverUtils implements Page{
     OrderConfirmationPage SubmitOrder(){
         driver.findElement(By.cssSelector(".placeOrder")).click()
         return new OrderConfirmationPage()

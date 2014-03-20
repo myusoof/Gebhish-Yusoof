@@ -11,9 +11,9 @@ import org.openqa.selenium.WebElement
  * Time: 16:42
  * To change this template use File | Settings | File Templates.
  */
-class AccountSelectionPage extends WebDriverUtils {
+class AccountSelectionPage extends WebDriverUtils implements Page{
 
-    UpgradeOptionsPage clickOnUpgradeButtonForMsisdn(msisdn){
+    Page clickOnUpgradeButtonForMsisdn(msisdn){
         List<WebElement> upgradeElements = driver.findElements(By.cssSelector(".upgradeLink a"))
         for(WebElement element : upgradeElements){
             if(element.getAttribute("href").contains(msisdn)){
@@ -21,10 +21,11 @@ class AccountSelectionPage extends WebDriverUtils {
                 break
             }
         }
-        if(driver.findElement(By.cssSelector("#devicesTab")).isDisplayed()){
-            new DeviceListHomePage()
-        }else{
+        if(driver.getPageSource().contains("upgradeOpt eligibleOpt")){
             new UpgradeOptionsPage()
+
+        }else{
+            new DeviceListHomePage()
         }
     }
 }

@@ -10,7 +10,7 @@ import org.openqa.selenium.By
  * Time: 17:36
  * To change this template use File | Settings | File Templates.
  */
-class DeviceListHomePage extends WebDriverUtils{
+class DeviceListHomePage extends WebDriverUtils implements Page{
 
     void clickOnTab(tabName){
         sleep(2000)
@@ -46,7 +46,7 @@ class DeviceListHomePage extends WebDriverUtils{
     }
 
     void createPrivateBasket(){
-        sleep(2000)
+        sleep(6000)
         driver.findElement(By.cssSelector(".addPackage>img")).click()
     }
 
