@@ -51,6 +51,18 @@ class RegistrationPage extends WebDriverUtils implements Page{
 
         captureCreditCardDetails()
 
+        assert driver.findElement(By.id("cardCaptureStatus")).getText() == "Card capture completed successfully."
+
+        driver.findElement(By.id("agreeToCreditCheck")).click()
+        driver.findElement(By.cssSelector("input.performCreditCheckBtn")).click()
+        sleep(7000)
+
+        driver.findElement(By.id("regPassword")).sendKeys("password-1")
+        driver.findElement(By.id("regConfirmPswd")).sendKeys("password-1")
+
+        new Select(driver.findElement(By.id("securityQuestion"))).selectByIndex(1);
+        driver.findElement(By.id("securityAnswer")).sendKeys("test")
+        driver.findElement(By.name("submitCheck")).click()
 
 
     }
@@ -68,19 +80,29 @@ class RegistrationPage extends WebDriverUtils implements Page{
         sleep(5000)
 
         driver.findElement(By.id("txtCardHolderName")).sendKeys("name")
-        new Select(driver.findElement(By.id("ddlCardType"))).selectByIndex(0);
+        new Select(driver.findElement(By.id("ddlCardType"))).selectByIndex(1);
         driver.findElement(By.id("txtCardNumber")).sendKeys("374245455400001")
         new Select(driver.findElement(By.id("ddlMonth"))).selectByIndex(1);
         new Select(driver.findElement(By.id("ddlYr"))).selectByIndex(2);
         driver.findElement(By.id("txtSecurityCode")).sendKeys("1234")
         driver.findElement(By.id("btnPayNow")).click()
-        driver.close()
+
         driver.switchTo().window(winHandleBefore);
 
     }
 
-    OrderConfirmationPage SubmitOrder(){
-        driver.findElement(By.cssSelector(".placeOrder")).click()
+    void updateEmailAddressSection(){
+        driver.findElement(By.id("updateEmailAddressProceedButton")).click()
+    }
+
+    void acceptRefreshDealSummary(){
+        driver.findElement(By.id("secciYesButton")).click()
+    }
+
+
+
+    CCALinkPage generateCCA(){
+        driver.findElement(By.cssSelector(".generateCca")).click()
         return new OrderConfirmationPage()
     }
 

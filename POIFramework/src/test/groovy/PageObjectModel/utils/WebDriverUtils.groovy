@@ -24,4 +24,8 @@ class WebDriverUtils {
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         driver.get("${baseUrl}")
     }
+
+    static void accessCCALinkToCheckout(url){
+        driver.get("${url}")
+    }
 }

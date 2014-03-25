@@ -113,6 +113,24 @@ class AgentOrderCreationTest {
         RegistrationPage registrationPage = deviceListHomePage.startCheckout()
         registrationPage.acceptAdvisorChecks()
         registrationPage.enterCreditCheckDetailsSection()
+        registrationPage.updateEmailAddressSection()
+        registrationPage.acceptRefreshDealSummary()
+        CCALinkPage ccaLinkPage = registrationPage.generateCCA()
+        String ccaLink = ccaLinkPage.getGeneratedCCALink()
+        WebDriverUtils.accessCCALinkToCheckout(ccaLink)
+
+
+        VerifyUserNamePage verifyUserNamePage = new VerifyUserNamePage()
+        CCAAgreementPage ccaAgreementPage = verifyUserNamePage().clickOnContinueButton()
+        ccaAgreementPage.acceptKeyInformation()
+        ccaAgreementPage.acceptPayMonthlyTerms()
+        ccaAgreementPage.acceptPhonePlanCCA()
+        ccaAgreementPage.acceptSecci()
+        ccaAgreementPage.proceedToDelivery()
+
+
+
+
 
         /*OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
         String orderNumber = orderConfirmationPage.verifyOrderSubmittedSuccessfully()
