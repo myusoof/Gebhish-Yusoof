@@ -110,10 +110,13 @@ class AgentOrderCreationTest {
         UpgradeOptionsPage upgradeOptionsPage = accountSelectionPage.clickOnUpgradeButtonForMsisdn(msisdn)
         DeviceListHomePage deviceListHomePage = upgradeOptionsPage.clickOnUpgradeForFreeButton("handset")*/
         addItemsToBasket(standardOrCCA,deviceListHomePage, deviceId,planId,dataAllowanceId)
-        DeliveryDetailsPage deliveryDetailsPage = deviceListHomePage.clickOnCheckOutButton()
-        OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
+        RegistrationPage registrationPage = deviceListHomePage.startCheckout()
+        registrationPage.acceptAdvisorChecks()
+        registrationPage.enterCreditCheckDetailsSection()
+
+        /*OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
         String orderNumber = orderConfirmationPage.verifyOrderSubmittedSuccessfully()
-        println orderNumber
+        println orderNumber*/
 
     }
 

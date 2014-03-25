@@ -54,6 +54,12 @@ class DeviceListHomePage extends WebDriverUtils implements Page{
         return new DeliveryDetailsPage()
     }
 
+    RegistrationPage startCheckout(){
+        sleep(5000)
+        driver.findElement(By.cssSelector("#startCheckoutFromPrivateBasketButton")).click()
+        return new RegistrationPage()
+    }
+
     void selectCcaPriceCombinationInBasketForNonFullCCA(){
         new Select(driver.findElement(By.xpath("//select"))).selectByIndex(1);
     }
