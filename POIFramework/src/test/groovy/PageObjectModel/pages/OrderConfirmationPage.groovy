@@ -16,4 +16,11 @@ class OrderConfirmationPage extends WebDriverUtils implements Page{
         assert driver.findElement(By.cssSelector(".sectionHeading")).getText() == "Order confirmed"
         return driver.findElement(By.cssSelector("#orderNumber")).getText()
     }
-}
+
+    String verifyOrderSubmittedThroughCheckout(){
+            sleep(5000)
+            assert driver.findElement(By.cssSelector("div.attachment strong")).getText() == "Order Confirmation"
+            return driver.findElement(By.cssSelector("#orderNumber")).getText()
+        }
+ }
+

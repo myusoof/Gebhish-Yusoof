@@ -20,11 +20,10 @@ class RegistrationPage extends WebDriverUtils implements Page{
         driver.findElement(By.id("customerDetailsProceedButton")).click()
     }
 
+    Random generator = new Random()
+    String emailId = generator.nextInt()+"@email.com"
 
     void enterCreditCheckDetailsSection() {
-
-        Random generator = new Random()
-        String emailId = generator.nextInt()+"@email.com"
 
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
         Date date = new Date();

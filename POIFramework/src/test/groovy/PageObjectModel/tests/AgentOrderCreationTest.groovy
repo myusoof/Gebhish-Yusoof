@@ -118,7 +118,8 @@ class AgentOrderCreationTest {
         CCALinkPage ccaLinkPage = registrationPage.generateCCA()
         String ccaLink = ccaLinkPage.getGeneratedCCALink()
         WebDriverUtils.accessCCALinkToCheckout(ccaLink)
-
+        CheckoutLoginPage loginPage = new CheckoutLoginPage()
+        loginPage.loginCustomer(registrationPage.emailId,"password-1")
 
         VerifyUserNamePage verifyUserNamePage = new VerifyUserNamePage()
         CCAAgreementPage ccaAgreementPage = verifyUserNamePage().clickOnContinueButton()
@@ -126,15 +127,16 @@ class AgentOrderCreationTest {
         ccaAgreementPage.acceptPayMonthlyTerms()
         ccaAgreementPage.acceptPhonePlanCCA()
         ccaAgreementPage.acceptSecci()
-        ccaAgreementPage.proceedToDelivery()
-
-
-
-
-
-        /*OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
+        CheckoutDeliveryOptionsPage deliveryOptionsPage = ccaAgreementPage.proceedToDelivery()
+        OrderReviewPage reviewOrderPage = deliveryOptionsPage.clickContinueonDeliveryPage()
+        reviewOrderPage.clickOnConfirmO2TermsAndConditions()
+        PaymentPage paymentPage = reviewOrderPage.clickOnPayNow()
+        paymentPage.enterSecurityNumber()
+        OrderConfirmationPage orderConfirmationPage = paymentPage.clickOnPayNow()
+        /*OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()*/
+        orderConfirmationPage.verifyOrderSubmittedThroughCheckout()
         String orderNumber = orderConfirmationPage.verifyOrderSubmittedSuccessfully()
-        println orderNumber*/
+        println orderNumber
 
     }
 
