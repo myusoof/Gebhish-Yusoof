@@ -2,6 +2,7 @@ package PageObjectModel.pages
 
 import PageObjectModel.utils.WebDriverUtils
 import org.openqa.selenium.By
+import org.openqa.selenium.support.ui.Select
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,9 +42,6 @@ class DeviceListHomePage extends WebDriverUtils implements Page{
 
     }
 
-    void selectOneAndMonthlyCCAPrice(){
-
-    }
 
     void createPrivateBasket(){
         sleep(6000)
@@ -54,5 +52,13 @@ class DeviceListHomePage extends WebDriverUtils implements Page{
         sleep(5000)
         driver.findElement(By.cssSelector("#startCheckoutFromPrivateBasketButton")).click()
         return new DeliveryDetailsPage()
+    }
+
+    void selectCcaPriceCombinationInBasketForNonFullCCA(){
+        new Select(driver.findElement(By.xpath("//select"))).selectByIndex(1);
+    }
+
+    void selectCcaPriceCombinationInBasketForFullCCA(){
+        new Select(driver.findElement(By.xpath("//select"))).selectByIndex(3);
     }
 }

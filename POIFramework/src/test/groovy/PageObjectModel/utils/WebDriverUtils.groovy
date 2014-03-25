@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 
 import java.util.concurrent.TimeUnit
-
 /**
  * Created with IntelliJ IDEA.
  * User: yusoof
@@ -19,5 +18,10 @@ class WebDriverUtils {
     static void webBrowserStart(baseUrl, msisdn){
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         driver.get("${baseUrl}/search?msisdn=${msisdn}&portalId=&fun=&PartnerId=o2&submit=Search")
+    }
+
+    static void webBrowserStartAcquisition(baseUrl){
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        driver.get("${baseUrl}")
     }
 }

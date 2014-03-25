@@ -30,7 +30,7 @@ class ProductDetails {
             productId = productResponse.find{it.productID == skuOrProductId}.id
             return  productId
         }else{
-            productResponse = agentShopClient.get(path: "productService/products/device/sku/${skuOrProductId}").data
+            productResponse = agentShopClient.get(path: "productService/products/device/${skuOrProductId}").data
             productId = productResponse.id
             return productId
         }

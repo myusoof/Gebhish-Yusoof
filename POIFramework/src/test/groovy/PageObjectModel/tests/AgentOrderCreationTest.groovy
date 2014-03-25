@@ -1,14 +1,8 @@
 package PageObjectModel.tests
-
-import PageObjectModel.pages.AccountSelectionPage
-import PageObjectModel.pages.DeliveryDetailsPage
-import PageObjectModel.pages.DeviceListHomePage
-import PageObjectModel.pages.OrderConfirmationPage
-import PageObjectModel.pages.UpgradeOptionsPage
+import PageObjectModel.pages.*
 import PageObjectModel.utils.WebDriverUtils
 import ProductCatalogueClient.ProductDetails
 import org.testng.annotations.Test
-
 /**
  * Created with IntelliJ IDEA.
  * User: yusoof
@@ -86,28 +80,35 @@ class AgentOrderCreationTest {
         }
     }
 
-    def ccaProductId = [
+   /* def ccaProductId = [
             ["449999999999","T:CR5911:100Mins:24M:100MB:GBP8:S1:CCA", "B:CR5911:300MB:DataWiFi:iPhone:INC:bolton", "8234C","fullcca"]
+    ]*/
+
+    def ccaProductId = [
+//            ["T:CR5911:UnlimitedMins:24M:2GB:GBP18:S1:CCA", "B:CR5911:2GB:DataWiFi:iPhone:INC:bolton", "ME499B/A","fullcca"],
+           ["T:CR5911:UnlimitedMins:24M:2GB:GBP18:S1:CCA", "B:CR5911:2GB:DataWiFi:Smartphone:INC:bolton", "ffade597-08c3-4320-8446-783394f99183","nonFullCca"]
     ]
 
     @Test
     void ccaOrderCreation(){
-        def msisdn, planId, dataAllowanceId, deviceId, standardOrCCA
-        StandardProductId.each {
-            msisdn = it.get(0)
-            def planProductId = it.get(1)
-            def dataAllowanceProductId = it.get(2)
-            def deviceSKUId = it.get(3)
-            standardOrCCA = it.get(4)
+        def planId, dataAllowanceId, deviceId, standardOrCCA
+        ccaProductId.each {
+            def planProductId = it.get(0)
+            def dataAllowanceProductId = it.get(1)
+            //def deviceSKUId = it.get(2)
+            standardOrCCA = it.get(3)
             planId =  productDetails.getObjectIdForGivenSkuorProductId("plan",planProductId)
             dataAllowanceId =  productDetails.getDataAllowanceIdForGivenProductId(dataAllowanceProductId)
-            deviceId = productDetails.getObjectIdForGivenSkuorProductId("device", deviceSKUId)
+            deviceId = it.get(2)
         }
         println "${deviceId}, ${planId}, ${dataAllowanceId}"
-        WebDriverUtils.webBrowserStart("http://localhost:8090/agent/app/home", msisdn)
-        AccountSelectionPage accountSelectionPage = new AccountSelectionPage()
+//        WebDriverUtils.webBrowserStart("http://localhost:8090/agent/app/home", msisdn)
+        WebDriverUtils.webBrowserStartAcquisition("https://retention7:my02u4tpa55w0rd@service-stf.uk.pri.o2.com/REFMSPAFU/agent/app/home?PartnerId=o2")
+        AgentHomePage agentHomePage = new AgentHomePage()
+        def deviceListHomePage = agentHomePage.clickOnNewCustomerNewConnection()
+        /*
         UpgradeOptionsPage upgradeOptionsPage = accountSelectionPage.clickOnUpgradeButtonForMsisdn(msisdn)
-        DeviceListHomePage deviceListHomePage = upgradeOptionsPage.clickOnUpgradeForFreeButton("handset")
+        DeviceListHomePage deviceListHomePage = upgradeOptionsPage.clickOnUpgradeForFreeButton("handset")*/
         addItemsToBasket(standardOrCCA,deviceListHomePage, deviceId,planId,dataAllowanceId)
         DeliveryDetailsPage deliveryDetailsPage = deviceListHomePage.clickOnCheckOutButton()
         OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
@@ -124,6 +125,14 @@ class AgentOrderCreationTest {
         }
         deviceListHomePage.clickOnTab("plans")
         deviceListHomePage.addItemToBasket(planId)
+
+        if(type == "nonFullCca"){
+        deviceListHomePage.selectCcaPriceCombinationInBasketForNonFullCCA()
+        }
+        else if(type == "FullCca"){
+        deviceListHomePage.selectCcaPriceCombinationInBasketForFullCCA()
+        }
+
         deviceListHomePage.clickOnTab("extras")
         deviceListHomePage.addDataAllowanceToBasket(type, dataAllowanceId, dataAllowanceProductId,standardOrCCA)
 
