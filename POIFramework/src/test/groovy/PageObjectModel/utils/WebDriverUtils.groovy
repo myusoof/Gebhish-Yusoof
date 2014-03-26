@@ -28,4 +28,11 @@ class WebDriverUtils {
     static void accessCCALinkToCheckout(url){
         driver.get("${url}")
     }
+
+    static String randomEmailGenerator(){
+        Random rand = new Random()
+
+        int max = 1000000000
+        return "abc${rand.nextInt(max+1)}@gmail.com"
+    }
 }

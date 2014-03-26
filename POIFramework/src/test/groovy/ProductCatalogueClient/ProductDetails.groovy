@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils
  */
 class ProductDetails {
 
+//    RestClient agentShopClient = new RestClient("http://10.200.170.15:8081/")
     RestClient agentShopClient = new RestClient("https://ecom:ecom@prodcat.ref.o2.co.uk/")
     public ProductDetails(){
         agentShopClient.setHeaders(['X-TouchPoint': 'agent', 'X-IdType': 'WebSealAccessManagerUserId','Content-Type': 'application/json','X-UserId': 'QATest','X-Channel': 'VoiceUpgrade'])
@@ -22,7 +23,7 @@ class ProductDetails {
         userData = [portalId:portalId]
     }
 
-    String getObjectIdForGivenSkuorProductId(productType, skuOrProductId){
+    String getObjectIdForDevice(productType, skuOrProductId){
         def productResponse
         def productId
         if(productType == "plan")  {
@@ -34,6 +35,12 @@ class ProductDetails {
             productId = productResponse.id
             return productId
         }
+    }
+
+    String getObjectIdForPlan(planResponse, skuOrProductId){
+        def productId
+        productId = planResponse.find{it.productID == skuOrProductId}.id
+        return  productId
     }
 
     String getDataAllowanceIdForGivenProductId(String skuOrProductId){

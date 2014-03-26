@@ -1,8 +1,10 @@
 package PageObjectModel.tests
+
 import PageObjectModel.pages.*
 import PageObjectModel.utils.WebDriverUtils
 import ProductCatalogueClient.ProductDetails
 import org.testng.annotations.Test
+
 /**
  * Created with IntelliJ IDEA.
  * User: yusoof
@@ -10,30 +12,74 @@ import org.testng.annotations.Test
  * Time: 16:41
  * To change this template use File | Settings | File Templates.
  */
-class AgentOrderCreationTest {
+class AgentOrderCreationTest extends ProductDetails {
+
+
     ProductDetails productDetails = new ProductDetails()
     def StandardProductId = [
-            ["447999000100","upgrade:Q1:09:O2:15:24M:promo", "standard_and_Smartphone_works_pid", "5HTHD7XN","standard"]
+            ["447999000100","T:CR5911:UnlimitedMins:24M:15GB:GBP53:S4","B:CR5911:15GB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:2GB:GBP:43:S5","B:CR5911:2GB:DataWiFi:BlackBerry7:INC:bolton","46a3b2f1-22e2-447c-85f8-7dc32c816cf7","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:2GB:GBP:43:S5","B:CR5911:2GB:DataWiFi:iPhone:INC:bolton","c148702d-d1e6-4e38-b71c-146cbe9c16dc","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:2GB:GBP:43:S5","B:CR5911:2GB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:4GB:GBP:43:S5","B:CR5911:4GB:DataWiFi:BlackBerry7:INC:bolton","46a3b2f1-22e2-447c-85f8-7dc32c816cf7","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:4GB:GBP:43:S5","B:CR5911:4GB:DataWiFi:iPhone:INC:bolton","c148702d-d1e6-4e38-b71c-146cbe9c16dc","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:4GB:GBP:43:S5","B:CR5911:4GB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:10GB:GBP53:S5","B:CR5911:10GB:DataWiFi:BlackBerry7:INC:bolton","46a3b2f1-22e2-447c-85f8-7dc32c816cf7","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:10GB:GBP53:S5","B:CR5911:10GB:DataWiFi:iPhone:INC:bolton","c148702d-d1e6-4e38-b71c-146cbe9c16dc","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:10GB:GBP53:S5","B:CR5911:10GB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183	standard"]
     ]
+
+
     @Test
-    void agentStandardOrderCreation(){
+    void agentStandardAcquistionOrderCreation() {
+        def msisdn, planId, dataAllowanceId, deviceId, standardOrCCA,dataAllowanceProductId ,planProductId
+        List<Object> planResponse = agentShopClient.get(path: "productService/admin/plan").data
+        StandardProductId.each {
+            msisdn = it.get(0)
+            planProductId = it.get(1)
+            dataAllowanceProductId = it.get(2)
+            deviceId = it.get(3)
+            standardOrCCA = it.get(4)
+            planId = productDetails.getObjectIdForPlan(planResponse,planProductId)
+            dataAllowanceId = productDetails.getDataAllowanceIdForGivenProductId(dataAllowanceProductId)
+            //deviceId = productDetails.getObjectIdForGivenSkuorProductId("device", deviceSKUId)
+            //println "${deviceId}, ${dataAllowanceId}, ${planId}"
+
+            WebDriverUtils.webBrowserStartAcquisition("https://retention7:my02u4tpa55w0rd@service-stf.uk.pri.o2.com/REFMSPAFU/agent/app/home?PartnerId=o2")
+            AgentHomePage agentHomePage = new AgentHomePage()
+            def deviceListHomePage = agentHomePage.clickOnNewCustomerNewConnection()
+
+            addItemsToBasket(standardOrCCA, deviceListHomePage, deviceId, planId, dataAllowanceId,null,standardOrCCA)
+            RegistrationPage registrationPage = deviceListHomePage.startCheckout()
+
+            registrationPage.enterCreditCheckDetailsSection()
+            OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage()
+            orderConfirmationPage = registrationPage.setDeliveryDateAndClickOnPayNow()
+            String orderNumber = orderConfirmationPage.verifyOrderSubmittedSuccessfully()
+            println "${planProductId}, ${dataAllowanceProductId}, ${orderNumber}"
+        }
+    }
+
+    @Test
+    void agentStandardUpgradeOrderCreation() {
+        List<Object> planResponse = agentShopClient.get(path: "productService/admin/plan").data
+        def email = WebDriverUtils.randomEmailGenerator()
         def msisdn, planId, dataAllowanceId, deviceId, standardOrCCA
         StandardProductId.each {
             msisdn = it.get(0)
             def planProductId = it.get(1)
             def dataAllowanceProductId = it.get(2)
-            def deviceSKUId = it.get(3)
             standardOrCCA = it.get(4)
-            planId =  productDetails.getObjectIdForGivenSkuorProductId("plan",planProductId)
-            dataAllowanceId =  productDetails.getDataAllowanceIdForGivenProductId(dataAllowanceProductId)
-            deviceId = productDetails.getObjectIdForGivenSkuorProductId("device", deviceSKUId)
+            planId = productDetails.getObjectIdForPlan(planResponse,planProductId)
+            dataAllowanceId = productDetails.getDataAllowanceIdForGivenProductId(dataAllowanceProductId)
+            deviceId = it.get(3)
         }
         println "${deviceId}, ${planId}, ${dataAllowanceId}"
-        WebDriverUtils.webBrowserStart("http://localhost:8090/agent/app/home", msisdn)
+        WebDriverUtils.webBrowserStartAcquisition("http://10.200.170.18:8091/agent/app/home?PartnerId=o2")
         AccountSelectionPage accountSelectionPage = new AccountSelectionPage()
         UpgradeOptionsPage upgradeOptionsPage = accountSelectionPage.clickOnUpgradeButtonForMsisdn(msisdn)
         DeviceListHomePage deviceListHomePage = upgradeOptionsPage.clickOnUpgradeForFreeButton("handset")
-        addItemsToBasket(standardOrCCA,deviceListHomePage, deviceId,planId,dataAllowanceId)
+        addItemsToBasket(standardOrCCA, deviceListHomePage, deviceId, planId, dataAllowanceId)
         DeliveryDetailsPage deliveryDetailsPage = deviceListHomePage.clickOnCheckOutButton()
         OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
         String orderNumber = orderConfirmationPage.verifyOrderSubmittedSuccessfully()
@@ -42,63 +88,70 @@ class AgentOrderCreationTest {
     }
 
     def SimoProductId = [
-
-            ["447521118492","T:CR5911:UnlimitedMins:24M:15GB:SIMO:GBP38:S1","B:CR5911:15GB:DataWiFi:iPhone:INC:bolton"],
-            ["447521117949","T:CR5911:UnlimitedMins:24M:15GB:SIMO:GBP38:S1","B:CR5911:15GB:DataWiFi:Smartphone:INC:bolton"] ,
-            ["447521118027","T:CR5911:UnlimitedMins:24M:10GB:SIMO:GBP33:S0","B:CR5911:10GB:DataWiFi:BlackBerry7:INC:bolton"],
-            ["447521118564","T:CR5911:UnlimitedMins:24M:10GB:SIMO:GBP33:S0","B:CR5911:10GB:DataWiFi:iPhone:INC:bolton"]
+            ["447521116523", "T:CR5911:100Mins:24M:100MB:SIMO:GBP6:S3", "B:CR5911:100MB:DataWiFi:BlackBerry7:INC:bolton"],
+            ["447521116524", "T:CR5911:100Mins:24M:100MB:SIMO:GBP6:S3", "B:CR5911:100MB:DataWiFi:iPhone:INC:bolton"],
+            ["447521118958", "T:CR5911:100Mins:24M:100MB:SIMO:GBP6:S3", "B:CR5911:100MB:DataWiFi:Smartphone:INC:bolton"],
+            ["447521119092", "T:CR5911:300Mins:24M:300MB:SIMO:GBP8:S3", "B:CR5911:300MB:DataWiFi:BlackBerry7:INC:bolton"],
+            ["447521118489", "T:CR5911:300Mins:24M:300MB:SIMO:GBP8:S3", "B:CR5911:300MB:DataWiFi:iPhone:INC:bolton"],
+            ["447521118585", "T:CR5911:300Mins:24M:300MB:SIMO:GBP8:S3", "B:CR5911:300MB:DataWiFi:Smartphone:INC:bolton"],
+            ["447521118259", "T:CR5911:500Mins:24M:500MB:SIMO:GBP10:S3", "B:CR5911:500MB:DataWiFi:BlackBerry7:INC:bolton"],
+            ["447521118518", "T:CR5911:500Mins:24M:500MB:SIMO:GBP10:S3", "B:CR5911:500MB:DataWiFi:iPhone:INC:bolton"],
+            ["447521118932", "T:CR5911:500Mins:24M:500MB:SIMO:GBP10:S3", "B:CR5911:500MB:DataWiFi:Smartphone:INC:bolton"]
     ]
     /*["447999000100","T:CR5911:100Mins:24M:100MB:SIMO:GBP8:S1", "B:CR5911:100MB:DataWiFi:iPhone:INC:bolton",null],
     ["447999000100","T:CR5911:100Mins:24M:100MB:SIMO:GBP8:S1", "B:CR5911:100MB:DataWiFi:Smartphone:INC:bolton",null]*/
+
     @Test
-    void simoAgentUpgradeOrder(){
+    void simoAgentUpgradeOrder() {
         def msisdn, planId, dataAllowanceId, dataAllowanceProductId
+        List<Object> planResponse = agentShopClient.get(path: "productService/admin/plan").data
         SimoProductId.each {
-            def planProductId = it.get(1)
             msisdn = it.get(0)
+            def planProductId = it.get(1)
             dataAllowanceProductId = it.get(2)
             //def deviceSKUId = it.get(3)
-            planId =  productDetails.getObjectIdForGivenSkuorProductId("plan",planProductId)
-            dataAllowanceId =  productDetails.getDataAllowanceIdForGivenProductId(dataAllowanceProductId)
+            planId = productDetails.getObjectIdForPlan(planResponse,planProductId)
+            dataAllowanceId = productDetails.getDataAllowanceIdForGivenProductId(dataAllowanceProductId)
 
-        println "${planId}, ${dataAllowanceId}"
-        //WebDriverUtils.webBrowserStart("http://localhost:8090/agent/app/home", msisdn)
-        WebDriverUtils.webBrowserStart("https://retention7:my02u4tpa55w0rd@service-stf.uk.pri.o2.com/REFMSPAFU/agent/app/home", msisdn)
-        AccountSelectionPage accountSelectionPage = new AccountSelectionPage()
-        //UpgradeOptionsPage upgradeOptionsPage = accountSelectionPage.clickOnUpgradeButtonForMsisdn(msisdn)
-        UpgradeOptionsPage upgradeOptionsPage = new UpgradeOptionsPage()
-        DeviceListHomePage deviceListHomePage = new DeviceListHomePage()
-        boolean isUpgradeOptionPage = !(accountSelectionPage.clickOnUpgradeButtonForMsisdn(msisdn) instanceof DeviceListHomePage)
-        if(isUpgradeOptionPage){
-            deviceListHomePage = upgradeOptionsPage.clickOnUpgradeForFreeButton("simo")
-        }
-        addItemsToBasket("simo",deviceListHomePage, null,planId,dataAllowanceId,dataAllowanceProductId,null)
-        DeliveryDetailsPage deliveryDetailsPage = deviceListHomePage.clickOnCheckOutButton()
-        OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
-        String orderNumber = orderConfirmationPage.verifyOrderSubmittedSuccessfully()
-        println orderNumber
+            println "${planId}, ${dataAllowanceId}"
+            //WebDriverUtils.webBrowserStart("http://localhost:8090/agent/app/home", msisdn)
+            WebDriverUtils.webBrowserStart("https://retention7:my02u4tpa55w0rd@service-stf.uk.pri.o2.com/REFMSPAFU/agent/app/home", msisdn)
+            AccountSelectionPage accountSelectionPage = new AccountSelectionPage()
+            //UpgradeOptionsPage upgradeOptionsPage = accountSelectionPage.clickOnUpgradeButtonForMsisdn(msisdn)
+            UpgradeOptionsPage upgradeOptionsPage = new UpgradeOptionsPage()
+            DeviceListHomePage deviceListHomePage = new DeviceListHomePage()
+            boolean isUpgradeOptionPage = !(accountSelectionPage.clickOnUpgradeButtonForMsisdn(msisdn) instanceof DeviceListHomePage)
+            if (isUpgradeOptionPage) {
+                deviceListHomePage = upgradeOptionsPage.clickOnUpgradeForFreeButton("simo")
+            }
+            addItemsToBasket("simo", deviceListHomePage, null, planId, dataAllowanceId, dataAllowanceProductId, null)
+            DeliveryDetailsPage deliveryDetailsPage = deviceListHomePage.clickOnCheckOutButton()
+            OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
+            String orderNumber = orderConfirmationPage.verifyOrderSubmittedSuccessfully()
+            println "${orderNumber}, ${msisdn}"
         }
     }
 
-   /* def ccaProductId = [
-            ["449999999999","T:CR5911:100Mins:24M:100MB:GBP8:S1:CCA", "B:CR5911:300MB:DataWiFi:iPhone:INC:bolton", "8234C","fullcca"]
-    ]*/
+    /* def ccaProductId = [
+             ["449999999999","T:CR5911:100Mins:24M:100MB:GBP8:S1:CCA", "B:CR5911:300MB:DataWiFi:iPhone:INC:bolton", "8234C","fullcca"]
+     ]*/
 
     def ccaProductId = [
 //            ["T:CR5911:UnlimitedMins:24M:2GB:GBP18:S1:CCA", "B:CR5911:2GB:DataWiFi:iPhone:INC:bolton", "ME499B/A","fullcca"],
-           ["T:CR5911:UnlimitedMins:24M:2GB:GBP18:S1:CCA", "B:CR5911:2GB:DataWiFi:Smartphone:INC:bolton", "ffade597-08c3-4320-8446-783394f99183","nonFullCca"]
+            ["T:CR5911:UnlimitedMins:24M:2GB:GBP18:S1:CCA", "B:CR5911:2GB:DataWiFi:Smartphone:INC:bolton", "ffade597-08c3-4320-8446-783394f99183", "nonFullCca"]
     ]
 
     @Test
-    void ccaOrderCreation(){
+    void ccaOrderCreation() {
+        List<Object> planResponse = agentShopClient.get(path: "productService/admin/plan").data
         def planId, dataAllowanceId, deviceId, standardOrCCA
         ccaProductId.each {
             def planProductId = it.get(0)
             def dataAllowanceProductId = it.get(1)
             //def deviceSKUId = it.get(2)
             standardOrCCA = it.get(3)
-            planId =  productDetails.getObjectIdForGivenSkuorProductId("plan",planProductId)
-            dataAllowanceId =  productDetails.getDataAllowanceIdForGivenProductId(dataAllowanceProductId)
+            planId = productDetails.getObjectIdForPlan(planResponse,planProductId)
+            dataAllowanceId = productDetails.getDataAllowanceIdForGivenProductId(dataAllowanceProductId)
             deviceId = it.get(2)
         }
         println "${deviceId}, ${planId}, ${dataAllowanceId}"
@@ -109,7 +162,7 @@ class AgentOrderCreationTest {
         /*
         UpgradeOptionsPage upgradeOptionsPage = accountSelectionPage.clickOnUpgradeButtonForMsisdn(msisdn)
         DeviceListHomePage deviceListHomePage = upgradeOptionsPage.clickOnUpgradeForFreeButton("handset")*/
-        addItemsToBasket(standardOrCCA,deviceListHomePage, deviceId,planId,dataAllowanceId)
+        addItemsToBasket(standardOrCCA, deviceListHomePage, deviceId, planId, dataAllowanceId)
         RegistrationPage registrationPage = deviceListHomePage.startCheckout()
         registrationPage.acceptAdvisorChecks()
         registrationPage.enterCreditCheckDetailsSection()
@@ -135,29 +188,33 @@ class AgentOrderCreationTest {
         OrderConfirmationPage orderConfirmationPage = paymentPage.clickOnPayNow()
         /*OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()*/
         orderConfirmationPage.verifyOrderSubmittedThroughCheckout()
+        ccaAgreementPage.proceedToDelivery()
+
+        /*OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
         String orderNumber = orderConfirmationPage.verifyOrderSubmittedSuccessfully()
         println orderNumber
+        println orderNumber*/
+        println "${orderNumber}, ${msisdn}"
 
     }
 
-    void addItemsToBasket(type,DeviceListHomePage deviceListHomePage, deviceId, planId, dataAllowanceId, dataAllowanceProductId = null,standardOrCCA = null){
+    void addItemsToBasket(type, DeviceListHomePage deviceListHomePage, deviceId, planId, dataAllowanceId, dataAllowanceProductId = null, standardOrCCA = null) {
         deviceListHomePage.createPrivateBasket()
-        if(type != "simo"){
+        if (type != "simo") {
             deviceListHomePage.clickOnTab("devices")
             deviceListHomePage.addItemToBasket(deviceId)
         }
         deviceListHomePage.clickOnTab("plans")
         deviceListHomePage.addItemToBasket(planId)
 
-        if(type == "nonFullCca"){
-        deviceListHomePage.selectCcaPriceCombinationInBasketForNonFullCCA()
-        }
-        else if(type == "FullCca"){
-        deviceListHomePage.selectCcaPriceCombinationInBasketForFullCCA()
+        if (type == "nonFullCca") {
+            deviceListHomePage.selectCcaPriceCombinationInBasketForNonFullCCA()
+        } else if (type == "FullCca") {
+            deviceListHomePage.selectCcaPriceCombinationInBasketForFullCCA()
         }
 
         deviceListHomePage.clickOnTab("extras")
-        deviceListHomePage.addDataAllowanceToBasket(type, dataAllowanceId, dataAllowanceProductId,standardOrCCA)
+        deviceListHomePage.addDataAllowanceToBasket(type, dataAllowanceId, dataAllowanceProductId, standardOrCCA)
 
     }
 

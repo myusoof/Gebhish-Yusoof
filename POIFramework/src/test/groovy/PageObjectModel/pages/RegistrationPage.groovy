@@ -21,14 +21,14 @@ class RegistrationPage extends WebDriverUtils implements Page{
     }
 
     Random generator = new Random()
-    String emailId = generator.nextInt()+"@email.com"
+    String emailId = "abc${(generator.nextInt(9000000) + 1000000)}@email.com"
 
     void enterCreditCheckDetailsSection() {
 
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
         Date date = new Date();
         String newDate = dateFormat.format(date)
-        System.out.println(newDate);
+        //System.out.println(newDate);
         String dob = newDate.replace("2014","1907")
 
         new Select(driver.findElement(By.id("ccTitle"))).selectByIndex(1);
@@ -63,8 +63,18 @@ class RegistrationPage extends WebDriverUtils implements Page{
         driver.findElement(By.id("securityAnswer")).sendKeys("test")
         driver.findElement(By.name("submitCheck")).click()
 
-
     }
+
+
+    OrderConfirmationPage setDeliveryDateAndClickOnPayNow(){
+       driver.findElement(By.cssSelector("td.selectedSlot")).click()
+       driver.findElement(By.cssSelector(".payByCard")).click()
+       sleep(5000)
+       driver.findElement(By.cssSelector("INPUT#txtCardSecurityCode.textField.cvvField")).sendKeys("1234")
+       driver.findElement(By.cssSelector("#btnPayNow")).click()
+       new OrderConfirmationPage()
+    }
+
 
     void captureCreditCardDetails(){
 
