@@ -153,15 +153,12 @@ class AgentOrderCreationTest extends ProductDetails {
             planId = productDetails.getObjectIdForPlan(planResponse,planProductId)
             dataAllowanceId = productDetails.getDataAllowanceIdForGivenProductId(dataAllowanceProductId)
             deviceId = it.get(2)
-        }
+
         println "${deviceId}, ${planId}, ${dataAllowanceId}"
 //        WebDriverUtils.webBrowserStart("http://localhost:8090/agent/app/home", msisdn)
         WebDriverUtils.webBrowserStartAcquisition("https://retention7:my02u4tpa55w0rd@service-stf.uk.pri.o2.com/REFMSPAFU/agent/app/home?PartnerId=o2")
         AgentHomePage agentHomePage = new AgentHomePage()
         def deviceListHomePage = agentHomePage.clickOnNewCustomerNewConnection()
-        /*
-        UpgradeOptionsPage upgradeOptionsPage = accountSelectionPage.clickOnUpgradeButtonForMsisdn(msisdn)
-        DeviceListHomePage deviceListHomePage = upgradeOptionsPage.clickOnUpgradeForFreeButton("handset")*/
         addItemsToBasket(standardOrCCA, deviceListHomePage, deviceId, planId, dataAllowanceId)
         RegistrationPage registrationPage = deviceListHomePage.startCheckout()
         registrationPage.acceptAdvisorChecks()
@@ -170,6 +167,9 @@ class AgentOrderCreationTest extends ProductDetails {
         registrationPage.acceptRefreshDealSummary()
         CCALinkPage ccaLinkPage = registrationPage.generateCCA()
         String ccaLink = ccaLinkPage.getGeneratedCCALink()
+        println "${ccaLink}"
+
+
         WebDriverUtils.accessCCALinkToCheckout(ccaLink)
         CheckoutLoginPage loginPage = new CheckoutLoginPage()
         loginPage.loginCustomer(registrationPage.emailId,"password-1")
@@ -186,16 +186,9 @@ class AgentOrderCreationTest extends ProductDetails {
         PaymentPage paymentPage = reviewOrderPage.clickOnPayNow()
         paymentPage.enterSecurityNumber()
         OrderConfirmationPage orderConfirmationPage = paymentPage.clickOnPayNow()
-        /*OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()*/
-        orderConfirmationPage.verifyOrderSubmittedThroughCheckout()
-        ccaAgreementPage.proceedToDelivery()
-
-        /*OrderConfirmationPage orderConfirmationPage = deliveryDetailsPage.SubmitOrder()
-        String orderNumber = orderConfirmationPage.verifyOrderSubmittedSuccessfully()
-        println orderNumber
-        println orderNumber*/
-        println "${orderNumber}, ${msisdn}"
-
+        String orderNumber = orderConfirmationPage.verifyOrderSubmittedThroughCheckout()
+        println "${planProductId}, ${dataAllowanceProductId}, ${orderNumber}"
+        }
     }
 
     void addItemsToBasket(type, DeviceListHomePage deviceListHomePage, deviceId, planId, dataAllowanceId, dataAllowanceProductId = null, standardOrCCA = null) {

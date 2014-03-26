@@ -34,6 +34,7 @@ class RegistrationPage extends WebDriverUtils implements Page{
         new Select(driver.findElement(By.id("ccTitle"))).selectByIndex(1);
         driver.findElement(By.id("ccFirstName")).sendKeys("First Name")
         driver.findElement(By.id("ccLastname")).sendKeys("Last Name")
+        println "${emailId}"
         driver.findElement(By.id("ccEmail")).sendKeys(emailId)
         driver.findElement(By.id("ccDob")).sendKeys(dob)
         driver.findElement(By.id("ccMobile")).sendKeys("07123456789")
@@ -101,10 +102,14 @@ class RegistrationPage extends WebDriverUtils implements Page{
     }
 
     void updateEmailAddressSection(){
+        sleep(5000)
+        println driver.findElement(By.id("ccaEmailAddress")).getText()
         driver.findElement(By.id("updateEmailAddressProceedButton")).click()
+
     }
 
     void acceptRefreshDealSummary(){
+        sleep(5000)
         driver.findElement(By.id("secciYesButton")).click()
     }
 
@@ -112,7 +117,7 @@ class RegistrationPage extends WebDriverUtils implements Page{
 
     CCALinkPage generateCCA(){
         driver.findElement(By.cssSelector(".generateCca")).click()
-        return new OrderConfirmationPage()
+        return new CCALinkPage()
     }
 
 
