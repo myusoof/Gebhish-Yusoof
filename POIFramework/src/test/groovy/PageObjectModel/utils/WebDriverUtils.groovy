@@ -1,7 +1,8 @@
 package PageObjectModel.utils
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.firefox.FirefoxDriver
-import org.openqa.selenium.firefox.FirefoxProfile
+import org.openqa.selenium.remote.CapabilityType
+import org.openqa.selenium.remote.DesiredCapabilities
 
 import java.util.concurrent.TimeUnit
 /**
@@ -17,13 +18,22 @@ class WebDriverUtils {
 
 
     static WebDriver setFirefoxProfile(){
-        FirefoxProfile profile = new FirefoxProfile();
-        /*System.setProperty("webdriver.firefox.profile","firefoxProfile");
+//        FirefoxProfile profile = new FirefoxProfile();
+       /* ProfilesIni allProfiles = new ProfilesIni();
+        System.setProperty("webdriver.firefox.profile","firefoxProfile");
         String browserProfile = System.getProperty("webdriver.firefox.profile");
-        FirefoxProfile profile = allProfiles.getProfile(browserProfile);*/
+        FirefoxProfile profile = allProfiles.getProfile(browserProfile);
         profile.setAcceptUntrustedCertificates(true);
         profile.setAssumeUntrustedCertificateIssuer(false);
-        driver = new FirefoxDriver(profile);
+        driver = new FirefoxDriver(profile);*/
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        driver = new FirefoxDriver(capabilities);
+
+       /* var profile = new FirefoxProfile();
+        profile.SetPreference("webdriver_assume_untrusted_issuer", false);
+        return new FirefoxDriver( profile );*/
     }
 
     static void webBrowserStart(baseUrl, msisdn){
@@ -41,6 +51,7 @@ class WebDriverUtils {
 
     static void accessCCALinkToCheckout(url){
         driver = setFirefoxProfile();
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         driver.get("${url}")
     }
 
