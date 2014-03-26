@@ -318,7 +318,7 @@ class AgentOrderCreationTest extends ProductDetails {
         paymentPage.enterSecurityNumber()
         OrderConfirmationPage orderConfirmationPage = paymentPage.clickOnPayNow()
         String orderNumber = orderConfirmationPage.verifyOrderSubmittedThroughCheckout()
-        println "${planProductId}, ${dataAllowanceProductId}, ${orderNumber}"
+        println "${planProductId}, ${dataAllowanceProductId}, ${orderNumber}, ${standardOrCCA}"
         }
     }
 
