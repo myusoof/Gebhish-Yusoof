@@ -20,4 +20,9 @@ class OrderReviewPage extends WebDriverUtils implements Page{
         driver.findElement(By.cssSelector("input[value='Pay now']")).click();
         return new PaymentPage();
     }
+
+    public PaymentPage clickOnSubmitOrder(){
+        driver.findElement(By.cssSelector("input[type='Submit']")).click();
+        return new PaymentPage();
+    }
 }

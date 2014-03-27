@@ -62,4 +62,8 @@ class WebDriverUtils {
         return "abc${rand.nextInt(max+1)}@gmail.com"
     }
 
+    static closeWebDriver(){
+        driver.close()
+    }
+
 }

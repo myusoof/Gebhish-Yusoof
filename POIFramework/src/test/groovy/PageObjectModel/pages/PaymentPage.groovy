@@ -15,9 +15,13 @@ class PaymentPage extends WebDriverUtils implements Page{
         driver.findElement(By.id("txtCardSecurityCode")).sendKeys("1234")
     }
 
+    public void enterSecureNumberforVisa(){
+           driver.findElement(By.id("txtCardSecurityCode")).sendKeys("123")
+    }
 
-    public OrderConfirmationPage clickOnPayNow(){
+    public VisaProtectionPage clickOnPayNow(){
         driver.findElement(By.id("btnPayNow")).click();
-        return new OrderConfirmationPage();
+        sleep(7000)
+        return new VisaProtectionPage();
     }
 }
