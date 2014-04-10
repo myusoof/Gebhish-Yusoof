@@ -1,0 +1,15 @@
+apply plugin : 'java'
+apply plugin : 'groovy'
+apply plugin : 'idea'
+
+dependencies {
+    ext {
+        cucumberVersion = "1.1.5"
+        jerseyVersion = "2.5.1"
+    }
+
+    compile groovy
+    compile "junit:junit:4.11"
+    compile "info.cukes:cucumber-junit:${cucumberVersion}"
+    compile "info.cukes:cucumber-groovy:${cucumberVersion}"
+}
