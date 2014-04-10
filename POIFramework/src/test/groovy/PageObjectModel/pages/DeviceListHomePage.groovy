@@ -65,6 +65,8 @@ class DeviceListHomePage extends WebDriverUtils implements Page{
     }
 
     void selectCcaPriceCombinationInBasketForFullCCA(){
-        new Select(driver.findElement(By.xpath("//select"))).selectByIndex(3);
+        //new Select(driver.findElement(By.xpath("//select"))).selectByIndex(3);
+        new Select(driver.findElement(By.xpath("//select"))).selectByIndex(2);
     }
 }
+

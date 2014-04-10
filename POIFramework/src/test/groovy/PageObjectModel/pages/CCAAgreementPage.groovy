@@ -12,9 +12,12 @@ import org.openqa.selenium.By
  */
 class CCAAgreementPage extends WebDriverUtils implements Page{
 
-    void acceptKeyInformation(){
-        driver.findElement(By.id("keyInformationLink")).click()
+    CCAAgreementPage acceptKeyInformation(){
+//        driver.findElement(By.cssSelector("a#keyInformationLink")).click()
+        sleep(5000)
+        driver.findElement(By.cssSelector("h2 a")).click()
         driver.findElement(By.id("goToSecci")).click()
+        return new CCAAgreementPage()
 
     }
     void acceptSecci(){
@@ -34,7 +37,7 @@ class CCAAgreementPage extends WebDriverUtils implements Page{
         driver.findElement(By.id("ccaSig")).click()
     }
 
-    void proceedToDelivery(){
+    CheckoutDeliveryOptionsPage proceedToDelivery(){
 
         driver.findElement(By.id("ccaProceedToDeliveryOptions")).click()
         new CheckoutDeliveryOptionsPage()

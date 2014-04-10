@@ -19,7 +19,6 @@ class RegistrationPage extends WebDriverUtils implements Page{
     void acceptAdvisorChecks(){
         driver.findElement(By.id("customerDetailsProceedButton")).click()
     }
-
     Random generator = new Random()
     String emailId = "abc${(generator.nextInt(9000000) + 1000000)}@email.com"
 
@@ -34,6 +33,7 @@ class RegistrationPage extends WebDriverUtils implements Page{
         new Select(driver.findElement(By.id("ccTitle"))).selectByIndex(1);
         driver.findElement(By.id("ccFirstName")).sendKeys("First Name")
         driver.findElement(By.id("ccLastname")).sendKeys("Last Name")
+        //println "${emailId}"
         driver.findElement(By.id("ccEmail")).sendKeys(emailId)
         driver.findElement(By.id("ccDob")).sendKeys(dob)
         driver.findElement(By.id("ccMobile")).sendKeys("07123456789")
@@ -89,8 +89,14 @@ class RegistrationPage extends WebDriverUtils implements Page{
         sleep(5000)
 
         driver.findElement(By.id("txtCardHolderName")).sendKeys("name")
-        new Select(driver.findElement(By.id("ddlCardType"))).selectByIndex(1);
-        driver.findElement(By.id("txtCardNumber")).sendKeys("374245455400001")
+        //new Select(driver.findElement(By.id("ddlCardType"))).selectByIndex(1);
+        //driver.findElement(By.id("txtCardNumber")).sendKeys("374245455400001")
+
+        new Select(driver.findElement(By.id("ddlCardType"))).selectByIndex(3);
+        driver.findElement(By.id("txtCardNumber")).sendKeys("4462724438864231")
+
+
+
         new Select(driver.findElement(By.id("ddlMonth"))).selectByIndex(1);
         new Select(driver.findElement(By.id("ddlYr"))).selectByIndex(2);
         driver.findElement(By.id("txtSecurityCode")).sendKeys("1234")
@@ -101,10 +107,14 @@ class RegistrationPage extends WebDriverUtils implements Page{
     }
 
     void updateEmailAddressSection(){
+        sleep(5000)
+        println driver.findElement(By.id("ccaEmailAddress")).getText()
         driver.findElement(By.id("updateEmailAddressProceedButton")).click()
+
     }
 
     void acceptRefreshDealSummary(){
+        sleep(5000)
         driver.findElement(By.id("secciYesButton")).click()
     }
 
@@ -112,7 +122,13 @@ class RegistrationPage extends WebDriverUtils implements Page{
 
     CCALinkPage generateCCA(){
         driver.findElement(By.cssSelector(".generateCca")).click()
-        return new OrderConfirmationPage()
+        return new CCALinkPage()
+    }
+
+    PaymentPage clickPayByCard(){
+        sleep(5000)
+        driver.findElement(By.cssSelector(".payByCard")).click()
+        return new PaymentPage()
     }
 
 

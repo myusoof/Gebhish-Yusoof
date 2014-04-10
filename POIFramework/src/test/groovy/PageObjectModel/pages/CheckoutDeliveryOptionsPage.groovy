@@ -12,9 +12,10 @@ import org.openqa.selenium.By
  */
 class CheckoutDeliveryOptionsPage extends WebDriverUtils implements Page{
 
-        void clickContinueonDeliveryPage(){
+        OrderReviewPage clickContinueonDeliveryPage(){
 
         driver.findElement(By.id("submit")).click()
+        return new OrderReviewPage()
     }
 
 

@@ -19,8 +19,8 @@ class OrderConfirmationPage extends WebDriverUtils implements Page{
 
     String verifyOrderSubmittedThroughCheckout(){
             sleep(5000)
-            assert driver.findElement(By.cssSelector("div.attachment strong")).getText() == "Order Confirmation"
-            return driver.findElement(By.cssSelector("#orderNumber")).getText()
+            assert driver.getPageSource().contains("Order Confirmation")
+            return driver.findElement(By.cssSelector("p#orderNumber")).getText()
         }
  }
 
