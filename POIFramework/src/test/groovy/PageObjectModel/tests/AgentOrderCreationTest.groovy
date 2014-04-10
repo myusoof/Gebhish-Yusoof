@@ -17,16 +17,9 @@ class AgentOrderCreationTest extends ProductDetails {
 
     ProductDetails productDetails = new ProductDetails()
     def StandardProductId = [
-            ["447999000100","T:CR5911:UnlimitedMins:24M:15GB:GBP53:S4","B:CR5911:15GB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183","standard"],
-            ["447999000100","T:CR5911:UnlimitedMins:24M:2GB:GBP:43:S5","B:CR5911:2GB:DataWiFi:BlackBerry7:INC:bolton","46a3b2f1-22e2-447c-85f8-7dc32c816cf7","standard"],
-            ["447999000100","T:CR5911:UnlimitedMins:24M:2GB:GBP:43:S5","B:CR5911:2GB:DataWiFi:iPhone:INC:bolton","c148702d-d1e6-4e38-b71c-146cbe9c16dc","standard"],
-            ["447999000100","T:CR5911:UnlimitedMins:24M:2GB:GBP:43:S5","B:CR5911:2GB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183","standard"],
-            ["447999000100","T:CR5911:UnlimitedMins:24M:4GB:GBP:43:S5","B:CR5911:4GB:DataWiFi:BlackBerry7:INC:bolton","46a3b2f1-22e2-447c-85f8-7dc32c816cf7","standard"],
-            ["447999000100","T:CR5911:UnlimitedMins:24M:4GB:GBP:43:S5","B:CR5911:4GB:DataWiFi:iPhone:INC:bolton","c148702d-d1e6-4e38-b71c-146cbe9c16dc","standard"],
-            ["447999000100","T:CR5911:UnlimitedMins:24M:4GB:GBP:43:S5","B:CR5911:4GB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183","standard"],
-            ["447999000100","T:CR5911:UnlimitedMins:24M:10GB:GBP53:S5","B:CR5911:10GB:DataWiFi:BlackBerry7:INC:bolton","46a3b2f1-22e2-447c-85f8-7dc32c816cf7","standard"],
-            ["447999000100","T:CR5911:UnlimitedMins:24M:10GB:GBP53:S5","B:CR5911:10GB:DataWiFi:iPhone:INC:bolton","c148702d-d1e6-4e38-b71c-146cbe9c16dc","standard"],
-            ["447999000100","T:CR5911:UnlimitedMins:24M:10GB:GBP53:S5","B:CR5911:10GB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183	standard"]
+            ["447999000100","T:CR5911:UnlimitedMins:24M:1GB:GBP23:S1","B:CR5911:1GB:DataWiFi:BlackBerry7:INC:bolton","46a3b2f1-22e2-447c-85f8-7dc32c816cf7","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:1GB:GBP23:S1","B:CR5911:1GB:DataWiFi:iPhone:INC:bolton","c148702d-d1e6-4e38-b71c-146cbe9c16dc","standard"],
+            ["447999000100","T:CR5911:UnlimitedMins:24M:1GB:GBP23:S1","B:CR5911:1GB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183","standard"]
     ]
 
 
