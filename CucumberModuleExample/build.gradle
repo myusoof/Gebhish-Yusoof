@@ -1,6 +1,11 @@
-apply plugin : 'java'
+apply plugin: 'base'
 apply plugin : 'groovy'
-apply plugin : 'idea'
+
+import net.masterthought.cucumber.ReportBuilder
+
+repositories{
+    mavenCentral()
+}
 
 dependencies {
     ext {
@@ -8,8 +13,18 @@ dependencies {
         jerseyVersion = "2.5.1"
     }
 
-    compile groovy
-    compile "junit:junit:4.11"
-    compile "info.cukes:cucumber-junit:${cucumberVersion}"
-    compile "info.cukes:cucumber-groovy:${cucumberVersion}"
+    testCompile groovy, seleniumFirefox, masterThought
+    testCompile "junit:junit:4.11"
+    testCompile "info.cukes:cucumber-junit:${cucumberVersion}"
+    testCompile "info.cukes:cucumber-groovy:${cucumberVersion}"
+
+    compile "com.googlecode.totallylazy:totallylazy:991"
+
 }
+
+
+
+task cucumberReport << {
+    new ReportBuilder(['target/cucumber.json'], new File('target/report'), "", "1", "Foo", false, false, true, false, false, "", true).generateReports();
+}
+test.finalizedBy(cucumberReport)
