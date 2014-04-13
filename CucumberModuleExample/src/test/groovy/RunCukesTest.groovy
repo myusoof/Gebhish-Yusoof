@@ -13,5 +13,4 @@ import org.junit.runner.RunWith
 @RunWith(Cucumber.class)
 @CucumberOptions(format = ["pretty", "json:target/cucumber.json"])
 class RunCukesTest {
-
 }

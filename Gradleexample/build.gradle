@@ -1,0 +1,45 @@
+apply plugin : 'groovy'
+apply plugin : 'application'
+apply plugin : 'idea'
+
+dependencies{
+    compile groovy
+}
+
+mainClassName = "gradleExample.GradleClass1"
+
+task hello (type: GreetingTask1)
+
+class GreetingTask1 extends DefaultTask {
+    @TaskAction
+    def greet() {
+
+    }
+}
+
+task helloDoLast{
+    doLast {
+        println "do last at the test"
+    }
+}
+
+4.times{ counter->
+    task "task${counter}" <<{
+        println "I am on task ${counter}"
+    }
+}
+
+task0.dependsOn task1,task2
+
+
+task extraProp {
+    ext.myProperty = "my extra property"
+}
+
+task useExtraProperty <<{
+    println extraProp.myProperty
+}
+
+useExtraProperty << {
+    println "this is the additional one"
+}
