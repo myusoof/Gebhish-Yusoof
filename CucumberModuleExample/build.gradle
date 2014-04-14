@@ -18,17 +18,29 @@ dependencies {
     testCompile "junit:junit:4.11"
     testCompile "info.cukes:cucumber-junit:${cucumberVersion}"
     testCompile "info.cukes:cucumber-groovy:${cucumberVersion}"
-    testCompile "net.masterthought:cucumber-reporting:0.0.21"
-    testCompile group:'com.googlecode.totallylazy', name:'totallylazy', version:'991'
 }
 
-mainClassName = "ReportingClass"
 
-/*
 
-import net.masterthought.cucumber.ReportBuilder
-task cucumberReport << {
-    new ReportBuilder(['target/cucumber.json'], new File('target/report'), "", "1", "Foo", false, false, true, false, false, "", true).generateReports();
+
+repositories {
+    maven {
+        url "http://repo.bodar.com/"
+    }
 }
+
+dependencies {
+    compile "net.masterthought:cucumber-reporting:0.0.21"
+    compile group:'com.googlecode.totallylazy', name:'totallylazy', version:'991'
+}
+
+mainClassName = "calc.ReportingClass"
+
+task cucumberReport(type:JavaExec) {
+    main = "calc.ReportingClass"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 test.finalizedBy(cucumberReport)
-*/
+
+
