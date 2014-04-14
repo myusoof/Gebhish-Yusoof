@@ -21,8 +21,6 @@ dependencies {
 }
 
 
-
-
 repositories {
     maven {
         url "http://repo.bodar.com/"
