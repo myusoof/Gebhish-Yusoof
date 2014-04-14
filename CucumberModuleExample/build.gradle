@@ -1,5 +1,3 @@
-
-
 apply plugin: 'base'
 apply plugin : 'application'
 apply plugin : 'groovy'
@@ -15,14 +13,16 @@ dependencies {
         jerseyVersion = "2.5.1"
     }
 
-    testCompile groovy, seleniumFirefox
+    compile groovy, seleniumFirefox,totalLazy
+    compile masterthought
     testCompile "junit:junit:4.11"
     testCompile "info.cukes:cucumber-junit:${cucumberVersion}"
     testCompile "info.cukes:cucumber-groovy:${cucumberVersion}"
-
-    //compile "com.googlecode.totallylazy:totallylazy:991"
+    testCompile "net.masterthought:cucumber-reporting:0.0.21"
+    testCompile group:'com.googlecode.totallylazy', name:'totallylazy', version:'991'
 }
 
+mainClassName = "ReportingClass"
 
 /*
 

@@ -1,3 +1,4 @@
+import calc.Calculator1
 import cucumber.api.groovy.*
 import cucumber.api.groovy.Hooks
 
@@ -12,17 +13,30 @@ import cucumber.api.groovy.Hooks
 this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
+
+
+Calculator1 calculator1 = new Calculator1()
 Given(~'I have a test to print the normal text$'){ ->
     println "test the print yusoof"
     assert true
 }
 
-When(~'I add two (\\d+) number'){ number ->
-     println number.toInteger() + number.toInteger()
+
+Given(~'I enter( another)? (\\d?) in the calculator'){String a, int number ->
+    calculator1.push(number)
+    println number.toInteger()
 }
 
-Given(~'I enter( another)? (\\d?) in the calculator'){ number ->
-    println number
+
+When(~'I add two (\\d+) number'){ int number ->
+    println calculator1.add()
 }
+
+Then(~'^I should see total of (\\d)+ in the result$') { totalNumber ->
+  assert calculator1.add() == totalNumber.toDouble()
+}
+
+
+
 
 

@@ -3,7 +3,6 @@ Feature: I am learning the
 
 Scenario: I would like to create my test script with cucumber
   Given I have a test to print the normal text
-  When I add two 1 number Scenario
 
 
 Scenario: I would like to verify the two number addition

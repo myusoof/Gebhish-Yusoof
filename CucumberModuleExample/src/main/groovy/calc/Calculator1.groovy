@@ -16,4 +16,8 @@ public class Calculator1 {
     public double divide() {
         return stack.get(0) / stack.get(1);
     }
+
+    public double add() {
+        return stack.get(0) + stack.get(1);
+    }
 }

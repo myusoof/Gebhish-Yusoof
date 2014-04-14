@@ -20,7 +20,7 @@ ext{
     jerseyVersion = "1.9.1"
     jersey = ["com.sun.jersey:jersey-server:${jerseyVersion}", "com.sun.jersey:jersey-core:${jerseyVersion}", "com.sun.jersey:jersey-client:${jerseyVersion}"]
     jerseyMultipart = "com.sun.jersey.contribs:jersey-multipart:${jerseyVersion}"
-    cucumberReporting = 'net.masterthought:cucumber-reporting:0.0.21'
-    masterThought = 'net.masterthought:cucumber-reporting:0.0.17'
+    totalLazy = "com.googlecode.totallylazy:totallylazy:1077"
+    masterthought=  "net.masterthought:cucumber-reporting:0.0.23"
 
 }
