@@ -10,3 +10,12 @@ Scenario: I would like to verify the two number addition
   And I enter another 1 in the calculator
   Then I should see total of 2 in the result
 
+
+Scenario Outline: I would like to use the with datatable in my script
+  Given I have a test user
+  When I login with different <username>
+  Examples:
+    | username  |
+    | yusoof    |
+    | azeez     |
+    | mumtaz    |

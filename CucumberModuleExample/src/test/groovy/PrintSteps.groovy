@@ -1,4 +1,5 @@
 import calc.Calculator1
+import cucumber.api.DataTable
 import cucumber.api.groovy.*
 import cucumber.api.groovy.Hooks
 
@@ -36,7 +37,12 @@ Then(~'^I should see total of (\\d)+ in the result$') { totalNumber ->
   assert calculator1.add() == totalNumber.toDouble()
 }
 
-
+Given(~'I have a test user'){ ->
+    println "I am in the test user method"
+}
+When(~'I login with different ([a-zA-Z]+)'){String username ->
+    println username
+}
 
 
 
