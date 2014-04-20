@@ -44,5 +44,12 @@ When(~'I login with different ([a-zA-Z]+)'){String username ->
     println username
 }
 
+Given(~''){ test->
+    println test instanceof List
+}
+
+Given("I am available on \"(.+)\""){List<String> days ->
+    // Do something with the days
+}
 
 

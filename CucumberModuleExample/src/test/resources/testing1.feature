@@ -19,3 +19,6 @@ Scenario Outline: I would like to use the with datatable in my script
     | yusoof    |
     | azeez     |
     | mumtaz    |
+
+  Scenario: I want to add a list in the expression
+    Given The days in a week ["Monday,Tuesday"]
