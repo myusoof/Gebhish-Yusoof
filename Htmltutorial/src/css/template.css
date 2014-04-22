@@ -1,9 +1,37 @@
 h1{
+
     font-size: 30px;
     font-weight: bold;
-    text-align:center ;
+    text-align:left ;
 }
 
+h1:after{
+    content: " Automation";
+}
 body{
-    background: #5ED0BD;
+    /*background: #5ED0BD;*/
+    /*background-image: url("../images/img_flwr.png");*/
+    background-color: #e1efbb;
+}
+#para1{
+    font-size: 100px;
+}
+
+.yusoof, .yusoof1, .yusoof2{
+    font-size: 50px;
+    font-size-adjust: inherit;
+    font-weight: bold;
+    margin-left: 100px;
+    background-repeat:no-repeat;
+    background-position:left bottom;
+}
+
+.bottom
+{
+
+}
+
+p.date {
+    text-align:left;
+    text-transform:capitalize;
 }
