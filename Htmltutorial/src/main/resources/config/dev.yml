@@ -1,0 +1,13 @@
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 9999
+
+
+assets:
+  overrides:
+    /productworks: src/main/resources/assets/
+  cacheSpec: refreshInterval=1s

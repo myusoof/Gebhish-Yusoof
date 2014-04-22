@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="prodCatAdminApp">
+<head>
+    <meta charset="utf-8">
+    <title>Product Catalogue Admin</title>
+    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.css">
+
+    <script src="lib/jquery-1.11.0/jquery.js"></script>
+
+    <script src="lib/bootstrap-3.1.1-dist/js/bootstrap.js"></script>
+
+
+    <script src="lib/angular-1.2.9/angular.js"></script>
+    <script src="lib/angular-1.2.9/angular-route.js"></script>
+    <script src="lib/angular-1.2.9/angular-resource.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers/homeController.js"></script>
+    <script src="js/controllers/menuController.js"></script>
+    <script src="js/controllers/errorController.js"></script>
+    <script src="js/services/stateService.js"></script>
+
+</head>
+<body>
+<div ng-include="'templates/nav/menu.html'">
+
+</div>
+<div class="container theme-showcase" role="main">
+    <div class="view-container">
+        <div ng-view class="view-frame"></div>
+    </div>
+</div>
+
+</body>
+</html>

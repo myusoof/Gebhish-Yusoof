@@ -1,0 +1,8 @@
+apply plugin : 'groovy'
+apply plugin : 'java'
+apply plugin : 'idea'
+
+dependencies{
+    compile  groovy, gebhish, seleniumFirefox, seleniumChrome, seleniumSupport, testng, jackson, jacksonJaxRs, jacksonDataType
+    compile 'com.efsavage.twitter.bootstrap:bootstrap-maven:2.0.4'
+}
