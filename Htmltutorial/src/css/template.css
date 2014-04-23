@@ -2,14 +2,14 @@ h1{
 
     font-size: 30px;
     font-weight: bold;
-    text-align:left ;
+    text-align:center ;
+    /*color: white;*/
 }
 
 body{
-    /*background: #5ED0BD;*/
     background-image: url("../images/Background-HD-Wallpaper-02-Download.jpg");
-    /*background: no-repeat;*/
-    /*background-color:brown ;*/
+    color: white;
+    font-size: 20px;
 }
 .para1 span{
     font-size: 100px;
@@ -21,7 +21,7 @@ body{
     font-size-adjust: inherit;
     font-weight: bold;
     margin-left: 100px;
-    background-repeat:no-repeat;
+    background-repeat :no-repeat;
     background-position:left bottom;
 }
 
