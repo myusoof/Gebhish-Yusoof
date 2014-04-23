@@ -5,16 +5,15 @@ h1{
     text-align:left ;
 }
 
-h1:after{
-    content: " Automation";
-}
 body{
     /*background: #5ED0BD;*/
-    /*background-image: url("../images/img_flwr.png");*/
-    background-color: #e1efbb;
+    background-image: url("../images/Background-HD-Wallpaper-02-Download.jpg");
+    /*background: no-repeat;*/
+    /*background-color:brown ;*/
 }
-#para1{
+.para1 span{
     font-size: 100px;
+    color: white;
 }
 
 .yusoof, .yusoof1, .yusoof2{
