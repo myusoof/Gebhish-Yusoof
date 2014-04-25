@@ -20,5 +20,9 @@ Scenario Outline: I would like to use the with datatable in my script
     | azeez     |
     | mumtaz    |
 
-  Scenario: I want to add a list in the expression
-    Given The days in a week ["Monday,Tuesday"]
+
+  Scenario: This is to test the with datatable property
+    Given I have a with property
+    Then I should see the property with:
+      |data| value|
+      |test| test1|

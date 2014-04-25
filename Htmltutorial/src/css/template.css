@@ -1,18 +1,18 @@
-h1{
+/*h1{
 
     font-size: 30px;
     font-weight: bold;
     text-align:center ;
-    /*color: white;*/
+    *//*color: white;*//*
 }
 body {
     margin:0;
     padding:0;
-    border:0;			/* This removes the border around the viewport in old versions of IE */
+    border:0;			*//* This removes the border around the viewport in old versions of IE *//*
     width:100%;
     background:#fff;
-    min-width:600px;    	/* Minimum width of layout - remove line if not required */
-    /* The min-width property does not work in old versions of Internet Explorer */
+    min-width:600px;    	*//* Minimum width of layout - remove line if not required *//*
+    *//* The min-width property does not work in old versions of Internet Explorer *//*
     font-size:90%;
 }
 .para1 span{
@@ -38,4 +38,30 @@ body {
 p.date {
     text-align:left;
     text-transform:capitalize;
+}*/
+
+
+#menu {
+    background: #9cb925;
+    border-right: 3px solid #ee4e1d;
+    width: 100px;
+    padding: 30px;
+    position: fixed;
+    z-index: 100000;
+
+    box-shadow: 4px 0 10px rgba(0,0,0,0.25);
+    -moz-box-shadow: 4px 0 10px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 4px 0 10px rgba(0,0,0,0.25);
+}
+
+#menu {
+    left: 0; /* Change to right: 0; if you want the panel to display on the right side. */
+}
+
+#menu:hover, #menu:focus {
+    left: 0 !important; /* Change to right: 0 !important; if you want the panel to display on the right side. */
+}
+.output-data {
+    padding-left:50px;
+    background-color: beige;
 }

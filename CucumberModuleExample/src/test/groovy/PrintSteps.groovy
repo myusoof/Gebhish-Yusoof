@@ -1,7 +1,10 @@
 import calc.Calculator1
 import cucumber.api.DataTable
+import cucumber.api.Scenario
 import cucumber.api.groovy.*
 import cucumber.api.groovy.Hooks
+import groovy.json.JsonBuilder
+import groovy.transform.Field
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,7 +17,12 @@ import cucumber.api.groovy.Hooks
 this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
+@Field
+Scenario scenario = null
 
+Before { Scenario currentScenario ->
+    this.scenario = currentScenario
+}
 
 Calculator1 calculator1 = new Calculator1()
 Given(~'I have a test to print the normal text$'){ ->
@@ -44,12 +52,24 @@ When(~'I login with different ([a-zA-Z]+)'){String username ->
     println username
 }
 
+/*
 Given(~''){ test->
     println test instanceof List
 }
+*/
 
-Given("I am available on \"(.+)\""){List<String> days ->
+Given(~"I am available on \"(.+)\""){List<String> days ->
     // Do something with the days
 }
 
+Given(~'I have a with property'){->
+    println "this is the text"
 
+}
+
+Given(~'I should see the property with:$'){DataTable table ->
+    table.raw().each{
+        scenario.write("<details><summary>${"TEST"}</summary><pre style='margin: 0'>${"TEST WHETHER THIS IS PRINTED"}</pre></details>")
+    }
+
+}
