@@ -6,6 +6,8 @@ import cucumber.api.groovy.Hooks
 import groovy.json.JsonBuilder
 import groovy.transform.Field
 
+import javax.ws.rs.client.WebTarget
+
 /**
  * Created with IntelliJ IDEA.
  * User: ee
@@ -16,6 +18,7 @@ import groovy.transform.Field
 
 this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
+
 
 @Field
 Scenario scenario = null
@@ -69,7 +72,7 @@ Given(~'I have a with property'){->
 
 Given(~'I should see the property with:$'){DataTable table ->
     table.raw().each{
-        scenario.write("<details><summary>${"TEST"}</summary><pre style='margin: 0'>${"TEST WHETHER THIS IS PRINTED"}</pre></details>")
+        scenario.write("<details><summary>${it[0]}</summary><pre style='margin: 0'>${it[1]}</pre></details>")
     }
 
 }
