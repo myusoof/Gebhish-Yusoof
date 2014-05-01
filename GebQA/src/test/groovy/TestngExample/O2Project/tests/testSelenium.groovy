@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.support.ui.ExpectedCondition
+import org.openqa.selenium.support.ui.Select
 import org.openqa.selenium.support.ui.SystemClock
 import org.openqa.selenium.support.ui.WebDriverWait
 
@@ -56,7 +57,7 @@ class testSelenium {
             // Should see: "cheese! - Google Search"
             System.out.println("Page title is: " + driver.getTitle());
 
-
+            new Select().deselectAll()
             println new SystemClock().laterBy(100000)
             println new Date(1398765216868)
             //Close the browser

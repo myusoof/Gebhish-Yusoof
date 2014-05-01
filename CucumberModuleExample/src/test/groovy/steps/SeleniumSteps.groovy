@@ -19,11 +19,11 @@ import org.openqa.selenium.firefox.FirefoxDriver
 this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
-@Field
-WebDriver driver
+
+WebDriver driver = new FirefoxDriver()
 
 Given(~'^I initiated the web driver$'){->
-    driver = new FirefoxDriver()
+   // driver = TestContext.getInstance()
 }
 
 When(~'^I navigate to the google home page$'){->
