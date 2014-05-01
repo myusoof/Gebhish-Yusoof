@@ -24,5 +24,6 @@ Scenario Outline: I would like to use the with datatable in my script
   Scenario: This is to test the with datatable property
     Given I have a with property
     Then I should see the property with:
-      |data| value|
-      |test| test1|
+      |yusooftest| delhi|
+      |ceo| testingof|
+    And I enter another 1 in the calculator

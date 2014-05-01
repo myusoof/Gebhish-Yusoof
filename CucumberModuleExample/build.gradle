@@ -13,8 +13,10 @@ dependencies {
         jerseyVersion = "2.5.1"
     }
 
-    compile groovy, seleniumFirefox,totalLazy
+    compile groovy, seleniumFirefox,totalLazy, jersey, jerseyMultipart
     compile masterthought
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.1.4'
+    compile 'javax.ws.rs:jsr311-api:0.11'
     testCompile "junit:junit:4.11"
     testCompile "info.cukes:cucumber-junit:${cucumberVersion}"
     testCompile "info.cukes:cucumber-groovy:${cucumberVersion}"
