@@ -141,8 +141,15 @@ class DiffShopLoginTest extends O2BaseSteps {
         }
     }
 
-    @AfterTest
+    @Test
     void afterTest(){
-        browserWrapper.browser.quit()
+      //  browserWrapper.browser.quit()
+
+        try{
+            throw Exception
+        }   catch(Exception e){
+             println "test"
+        }
+        println "test one"
     }
 }

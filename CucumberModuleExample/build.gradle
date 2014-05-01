@@ -20,6 +20,8 @@ dependencies {
     testCompile "junit:junit:4.11"
     testCompile "info.cukes:cucumber-junit:${cucumberVersion}"
     testCompile "info.cukes:cucumber-groovy:${cucumberVersion}"
+    compile "org.glassfish.jersey.core:jersey-client:${jerseyVersion}"
+    compile "org.glassfish.jersey.media:jersey-media-multipart:${jerseyVersion}"
 }
 
 
