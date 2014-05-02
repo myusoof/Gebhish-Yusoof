@@ -1,4 +1,4 @@
-apply plugin: 'base'
+apply plugin : 'base'
 apply plugin : 'application'
 apply plugin : 'groovy'
 
@@ -13,7 +13,8 @@ dependencies {
         jerseyVersion = "2.5.1"
     }
 
-    compile groovy, seleniumFirefox,totalLazy, jersey, jerseyMultipart
+    compile groovy
+    testCompile seleniumFirefox,seleniumSupport,seleniumChrome, seleniumhtmlunit, totalLazy, jersey, jerseyMultipart
     compile masterthought
     compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.1.4'
     compile 'javax.ws.rs:jsr311-api:0.11'
