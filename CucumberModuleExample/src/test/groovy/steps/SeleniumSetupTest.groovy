@@ -53,8 +53,9 @@ class SeleniumSetupTest {
 //        dc.setCapability(ChromeOptions.CAPABILITY, options);
 //        WebDriver driver1 = new RemoteWebDriver(dc)
 
+        println new File("./CucumberModuleExample").getCanonicalPath()
 
-        System.setProperty("webdriver.chrome.driver", "/home/ee/learning/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "${new File("./CucumberModuleExample").getCanonicalPath()}/chromedriver");
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.google.co.uk")
