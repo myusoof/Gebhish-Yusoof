@@ -55,7 +55,7 @@ class SeleniumSetupTest {
 
         println new File("./CucumberModuleExample").getCanonicalPath()
 
-        System.setProperty("webdriver.chrome.driver", "${new File("./CucumberModuleExample").getCanonicalPath()}/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "${new File(".").getCanonicalPath()}/chromedriver");
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.google.co.uk")

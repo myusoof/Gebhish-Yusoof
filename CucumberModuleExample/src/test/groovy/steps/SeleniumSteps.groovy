@@ -19,6 +19,7 @@ import org.openqa.selenium.firefox.FirefoxDriver
 this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
+/*
 
 WebDriver driver = new FirefoxDriver()
 
@@ -43,4 +44,4 @@ When(~'^I should see the result$'){->
 
 Then(~'^I quit the driver$'){->
     driver.quit()
-}
+}*/
