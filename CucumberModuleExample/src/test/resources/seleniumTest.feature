@@ -90,3 +90,8 @@ Feature: I want to test all the fields using selenium
     Given I click on Multiple Windows link
     Then I should see the windows page
     Then I should be able to handle multiple windows
+
+  Scenario: I verify the notification message
+    Given I click on Notification Messages link
+    Then I should see the notification_message_rendered page
+    Then I should see the notification message

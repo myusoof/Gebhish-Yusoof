@@ -173,6 +173,12 @@ Then(~'I should be able to handle multiple windows'){->
     driver.switchTo().window(parentWindow)
 }
 
+Then(~'I should see the notification message'){->
+    driver.findElement(By.cssSelector(".example>p>a")).click()
+    println driver.findElement(By.cssSelector("#flash")).text
+    assert driver.findElement(By.cssSelector("#flash")).text.contains("Action")
+
+}
 After("@end"){
     driver.close()
 }
