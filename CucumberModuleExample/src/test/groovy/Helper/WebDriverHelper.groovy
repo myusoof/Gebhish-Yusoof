@@ -2,6 +2,7 @@ package Helper
 
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.firefox.FirefoxProfile
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,9 +19,13 @@ class WebDriverHelper {
     }
 
     public static WebDriver getInstance(){
-        if(webdriver == null)
+        if(webdriver == null){
             Runtime.getRuntime().exec("/home/yusoof/autoitex.exe")
-            webdriver = new FirefoxDriver()
+            File profileDir = new File("/home/yusoof/axpnszte.default-1394997862883");
+            FirefoxProfile profile = new FirefoxProfile(profileDir);
+            webdriver = new FirefoxDriver(profile);
+            //webdriver = new FirefoxDriver()
+        }
         webdriver
     }
 

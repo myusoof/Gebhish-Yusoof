@@ -5,7 +5,9 @@ import cucumber.api.DataTable
 import cucumber.api.groovy.EN
 import cucumber.api.groovy.Hooks
 import groovy.transform.Field
+import org.openqa.selenium.Alert
 import org.openqa.selenium.By
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -95,7 +97,82 @@ Then(~'I should be able to download a file'){->
     driver.findElement(By.xpath("//a[contains(.,'avatar.jpg')]")).click()
     Robot robot = new Robot()
     robot.keyPress(KeyEvent.VK_ENTER)
+    robot.keyRelease(KeyEvent.VK_ENTER);
 }
+
+Then(~'I should be able reset the password'){->
+    driver.findElement(By.cssSelector("#email")).sendKeys("password")
+    driver.findElement(By.cssSelector("#form_submit")).click()
+    assert driver.findElement(By.cssSelector("#content")).getText() == "Your e-mail's been sent!"
+}
+
+Then(~'I should be to login in the page'){->
+    driver.findElement(By.cssSelector("#username")).sendKeys("tomsmith")
+    driver.findElement(By.cssSelector("#password")).sendKeys("SuperSecretPassword!")
+    driver.findElement(By.cssSelector(".radius")).click()
+    driver.findElement(By.cssSelector(".button.secondary.radius")).click()
+}
+
+Then(~'I should be able to switch the frame'){->
+    assert driver.switchTo().frame("frame-top").switchTo().frame("frame-left").findElement(By.cssSelector("body")).text == "LEFT"
+    driver.switchTo().defaultContent();
+    assert driver.switchTo().frame("frame-top").switchTo().frame(1).findElement(By.cssSelector("body")).text == "MIDDLE"
+    driver.switchTo().defaultContent();
+    assert driver.switchTo().frame("frame-top").switchTo().frame(2).findElement(By.cssSelector("body")).text == "RIGHT"
+    driver.switchTo().defaultContent();
+    assert driver.switchTo().frame("frame-bottom").findElement(By.cssSelector("body")).text == "BOTTOM"
+    driver.switchTo().defaultContent();
+}
+
+Then(~'I should be able to look at google page'){->
+    driver.findElement(By.cssSelector("button[onclick='getLocation()']")).click()
+    Thread.sleep(5000)
+    driver.findElement(By.cssSelector("#map-link>a")).click()
+    println driver.findElement(By.cssSelector("#mtgt_A.1000")).text
+}
+
+Then(~'I should be able to work with jquery'){->
+    WebElement element = driver.findElement(By.xpath("//*[@id='ui-id-2']"))
+    element.click()
+    driver.findElement(By.xpath("//*[@id='ui-id-4']"))
+
+//    ((JavascriptExecutor) driver).executeScript("document.getElementById('ui-id-2').style.display='block';");
+//    new Select(driver.findElement(By.xpath("//*@id='ctl00_ContentPlaceHolder1_ddlOnbehalfOf']"))).selectByIndex(2);
+}
+
+Then(~'I should be able to validate javascript'){->
+    JavascriptExecutor js = (JavascriptExecutor)driver
+    js.executeScript("jsAlert();")
+    driver.switchTo().alert().accept()
+    driver.switchTo().defaultContent()
+    assert driver.findElement(By.cssSelector("#result")).text == "You successfuly clicked an alert"
+
+    js.executeScript("jsConfirm();")
+    Alert alert = driver.switchTo().alert()
+    assert alert.getText() == "I am a JS Confirm"
+    alert.accept()
+    driver.switchTo().defaultContent()
+    assert driver.findElement(By.cssSelector("#result")).text == "You clicked: Ok"
+
+    driver.findElement(By.cssSelector("button[onclick=\"jsPrompt()\"]")).click()
+    alert = driver.switchTo().alert()
+    alert.sendKeys("test confirm")
+    alert.accept()
+    assert driver.findElement(By.cssSelector("#result")).text == "You entered: test confirm"
+
+}
+
+Then(~'I should be able to handle multiple windows'){->
+    String parentWindow = driver.getWindowHandle()
+    driver.findElement(By.cssSelector(".example >a")).click()
+
+    for(String window: driver.getWindowHandles()){
+        driver.switchTo().window(window)
+    }
+    driver.close()
+    driver.switchTo().window(parentWindow)
+}
+
 After("@end"){
     driver.close()
 }
