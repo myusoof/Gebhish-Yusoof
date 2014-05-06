@@ -12,9 +12,9 @@ Feature: I want to test all the fields using selenium
       |A/B Testing| abtest|
 
 
-#    Scenario: I am login with username and password
-#      Given I click on Basic Auth link
-#      Then I enter the username and password in the authentication page
+    Scenario: I am login with username and password
+      Given I click on Basic Auth link
+      Then I enter the username and password in the authentication page
 
     Scenario: I click on checkbox
       Given I click on Checkboxes link

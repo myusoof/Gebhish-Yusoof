@@ -23,6 +23,7 @@ dependencies {
     testCompile "info.cukes:cucumber-groovy:${cucumberVersion}"
     compile "org.glassfish.jersey.core:jersey-client:${jerseyVersion}"
     compile "org.glassfish.jersey.media:jersey-media-multipart:${jerseyVersion}"
+    //compile 'org.sikuli:sikuli-webdriver:1.0.1'
 }
 
 

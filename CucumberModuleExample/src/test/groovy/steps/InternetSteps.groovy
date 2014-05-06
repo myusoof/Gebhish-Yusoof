@@ -49,6 +49,8 @@ Then(~'I should see the (.*) page'){pageUrl->
 }
 
 Then(~'I enter the username and password in the authentication page'){->
+    driver.switchTo().alert()
+    println driver.getTitle()
     println driver.getWindowHandles().size()
 }
 
@@ -128,7 +130,9 @@ Then(~'I should be able to look at google page'){->
     driver.findElement(By.cssSelector("button[onclick='getLocation()']")).click()
     Thread.sleep(5000)
     driver.findElement(By.cssSelector("#map-link>a")).click()
-    println driver.findElement(By.cssSelector("#mtgt_A.1000")).text
+    Thread.sleep(5000)
+    WebElement element = driver.findElement(By.xpath("//*[@id='mtgt_A.1000']"))
+    new Actions(driver).doubleClick(element).perform()
 }
 
 Then(~'I should be able to work with jquery'){->

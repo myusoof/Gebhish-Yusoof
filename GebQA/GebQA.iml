@@ -35,22 +35,22 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/2.41.0/97b440bf2f1f61fe5e4ddc05922b58e0f76d0cf6/selenium-firefox-driver-2.41.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/2.40.0/6e92fe12b65584ba409fb6062efcce179b3327d1/selenium-firefox-driver-2.40.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/2.41.0/652aa7b3c7a6779a350dac1951cd380b477004f0/selenium-firefox-driver-2.41.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/2.40.0/f20972b11eed764ea9e8e671476170622703f377/selenium-firefox-driver-2.40.0-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-htmlunit-driver/2.41.0/e72251df8aa5f02f268f6b1b9206d5d1616cc2ee/selenium-htmlunit-driver-2.41.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-htmlunit-driver/2.40.0/7c10f99f6e8980fddc790b79ad889a329270a055/selenium-htmlunit-driver-2.40.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-htmlunit-driver/2.41.0/13d45ace1919fd45300f770555bc8b8db7fd2968/selenium-htmlunit-driver-2.41.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-htmlunit-driver/2.40.0/5471a7574ee9621afa81533b529af5573ec2a8e3/selenium-htmlunit-driver-2.40.0-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -68,11 +68,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.41.0/ad6bc0c4f270e347a143c0a248e1513171f5d2e0/selenium-support-2.41.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.40.0/bdf917996cbb9e22f761a55265f4b35aa78501b4/selenium-support-2.40.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.41.0/67d2ea0ca0860c1434528650981e16cc5aef475b/selenium-support-2.41.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.40.0/69de2b36eaaa8c9010680d9035fda9fcd710b6c6/selenium-support-2.40.0-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -255,11 +255,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.41.0/8ace5769fabace75333eb705d2e6b14d29aa3723/selenium-api-2.41.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.40.0/f0f9033ee6520179886a99ebb7b30f48d87c109c/selenium-api-2.40.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.41.0/8595c93482e2110bc0ecd825e88a1466d8c817ce/selenium-api-2.41.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.40.0/5053c490620d827e4c59ac62648718b056d52db3/selenium-api-2.40.0-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -299,11 +299,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.41.0/b59b75e491c507334dc66a45bfc754ecd32af866/selenium-remote-driver-2.41.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.40.0/54abc2a4b02ea3c177d0200445b42b4515d7a493/selenium-remote-driver-2.40.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.41.0/8249753a98478c0df38479e6a40398deb9d96555/selenium-remote-driver-2.41.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.40.0/e85a0a5c5b61a0e4cbe17ba8a4651a3d6d1dbbe5/selenium-remote-driver-2.40.0-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

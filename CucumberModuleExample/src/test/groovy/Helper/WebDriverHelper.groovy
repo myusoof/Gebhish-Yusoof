@@ -20,8 +20,8 @@ class WebDriverHelper {
 
     public static WebDriver getInstance(){
         if(webdriver == null){
-            Runtime.getRuntime().exec("/home/yusoof/autoitex.exe")
-            File profileDir = new File("/home/yusoof/axpnszte.default-1394997862883");
+            Runtime.getRuntime().exec("/home/ee/Downloads/tools/autoit.exe")
+            File profileDir = new File("/home/ee/5927wd2c.default");
             FirefoxProfile profile = new FirefoxProfile(profileDir);
             webdriver = new FirefoxDriver(profile);
             //webdriver = new FirefoxDriver()
