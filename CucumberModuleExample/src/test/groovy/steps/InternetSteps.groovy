@@ -33,7 +33,7 @@ this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
  @Field
- WebDriver driver = WebDriverHelper.getInstance()
+ WebDriver driver = WebDriverHelper.getInstance(WebDriverHelper.WebDriverType.HTML)
 
 
 Given(~'^I navigate to the internet application$'){->
