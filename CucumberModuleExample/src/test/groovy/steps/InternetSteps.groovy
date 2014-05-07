@@ -33,7 +33,7 @@ this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
  @Field
- WebDriver driver = WebDriverHelper.getInstance(WebDriverHelper.WebDriverType.HTML)
+ WebDriver driver = WebDriverHelper.getInstance(WebDriverHelper.WebDriverType.FIREFOX)
 
 
 Given(~'^I navigate to the internet application$'){->
@@ -132,14 +132,30 @@ Then(~'I should be able to look at google page'){->
 }
 
 Then(~'I should be able to work with jquery'){->
-    WebElement element = driver.findElement(By.xpath("//*[@id='ui-id-2']"))
-    element.click()
-    driver.findElement(By.xpath("//*[@id='ui-id-4']"))
+//    ((JavascriptExecutor) driver).executeScript("document.getElementById(\"ui-id-5\").style.visibility='visible'")
 
+//    ((JavascriptExecutor)driver).executeScript("var element = document.getElementById(\"ui-id-5\"); element.click();")
 //    ((JavascriptExecutor) driver).executeScript("document.getElementById('ui-id-2').style.display='block';");
 //    new Select(driver.findElement(By.xpath("//*@id='ctl00_ContentPlaceHolder1_ddlOnbehalfOf']"))).selectByIndex(2);
+
+    Actions actions = new Actions(driver)
+    actions.moveToElement(driver.findElement(By.cssSelector("#ui-id-2"))).perform()
+    waitForElement("#ui-id-5")
+    driver.findElement(By.cssSelector("#ui-id-4")).click()
+    driver.findElement(By.cssSelector("#ui-id-6")).click()
+    actions.moveToElement(driver.findElement(By.cssSelector("#ui-id-4")))
+    waitForElement("#ui-id-6")
+
 }
 
+private waitForElement(String cssPath){
+    (new WebDriverWait(driver, 10).until(new ExpectedCondition<Boolean>() {
+        Boolean apply(WebDriver input) {
+            return input.findElement(By.cssSelector(cssPath)).isDisplayed()
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+    }))
+}
 Then(~'I should be able to validate javascript'){->
     JavascriptExecutor js = (JavascriptExecutor)driver
     js.executeScript("jsAlert();")

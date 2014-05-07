@@ -3,6 +3,9 @@ package PageObjectModel.tests
 import PageObjectModel.pages.*
 import PageObjectModel.utils.WebDriverUtils
 import ProductCatalogueClient.ProductDetails
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.FindBy
+import org.openqa.selenium.support.How
 import org.testng.annotations.Test
 
 /**
@@ -330,5 +333,15 @@ class AgentOrderCreationTest extends ProductDetails {
             ["T:CR5911:500Mins:24M:500MB:GBP10:S3:CCA","B:CR5911:500MB:DataWiFi:Smartphone:INC:bolton","ffade597-08c3-4320-8446-783394f99183","FullCca"]
     ]
 
+
+    @FindBy(how = How.ID_OR_NAME, using = "idname")
+    private WebElement testElement
+
+
+    @Test
+    void testUserDetails(){
+
+
+    }
 
 }
