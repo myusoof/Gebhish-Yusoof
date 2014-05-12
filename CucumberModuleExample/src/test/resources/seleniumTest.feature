@@ -68,10 +68,11 @@ Feature: I want to test all the fields using selenium
     Then I should see the geolocation page
     Then I should be able to look at google page
 
-#  Scenario: I verify the JQuery UI Menus
-#    Given I click on JQuery UI Menus link
-#    Then I should see the jqueryui page
-#    Then I should be able to work with jquery
+  Scenario: I verify the JQuery UI Menus
+    Given I click on JQuery UI Menus link
+    Then I should see the jqueryui page
+    Then I should be able to work with jquery
+    Then I should see the jqueryui page
 
   Scenario: I verify the javascript alert for the page
     Given I click on JavaScript Alerts link
