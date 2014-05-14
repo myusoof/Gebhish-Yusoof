@@ -20,14 +20,15 @@ import javax.ws.rs.core.Response
  */
 class RestJerseyClass {
     Client client = Client.create()
+    WebResource resource
     Map responseData = [:]
     @Test
     void testLogin(){
         final Map adminUser = ["password": "Password","username": "admin@productworks.com"]
-        WebResource resource =  client.resource("http://localhost:9999/service")
+        resource =  client.resource("http://localhost:9999/service")
         resource = resource.path("/login")
         println setHeader(resource).post(ClientResponse.class, new JSONObject(adminUser).toString())
-        println resource
+
     }
 
     PartialRequestBuilder setHeader(WebResource resource,String cookieSessionId = "JSESSIONID=n6j3d6p5johpzntnkl6adadwg" ){
@@ -36,5 +37,8 @@ class RestJerseyClass {
                  .header('Cookie',cookieSessionId)
     }
 
+    ClientResponse post(Map InputJsonString){
+        return resource.post(ClientResponse.class, new JSONObject(InputJsonString).toString())
+    }
 
 }
