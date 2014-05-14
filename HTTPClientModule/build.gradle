@@ -1,0 +1,8 @@
+apply plugin : 'java'
+apply plugin : 'groovy'
+apply plugin : 'idea'
+
+dependencies{
+    compile groovy, testng, jackson, jersey, jerseyMultipart, restClient
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0    '
+}

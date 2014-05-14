@@ -22,5 +22,6 @@ ext{
     jerseyMultipart = "com.sun.jersey.contribs:jersey-multipart:${jerseyVersion}"
     totalLazy = "com.googlecode.totallylazy:totallylazy:1077"
     masterthought=  "net.masterthought:cucumber-reporting:0.0.23"
+    restClient = [group: 'org.codehaus.groovy.modules.http-builder', name: 'http-builder', version: '0.6']
 
 }

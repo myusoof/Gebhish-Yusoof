@@ -15,13 +15,12 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver
  * Time: 21:09
  * To change this template use File | Settings | File Templates.
  */
-/*
 this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
 @Field
-HtmlUnitDriver driver = WebDriverHelper.getInstance(WebDriverHelper.WebDriverType.HTML)
+HtmlUnitDriver driver = WebDriverHelper.getInstance()
 
 Given(~'I am on the htmlPage'){->
-    println driver.webClient.getPage("http://the-internet.herokuapp.com/status_codes/200").getWebResponse().contentType
-}*/
+    println driver.webClient.getPage("http://the-internet.herokuapp.com/status_codes/200").cook
+}

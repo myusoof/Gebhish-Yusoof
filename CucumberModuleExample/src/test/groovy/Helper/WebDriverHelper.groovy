@@ -23,29 +23,14 @@ class WebDriverHelper {
         FIREFOX
     }
 
-    public static WebDriver getInstance(WebDriverType type){
+    public static WebDriver getInstance(){
 
-        switch (type){
-            case WebDriverType.FIREFOX:
                 if(webdriver == null){
-                    Runtime.getRuntime().exec("/home/yusoof/autoitex.exe")
-                    File profileDir = new File("/home/yusoof/axpnszte.default-1394997862883");
-                    FirefoxProfile profile = new FirefoxProfile(profileDir);
-                    webdriver = new FirefoxDriver(profile);
+                    //FirefoxProfile profile = new FirefoxProfile(profileDir);
+                    webdriver = new HtmlUnitDriver()
                     //webdriver = new FirefoxDriver()
                 }
-                return webdriver
-                break
-            case WebDriverType.HTML:
-                if(webdriver == null){
-                    webdriver = new HtmlUnitDriver()
-                }
-                return webdriver
-                break
-            default:
-                return null
-        }
-        webdriver
+               webdriver
     }
 
     public static closeDriver(){

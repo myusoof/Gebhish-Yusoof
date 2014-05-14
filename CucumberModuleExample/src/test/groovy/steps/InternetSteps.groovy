@@ -33,7 +33,7 @@ this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
  @Field
- WebDriver driver = WebDriverHelper.getInstance(WebDriverHelper.WebDriverType.FIREFOX)
+ WebDriver driver = WebDriverHelper.getInstance()
 
 
 Given(~'^I navigate to the internet application$'){->

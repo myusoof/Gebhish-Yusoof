@@ -1,7 +1,0 @@
-apply plugin : 'groovy'
-apply plugin : 'idea'
-apply plugin : 'java'
-
-dependencies{
-    compile restClient, groovy, gebhish, seleniumFirefox, seleniumSupport, seleniumChrome, seleniumhtmlunit, testng,jackson, jacksonJaxRs, jacksonDataType
-}
