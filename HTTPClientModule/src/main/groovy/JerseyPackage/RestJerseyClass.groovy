@@ -27,11 +27,14 @@ class RestJerseyClass {
         WebResource resource =  client.resource("http://localhost:9999/service")
         resource = resource.path("/login")
         println setHeader(resource).post(ClientResponse.class, new JSONObject(adminUser).toString())
+        println resource
     }
 
-    PartialRequestBuilder setHeader(WebResource resource){
+    PartialRequestBuilder setHeader(WebResource resource,String cookieSessionId = "JSESSIONID=n6j3d6p5johpzntnkl6adadwg" ){
          return resource.header('User-Agent','Mozilla/5.0')
                  .header('Content-Type','application/json;charset=UTF-8')
-                 .header('Cookie','JSESSIONID=n6j3d6p5johpzntnkl6adadwg')
+                 .header('Cookie',cookieSessionId)
     }
+
+
 }
