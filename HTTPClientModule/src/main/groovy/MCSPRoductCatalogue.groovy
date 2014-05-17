@@ -16,7 +16,7 @@ class MCSPRoductCatalogue {
     void testHttpClient(){
         restClient = new RestClient("http://localhost:9999/")
         restClient.setHeaders(['User-Agent:': 'Mozilla/5.0','Content-Type':'application/json;charset=UTF-8', 'Cookie': 'JSESSIONID=n6j3d6p5johpzntnkl6adadwg' ])
-        HttpResponse response = restClient.post(path: "service/login", body: ["password": "Password","username": "admin@productworks.com"])
+        HttpResponse response = restClient.post(path: "service/postRequest", body: ["password": "Password","username": "admin@productworks.com"])
         println response
 
     }

@@ -1,16 +1,7 @@
 package JerseyPackage
 
-import com.sun.jersey.api.client.Client
-import com.sun.jersey.api.client.ClientResponse
-import com.sun.jersey.api.client.PartialRequestBuilder
-import com.sun.jersey.api.client.WebResource
-import net.sf.json.JSONObject
 import org.junit.Test
-
-import javax.ws.rs.core.MediaType
-import javax.ws.rs.core.Response
-
-
+import static com.sun.jersey.api.client.ClientResponse.Status.*
 /**
  * Created with IntelliJ IDEA.
  * User: ee
@@ -18,27 +9,20 @@ import javax.ws.rs.core.Response
  * Time: 16:58
  * To change this template use File | Settings | File Templates.
  */
-class RestJerseyClass {
-    Client client = Client.create()
-    WebResource resource
-    Map responseData = [:]
+class RestJerseyClass extends BaseJerseyClass{
+
     @Test
-    void testLogin(){
-        final Map adminUser = ["password": "Password","username": "admin@productworks.com"]
-        resource =  client.resource("http://localhost:9999/service")
-        resource = resource.path("/login")
-        println setHeader(resource).post(ClientResponse.class, new JSONObject(adminUser).toString())
+    void testHttpClient(){
+        def adminUserDetails = ["username": "sysadmin@productworks.com", "password": "Password"]
+        def reLoginUserDetails = ["username": "sysadmin@productworks.com", "password": "NewPassword"]
+        def newAdminUserDetails= ["username": "sysadmin@productworks.com", "password": "Password", 'newPassword': 'NewPassword']
 
-    }
-
-    PartialRequestBuilder setHeader(WebResource resource,String cookieSessionId = "JSESSIONID=n6j3d6p5johpzntnkl6adadwg" ){
-         return resource.header('User-Agent','Mozilla/5.0')
-                 .header('Content-Type','application/json;charset=UTF-8')
-                 .header('Cookie',cookieSessionId)
-    }
-
-    ClientResponse post(Map InputJsonString){
-        return resource.post(ClientResponse.class, new JSONObject(InputJsonString).toString())
+        setInitialSet()
+//        requestTypeOf(requestTypeOf.POST, "dev/setInitialState", NO_CONTENT.statusCode)
+        requestTypeOf(RequestType.POST, "login", adminUserDetails, OK.statusCode)
+        requestTypeOf(RequestType.POST,"resetPassword", newAdminUserDetails, NO_CONTENT.statusCode)
+        requestTypeOf(RequestType.POST, "login", reLoginUserDetails, OK.statusCode)
+        requestTypeOf(RequestType.GET, "group", OK.statusCode)
     }
 
 }
