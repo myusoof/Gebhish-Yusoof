@@ -1,7 +1,13 @@
 package JerseyPackage
 
+import com.fasterxml.jackson.core.JsonFactory
+import com.fasterxml.jackson.databind.MappingJsonFactory
+import net.sf.json.JSON
+import net.sf.json.JSONObject
 import org.junit.Test
+
 import static com.sun.jersey.api.client.ClientResponse.Status.*
+
 /**
  * Created with IntelliJ IDEA.
  * User: ee
@@ -16,13 +22,22 @@ class RestJerseyClass extends BaseJerseyClass{
         def adminUserDetails = ["username": "sysadmin@productworks.com", "password": "Password"]
         def reLoginUserDetails = ["username": "sysadmin@productworks.com", "password": "NewPassword"]
         def newAdminUserDetails= ["username": "sysadmin@productworks.com", "password": "Password", 'newPassword': 'NewPassword']
+        def groupDetails = [description: TestHelper.randomGroupName(), name: TestHelper.randomGroupName(),privileges: []]
 
         setInitialSet()
-//        requestTypeOf(requestTypeOf.POST, "dev/setInitialState", NO_CONTENT.statusCode)
-        requestTypeOf(RequestType.POST, "login", adminUserDetails, OK.statusCode)
-        requestTypeOf(RequestType.POST,"resetPassword", newAdminUserDetails, NO_CONTENT.statusCode)
-        requestTypeOf(RequestType.POST, "login", reLoginUserDetails, OK.statusCode)
-        requestTypeOf(RequestType.GET, "group", OK.statusCode)
+        RequestingType("Post", "login", adminUserDetails, OK.statusCode)
+        RequestingType("Post","resetPassword", newAdminUserDetails, NO_CONTENT.statusCode)
+        RequestingType("Post", "login", reLoginUserDetails, OK.statusCode)
+        response = RequestingType("Get", "group", OK.statusCode)
+        Object abc = getJsonObject(response)
+        println abc.privileges.name
+        RequestingType("Get", "privilege", OK.statusCode)
+        RequestingType("Post", "group", groupDetails, CREATED.statusCode)
+
+
+
+
+
     }
 
 }

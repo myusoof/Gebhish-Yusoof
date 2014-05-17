@@ -1,5 +1,7 @@
 package JerseyPackage
 
+import com.fasterxml.jackson.core.JsonFactory
+import com.fasterxml.jackson.databind.MappingJsonFactory
 import com.sun.jersey.api.client.Client
 import static com.sun.jersey.api.client.ClientResponse.Status.*
 import com.sun.jersey.api.client.ClientResponse
@@ -19,9 +21,9 @@ class BaseJerseyClass {
     Client client = Client.create()
     def resource = client.resource("http://localhost:9999/service/")
     def response
-    def jSessionId
+    def jSessionId = "JSESSIONID=dfdsffsffdfdfsd"
 
-    enum RequestType{
+    enum RequestOfType {
         POST,
         GET,
         PUT
@@ -39,24 +41,20 @@ class BaseJerseyClass {
 
     ClientResponse setInitialSet(){
         response = resource.path("dev/setInitialState").post(ClientResponse.class)
-
-        println response
         assert response.status  == NO_CONTENT.statusCode
         return response
     }
 
-    ClientResponse requestTypeOf(RequestType type, String path, Map adminUserDetails = null, int statusCode ){
+    ClientResponse RequestingType(String type, String path, Map adminUserDetails = null, int statusCode ){
         switch(type){
-           case RequestType.POST:
+           case "Post":
                response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).post(ClientResponse.class, new JSONObject(adminUserDetails).toString())
                jSessionId = getSessionId(response.cookies.toString())
                 break
-            case RequestType.GET:
-                response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).get(ClientResponse.class)
-                println response
+            case "Get":
                 jSessionId = getSessionId(response.cookies.toString())
                 break
-            case RequestType.PUT:
+            case "Put":
                 response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).put(ClientResponse.class, new JSONObject(adminUserDetails).toString())
                 jSessionId = getSessionId(response.cookies.toString())
                 break
@@ -65,9 +63,10 @@ class BaseJerseyClass {
         return response
     }
 
-    ClientResponse getGroup(String path){
-        response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).get(ClientResponse.class)
-        println response
+    Object getJsonObject(ClientResponse response){
+        def outputResponse = response.getEntity(String.class)
+        JsonFactory jsonFactory = new MappingJsonFactory()
+        return jsonFactory.createParser(outputResponse).readValueAs(Object.class)
     }
 
 }

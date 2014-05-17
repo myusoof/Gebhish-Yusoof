@@ -4,5 +4,8 @@ apply plugin : 'idea'
 
 dependencies{
     compile groovy, testng, jackson, jersey, jerseyMultipart, restClient
-    compile 'javax.ws.rs:javax.ws.rs-api:2.0    '
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0'
+    compile 'org.jongo:jongo:1.0'
+    compile 'org.mongodb:mongo-java-driver:2.9.3'
+    compile 'org.mongeez:mongeez:0.9.4'
 }
