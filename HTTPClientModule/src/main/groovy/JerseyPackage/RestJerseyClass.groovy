@@ -26,19 +26,18 @@ class RestJerseyClass extends BaseJerseyClass{
         def groupDetails = [description: TestHelper.randomGroupName(), name: TestHelper.randomGroupName(),privileges: []]
 
 
-        println groupDetails.privileges+= MongoDbHelper.getPrivilegeDetails()
+        groupDetails.privileges+= MongoDbHelper.getPrivilegeDetails()
+//        groupDetails.privileges+= ["5374681d7c260751b848815f","537468848d0c6c4c4b9dc654"]
 
-        println groupDetails
-
-        setInitialSet()
-        RequestingType("Post", "login", adminUserDetails, OK.statusCode)
-        RequestingType("Post","resetPassword", newAdminUserDetails, NO_CONTENT.statusCode)
-        RequestingType("Post", "login", reLoginUserDetails, OK.statusCode)
-        response = RequestingType("Get", "group", OK.statusCode)
-        Object abc = getJsonObject(response)
-        println abc.privileges.name
-        RequestingType("Get", "privilege", OK.statusCode)
-        RequestingType("Post", "group", groupDetails, CREATED.statusCode)
+        //setInitialSet()
+        //RequestingType("Post", "login", new JSONObject(adminUserDetails), OK.statusCode)
+       // RequestingType("Post","resetPassword", new JSONObject(newAdminUserDetails), NO_CONTENT.statusCode)
+        RequestingType("Post", "login", new JSONObject(reLoginUserDetails), OK.statusCode)
+        response = RequestingType("Get", "group",null, OK.statusCode)
+        /*Object abc = getJsonObject(response)
+        println abc.privileges.name*/
+        RequestingType("Get", "privilege", null, OK.statusCode)
+        RequestingType("Post", "group", new JSONObject(groupDetails), CREATED.statusCode)
 
     }
 

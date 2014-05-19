@@ -26,27 +26,9 @@ class MongoDbHelper {
         DBCursor cursor = db.getCollection("privileges").find(new BasicDBObject(), new BasicDBObject("name": 1))
         while(cursor.hasNext()){
             BasicDBObject object = cursor.next()
-            privilegeDetails.put(object.get("name"),object.get("_id"))
+            privilegeDetails.put(object.get("name"),object.get("_id").toString())
         }
-        println privilegeDetails.entrySet().value
         privilegeDetails.entrySet().value
-    }
-
-    public static void main(String[] args) {
-        getPrivilegeDetails()
-        def arrayList1 = []
-        def arrayList2 =  privilegeDetails.entrySet().value
-        println arrayList1
-        Map abc = [:]
-        JSONObject object1 = new JSONObject(abc)
-        ArrayList list1 = new ArrayList()
-        list1.add("priliefe")
-        list1.add("privilege1")
-        println list1
-        JSONArray privilege = new JSONArray()
-        object1.put("privileges", list1)
-        println object1.toString()
-        privilege
     }
 }
 

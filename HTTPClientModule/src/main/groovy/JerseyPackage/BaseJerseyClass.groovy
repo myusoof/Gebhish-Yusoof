@@ -45,17 +45,17 @@ class BaseJerseyClass {
         return response
     }
 
-    ClientResponse RequestingType(String type, String path, Map adminUserDetails = null, int statusCode ){
+    ClientResponse RequestingType(String type, String path, JSONObject jsonObject, int statusCode ){
         switch(type){
            case "Post":
-               response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).post(ClientResponse.class, new JSONObject(adminUserDetails).toString())
+               response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).post(ClientResponse.class, jsonObject.toString())
                jSessionId = getSessionId(response.cookies.toString())
                 break
             case "Get":
                 jSessionId = getSessionId(response.cookies.toString())
                 break
             case "Put":
-                response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).put(ClientResponse.class, new JSONObject(adminUserDetails).toString())
+                response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).put(ClientResponse.class, jsonObject.toString())
                 jSessionId = getSessionId(response.cookies.toString())
                 break
         }
