@@ -3,6 +3,7 @@ package JerseyPackage
 import com.fasterxml.jackson.core.JsonFactory
 import com.fasterxml.jackson.databind.MappingJsonFactory
 import net.sf.json.JSON
+import net.sf.json.JSONArray
 import net.sf.json.JSONObject
 import org.junit.Test
 
@@ -24,6 +25,11 @@ class RestJerseyClass extends BaseJerseyClass{
         def newAdminUserDetails= ["username": "sysadmin@productworks.com", "password": "Password", 'newPassword': 'NewPassword']
         def groupDetails = [description: TestHelper.randomGroupName(), name: TestHelper.randomGroupName(),privileges: []]
 
+
+        println groupDetails.privileges+= MongoDbHelper.getPrivilegeDetails()
+
+        println groupDetails
+
         setInitialSet()
         RequestingType("Post", "login", adminUserDetails, OK.statusCode)
         RequestingType("Post","resetPassword", newAdminUserDetails, NO_CONTENT.statusCode)
@@ -34,10 +40,7 @@ class RestJerseyClass extends BaseJerseyClass{
         RequestingType("Get", "privilege", OK.statusCode)
         RequestingType("Post", "group", groupDetails, CREATED.statusCode)
 
-
-
-
-
     }
+
 
 }
