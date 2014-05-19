@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.MappingJsonFactory
 import net.sf.json.JSON
 import net.sf.json.JSONArray
 import net.sf.json.JSONObject
+import org.bson.types.ObjectId
 import org.junit.Test
 
 import static com.sun.jersey.api.client.ClientResponse.Status.*
@@ -23,21 +24,34 @@ class RestJerseyClass extends BaseJerseyClass{
         def adminUserDetails = ["username": "sysadmin@productworks.com", "password": "Password"]
         def reLoginUserDetails = ["username": "sysadmin@productworks.com", "password": "NewPassword"]
         def newAdminUserDetails= ["username": "sysadmin@productworks.com", "password": "Password", 'newPassword': 'NewPassword']
-        def groupDetails = [description: TestHelper.randomGroupName(), name: TestHelper.randomGroupName(),privileges: []]
+        String groupName = MongoDbHelper.randomGroupName()
+        def groupDetails = [description: groupName, name: groupName ,privileges: []]
 
 
-        groupDetails.privileges+= MongoDbHelper.getPrivilegeDetails()
+
+//        groupDetails.privileges = MongoDbHelper.getPrivilegeDetails("AllMenus")
+//        groupDetails.privileges = MongoDbHelper.getPrivilegeDetails("Dev")
 //        groupDetails.privileges+= ["5374681d7c260751b848815f","537468848d0c6c4c4b9dc654"]
 
-        //setInitialSet()
-        //RequestingType("Post", "login", new JSONObject(adminUserDetails), OK.statusCode)
-       // RequestingType("Post","resetPassword", new JSONObject(newAdminUserDetails), NO_CONTENT.statusCode)
+
+        setInitialSet()
+        groupDetails.privileges = MongoDbHelper.getPrivilegeDetails()
+        println new JSONObject(groupDetails).toString()
+        RequestingType("Post", "login", new JSONObject(adminUserDetails), OK.statusCode)
+        RequestingType("Post","resetPassword", new JSONObject(newAdminUserDetails), NO_CONTENT.statusCode)
         RequestingType("Post", "login", new JSONObject(reLoginUserDetails), OK.statusCode)
         response = RequestingType("Get", "group",null, OK.statusCode)
-        /*Object abc = getJsonObject(response)
-        println abc.privileges.name*/
         RequestingType("Get", "privilege", null, OK.statusCode)
-        RequestingType("Post", "group", new JSONObject(groupDetails), CREATED.statusCode)
+
+        // Create a group
+        RequestingType("Post", "group", new JSONObject(groupDetails), OK.statusCode)
+
+        // Create a user with the group
+        ObjectId groupId = MongoDbHelper.getGroupId(groupName)
+        def userDetails = ["username": "privilegename@products.com", "fulName": "privilegeName", "groups": []]
+        userDetails.groups = groupId.toString()
+        println new JSONObject(userDetails).toString()
+        RequestingType("Post", "user", new JSONObject(userDetails), OK.statusCode)
 
     }
 

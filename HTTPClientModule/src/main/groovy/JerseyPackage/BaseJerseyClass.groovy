@@ -19,7 +19,7 @@ import javax.ws.rs.core.MediaType
 class BaseJerseyClass {
 
     Client client = Client.create()
-    def resource = client.resource("http://localhost:9999/service/")
+    def resource = client.resource("http://localhost:8350/service/")
     def response
     def jSessionId = "JSESSIONID=dfdsffsffdfdfsd"
 
