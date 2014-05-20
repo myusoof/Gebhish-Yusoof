@@ -50,10 +50,11 @@ class MongoDbHelper {
         }
         builder
     }
-    static List<ObjectId> getGroupId(String groupName){
+    static List<String> getGroupId(String groupName){
         List<ObjectId> listGroupId = new ArrayList<>()
-        ObjectId groupId = db.getCollection("groups").findOne(new BasicDBObject("name": groupName ), new BasicDBObject("name": 1)).get("_id")
+        String groupId = db.getCollection("groups").findOne(new BasicDBObject("name": groupName ), new BasicDBObject("name": 1)).get("_id").toString()
         listGroupId.add(groupId)
+        listGroupId
     }
 }
 

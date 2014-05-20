@@ -21,7 +21,7 @@ class BaseJerseyClass {
     Client client = Client.create()
     def resource = client.resource("http://localhost:8350/service/")
     def response
-    def jSessionId = "JSESSIONID=dfdsffsffdfdfsd"
+    def jSessionId
 
     enum RequestOfType {
         POST,
@@ -49,17 +49,20 @@ class BaseJerseyClass {
         switch(type){
            case "Post":
                response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).post(ClientResponse.class, jsonObject.toString())
-               jSessionId = getSessionId(response.cookies.toString())
-                break
+               jSessionId = jSessionId? jSessionId : getSessionId(response.cookies.toString())
+               println jSessionId
+               assert response.status == statusCode
+               break
             case "Get":
                 jSessionId = getSessionId(response.cookies.toString())
+                assert response.status == statusCode
                 break
             case "Put":
                 response = resource.path(path).header('Cookie', jSessionId).type(MediaType.APPLICATION_JSON).put(ClientResponse.class, jsonObject.toString())
                 jSessionId = getSessionId(response.cookies.toString())
+                assert response.status == statusCode
                 break
         }
-        assert response.status  == statusCode
         return response
     }
 
