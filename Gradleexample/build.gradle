@@ -1,3 +1,7 @@
+import java.util.concurrent.Callable
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+
 apply plugin : 'groovy'
 apply plugin : 'application'
 apply plugin : 'idea'
@@ -42,4 +46,23 @@ task useExtraProperty <<{
 
 useExtraProperty << {
     println "this is the additional one"
+}
+
+run {
+    println "print this line"
+}
+
+task dropWizardStart << {
+    ExecutorService es = Executors.newSingleThreadExecutor()
+    es.submit({ run.execute(); } as Callable)
+    es.shutdown()
+    while (true) {
+        try {
+            new URL("http://localhost:9999/ping").text
+            break;
+        }
+        catch (IOException e) {
+            sleep(100);
+        }
+    }
 }
