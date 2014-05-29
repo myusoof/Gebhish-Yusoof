@@ -35,8 +35,8 @@ class RestJerseyClass extends BaseJerseyClass{
 //        groupDetails.privileges+= ["5374681d7c260751b848815f","537468848d0c6c4c4b9dc654"]
 
 
-        setInitialSet()
         groupDetails.privileges = MongoDbHelper.getPrivilegeDetails()
+        setInitialSet()
         println new JSONObject(groupDetails).toString()
         loginAndResetPassword("sysadmin@productworks.com", "Password", "NewPassword")
         response = RequestingType("Get", "group",null, OK.statusCode)

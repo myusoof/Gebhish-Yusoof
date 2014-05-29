@@ -1,6 +1,7 @@
 apply plugin : 'java'
 apply plugin : 'groovy'
 apply plugin : 'idea'
+apply plugin: 'war'
 
 dependencies{
     compile groovy, testng, jackson, jersey, jerseyMultipart, restClient
@@ -8,4 +9,8 @@ dependencies{
     compile 'org.jongo:jongo:1.0'
     compile 'org.mongodb:mongo-java-driver:2.9.3'
     compile 'org.mongeez:mongeez:0.9.4'
+    compile "org.apache.tomcat.embed:tomcat-embed-core:7.0.16"
+    compile "org.apache.tomcat:tomcat-catalina:7.0.16"
+    compile "org.apache.tomcat.embed:tomcat-embed-jasper:7.0.16"
 }
+
