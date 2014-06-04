@@ -6,7 +6,30 @@ task testTaskOtherFile << {
     println "test the task 2"
 }
 
-task countOtherFile (dependsOn : testTaskOtherFile) << {
+task taskFromNewFile <<{
+    println "Task from new file"
+}
+
+
+task compile1 << {
+    println "compiling one"
+}
+task building1 (dependsOn : compile1) << {
+    println "building one"
+}
+
+task publish1 (dependsOn: [compile1, building1]) << {
+    println "publishing one"
+}
+
+task copyTask(type : Copy){
+    from 'src'
+    into 'dest'
+}
+
+task testProperties111 << {
+    println key1
+}task countOtherFile (dependsOn : testTaskOtherFile) << {
     4.times { println "$it" }
 }
 

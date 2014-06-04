@@ -63,6 +63,7 @@ class RestJerseyClass extends BaseJerseyClass{
         def reLoginUserDetails = ["username": username, "password": newPassword]
 
         RequestingType("Post", "login", new JSONObject(adminUserDetails), OK.statusCode)
+        RequestingType("Post", "persistAppState", new JSONObject(adminUserDetails), OK.statusCode)
         RequestingType("Post","resetPassword", new JSONObject(newAdminUserDetails), NO_CONTENT.statusCode)
         RequestingType("Post", "login", new JSONObject(reLoginUserDetails), OK.statusCode)
     }

@@ -45,6 +45,16 @@ task cucumberReport(type:JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 
+task project1111 {
+//    println rootProject.projectDir
+    System.setProperty("webdriver.chrome.driver", "${project(":CucumberModuleExample").projectDir}/chromedriver")
+    //System.setProperty("", "${project(":CucumberModuleExample").projectDir}/chromedriver")
+}
+
+test.doFirst{
+    System.setProperty("webdriver.chrome.driver", "${project(":CucumberModuleExample").projectDir}/chromedriver")
+}
+
 test.finalizedBy(cucumberReport)
 
 

@@ -22,6 +22,24 @@ ext{
     jerseyMultipart = "com.sun.jersey.contribs:jersey-multipart:${jerseyVersion}"
     totalLazy = "com.googlecode.totallylazy:totallylazy:1077"
     masterthought=  "net.masterthought:cucumber-reporting:0.0.23"
+
     restClient = [group: 'org.codehaus.groovy.modules.http-builder', name: 'http-builder', version: '0.6']
+
+    springVersion = "3.2.4.RELEASE"
+    spring = [
+            aop: ["org.springframework:spring-aop:${springVersion}", "cglib:cglib:2.2.2"],
+            context: "org.springframework:spring-context:${springVersion}",
+            test: "org.springframework:spring-test:${springVersion}",
+            web: "org.springframework:spring-web:${springVersion}",
+            webmvc: "org.springframework:spring-webmvc:${springVersion}",
+    ]
+
+    springJersey = "com.sun.jersey.contribs:jersey-spring:${jerseyVersion}"
+
+    javax = [
+            servlet : "org.apache.tomcat:tomcat-servlet-api:7.0.16",
+            jsp: "org.apache.tomcat:tomcat-jsp-api:7.0.16"
+    ]
+
     embeddedTomcat = ["org.apache.tomcat.embed:tomcat-embed-core:7.0.16", "org.apache.tomcat:tomcat-catalina:7.0.16", "org.apache.tomcat.embed:tomcat-embed-jasper:7.0.16"]
 }

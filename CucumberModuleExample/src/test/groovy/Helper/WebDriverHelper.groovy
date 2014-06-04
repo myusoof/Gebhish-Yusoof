@@ -1,6 +1,7 @@
 package Helper
 
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxProfile
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
@@ -26,8 +27,9 @@ class WebDriverHelper {
     public static WebDriver getInstance(){
 
                 if(webdriver == null){
+                    webdriver = new ChromeDriver()
                     //FirefoxProfile profile = new FirefoxProfile(profileDir);
-                    webdriver = new HtmlUnitDriver()
+                    //webdriver = new HtmlUnitDriver()
                     //webdriver = new FirefoxDriver()
                 }
                webdriver

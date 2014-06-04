@@ -7,6 +7,11 @@ apply plugin : 'application'
 apply plugin : 'idea'
 
 apply from: 'build_1.gradle'
+apply from : 'build_1.gradle'
+defaultTasks 'myOwnTask'
+
+clean.delete = ["logs"]
+
 dependencies{
     compile groovy
 }
@@ -22,13 +27,13 @@ class GreetingTask1 extends DefaultTask {
     }
 }
 
-task helloDoLast{
+task helloDoLast << {
     doLast {
         println "do last at the test"
     }
 }
 
-4.times{ counter->
+4.times { counter->
     task "task${counter}" <<{
         println "I am on task ${counter}"
     }
@@ -67,3 +72,51 @@ task dropWizardStart << {
         }
     }
 }
+
+
+task helloYusoofDo <<{
+    doLast{
+        println "testing Yusoof"
+    }
+}
+
+
+task count << {
+    4.times {
+        println it
+    }
+}
+
+task count1(dependsOn : count) <<{
+    6.times {
+        println it
+    }
+}
+
+task mytask {
+    ext.property = "yusoof testing 123"
+}
+
+task myOwnTask << {
+    def localhost = System.getProperty("server") ?: "localhost"
+    println localhost
+}
+
+
+test.doFirst{
+    System.setProperty("")
+}
+task testing112 << {
+    println gradle.taskGraph
+}
+     println mytask.property
+    rootProject.projectDir.listFiles().each{
+        println it.name
+    }
+
+task helloSkipped <<{
+    println "testing the skipped project"
+}
+
+helloSkipped.onlyIf{!project.hasProperty("skipHello")}
+

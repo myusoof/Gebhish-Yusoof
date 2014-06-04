@@ -1,0 +1,12 @@
+apply plugin : 'java'
+apply plugin : 'groovy'
+apply plugin : 'idea'
+
+
+repositories{
+    mavenCentral()
+}
+
+dependencies {
+    compile spring.aop, spring.context, spring.test, spring.web, spring.webmvc, springJersey
+}

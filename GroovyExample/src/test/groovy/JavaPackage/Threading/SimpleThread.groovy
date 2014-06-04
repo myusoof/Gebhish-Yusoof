@@ -16,7 +16,7 @@ class SimpleThread extends Thread{
 
     public void run(){
         for(int i = 0; i <10; i++){
-            println super.getName() + " " + i  + abc
+            println super.getName() + " " + i  + abc + " " +super.getPriority()
         }
     }
 }
