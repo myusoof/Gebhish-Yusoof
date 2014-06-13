@@ -6,7 +6,6 @@ apply plugin : 'groovy'
 apply plugin : 'application'
 apply plugin : 'idea'
 
-apply from: 'build_1.gradle'
 apply from : 'build_1.gradle'
 defaultTasks 'myOwnTask'
 
