@@ -1,0 +1,28 @@
+apply plugin : 'java'
+apply plugin : 'groovy'
+apply plugin : 'idea'
+
+
+repositories{
+    mavenCentral()
+}
+
+dependencies {
+    ext {
+        cucumberVersion = "1.1.5"
+        jerseyVersion = "2.5.1"
+    }
+
+    compile groovy, testng
+    testCompile seleniumFirefox,seleniumSupport,seleniumChrome, seleniumhtmlunit, totalLazy, jersey, jerseyMultipart
+    compile masterthought
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.1.4'
+    compile 'javax.ws.rs:jsr311-api:0.11'
+    testCompile "junit:junit:4.11"
+    testCompile "info.cukes:cucumber-junit:${cucumberVersion}"
+    testCompile "info.cukes:cucumber-groovy:${cucumberVersion}"
+    compile "org.glassfish.jersey.core:jersey-client:${jerseyVersion}"
+    compile "org.glassfish.jersey.media:jersey-media-multipart:${jerseyVersion}"
+    //compile 'org.sikuli:sikuli-webdriver:1.0.1'
+}
+

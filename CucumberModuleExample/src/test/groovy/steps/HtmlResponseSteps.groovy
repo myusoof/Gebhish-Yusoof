@@ -19,8 +19,8 @@ this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
 @Field
-HtmlUnitDriver driver = WebDriverHelper.getInstance()
+WebDriver driver = WebDriverHelper.getInstance()
 
 Given(~'I am on the htmlPage'){->
-    println driver.webClient.getPage("http://the-internet.herokuapp.com/status_codes/200").cook
+//    println driver.webClient.getPage("http://the-internet.herokuapp.com/status_codes/200").cook
 }

@@ -1,3 +1,4 @@
+
 task testTaskOtherFile << {
    println "test task other file"
     doLast{
@@ -28,8 +29,9 @@ task copyTask(type : Copy){
 }
 
 task testProperties111 << {
-    println key1
-}task countOtherFile (dependsOn : testTaskOtherFile) << {
+//    println key1
+}
+task countOtherFile (dependsOn : testTaskOtherFile) << {
     4.times { println "$it" }
 }
 
@@ -52,6 +54,7 @@ task extraProperty << {
 task testExtraProperty << {
    println extraProperty.myProperty
 }
+/*
 
 //---------------------------------------------------------------------------------//
 task compile1 << {
@@ -69,3 +72,4 @@ task test1(dependsOn: [compile1, compileTest1]) << {
 task dist1(dependsOn: [compile1, test1]) << {
     println 'building the distribution'
 }
+*/

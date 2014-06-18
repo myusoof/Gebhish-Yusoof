@@ -27,7 +27,7 @@ class WebDriverHelper {
     public static WebDriver getInstance(){
 
                 if(webdriver == null){
-                    webdriver = new ChromeDriver()
+                    webdriver = new FirefoxDriver()
                     //FirefoxProfile profile = new FirefoxProfile(profileDir);
                     //webdriver = new HtmlUnitDriver()
                     //webdriver = new FirefoxDriver()

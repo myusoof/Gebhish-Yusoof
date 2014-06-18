@@ -9,11 +9,16 @@ import org.openqa.selenium.Alert
 import org.openqa.selenium.By
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.Keys
+import org.openqa.selenium.Point
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.interactions.Action
 import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.interactions.Mouse
+import org.openqa.selenium.internal.Locatable
+import org.openqa.selenium.security.Credentials
+import org.openqa.selenium.security.UserAndPassword
 import org.openqa.selenium.support.ui.ExpectedCondition
 import org.openqa.selenium.support.ui.Select
 import org.openqa.selenium.support.ui.WebDriverWait
@@ -48,11 +53,10 @@ Then(~'I should see the (.*) page'){pageUrl->
     assert driver.getCurrentUrl().contains(pageUrl)
 }
 
-Then(~'I enter the username and password in the authentication page'){->
-    driver.switchTo().alert()
-    println driver.getTitle()
-    println driver.getWindowHandles().size()
+Then(~'I validate whether user able to see the authenticated page'){->
+    assert driver.findElement(By.xpath("//div/p")).getText() == "Congratulations! You must have the proper credentials."
 }
+
 
 Then(~'I verify the checkboxes in the page'){->
     def checkbox = driver.findElement(By.cssSelector("form input:nth-of-type(1)"))
@@ -62,18 +66,38 @@ Then(~'I verify the checkboxes in the page'){->
     println driver.findElement(By.cssSelector("form input:nth-of-type(2)")).isSelected()
 }
 
+Given(~'I navigate to the internet application with (.*) and password (.*)'){ username, password ->
+    driver.navigate().to(driver.currentUrl.replace("http://","http://${username}:${password}@"))
+}
+
 Then(~'^I drag A and drop into B box$'){->
     WebElement source = driver.findElement(By.cssSelector(".column#column-a"))
     WebElement target = driver.findElement(By.cssSelector(".column#column-b"))
-    println target.getLocation()
 
-    Actions builder = new Actions(driver)
-    builder.clickAndHold(source).build().perform();
+    Locatable locate = (Locatable)target
+
+    Actions actions = new Actions(driver)
+    actions.clickAndHold(source).build().perform()
+    actions.moveToElement(source).build().perform();
+    Thread.sleep(10000);
+   // actions.clickAndHold(source).build().perform ();
+    //Thread.sleep(10000);
+    int count  =100;
+    for (int i=0; i<count; count++) {
+        actions.moveByOffset(locate.coordinates.onPage().x,locate.coordinates.onPage().y).build().perform();
+        Thread.sleep(2);  // to have time to repaint the map
+    }
+    actions.release().perform();
+
+//    actions.clickAndHold(source).moveToElement(target).release(source).build().perform()
+//    actions.dragAndDrop(source, target).build().perform()
+//    actions.moveToElement(target).click(target).build().perform()
+    /*actions.clickAndHold(source).build().perform();
     int xoffset, yoffset = 0
     for(int i=0;i<200;i++) {
-        builder.moveToElement(source,xoffset*i,yoffset).build().perform();//builder.moveToElement(destination,xoffset,yoffset*i).build().perform();
+        actions.moveToElement(source,xoffset*i,yoffset).build().perform();//builder.moveToElement(destination,xoffset,yoffset*i).build().perform();
     }
-    builder.release(target).build().perform();
+    actions.release(target).build().perform();*/
 }
 
 Then(~'I should be able to select item in the dropdown'){->
@@ -163,12 +187,14 @@ private waitForElement(String cssPath){
 Then(~'I should be able to validate javascript'){->
     JavascriptExecutor js = (JavascriptExecutor)driver
     js.executeScript("jsAlert();")
-    driver.switchTo().alert().accept()
+    Alert alert = driver.switchTo().alert()
+    assert alert.getText() == "I am a JS Alert"
+    alert.accept()
     driver.switchTo().defaultContent()
     assert driver.findElement(By.cssSelector("#result")).text == "You successfuly clicked an alert"
 
     js.executeScript("jsConfirm();")
-    Alert alert = driver.switchTo().alert()
+    alert = driver.switchTo().alert()
     assert alert.getText() == "I am a JS Confirm"
     alert.accept()
     driver.switchTo().defaultContent()

@@ -8,5 +8,5 @@ repositories{
 }
 
 dependencies {
-    compile spring.aop, spring.context, spring.test, spring.web, spring.webmvc, springJersey
+    compile groovy, spring.aop, spring.context, spring.test, spring.web, spring.webmvc, springJersey
 }
