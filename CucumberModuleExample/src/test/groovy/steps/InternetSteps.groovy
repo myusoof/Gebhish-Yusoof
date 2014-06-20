@@ -16,6 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.interactions.Action
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.interactions.Mouse
+import org.openqa.selenium.interactions.internal.Coordinates
 import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.security.Credentials
 import org.openqa.selenium.security.UserAndPassword
@@ -47,6 +48,7 @@ Given(~'^I navigate to the internet application$'){->
 
 Given(~'I click on (.*) link'){ text->
     driver.findElement(By.xpath("//a[contains(., '${text}')]")).click()
+
 }
 
 Then(~'I should see the (.*) page'){pageUrl->
@@ -71,33 +73,24 @@ Given(~'I navigate to the internet application with (.*) and password (.*)'){ us
 }
 
 Then(~'^I drag A and drop into B box$'){->
-    WebElement source = driver.findElement(By.cssSelector(".column#column-a"))
-    WebElement target = driver.findElement(By.cssSelector(".column#column-b"))
-
-    Locatable locate = (Locatable)target
+    WebElement source = driver.findElement(By.cssSelector(".column#column-a > header"))
+    WebElement target = driver.findElement(By.cssSelector(".column#column-b > header"))
+    Locatable locatableSource = (Locatable)source
+    Locatable locatableTarget = (Locatable)target
+    println locatableSource.coordinates.onPage().x + ", "+locatableSource.coordinates.onPage().y
+    println locatableTarget.coordinates.onPage().x + ", "+locatableTarget.coordinates.onPage().y
 
     Actions actions = new Actions(driver)
+    Actions actions1 = new Actions(driver)
+    Actions actions2 = new Actions(driver)
     actions.clickAndHold(source).build().perform()
-    actions.moveToElement(source).build().perform();
-    Thread.sleep(10000);
-   // actions.clickAndHold(source).build().perform ();
-    //Thread.sleep(10000);
-    int count  =100;
-    for (int i=0; i<count; count++) {
-        actions.moveByOffset(locate.coordinates.onPage().x,locate.coordinates.onPage().y).build().perform();
-        Thread.sleep(2);  // to have time to repaint the map
+    Thread.sleep(4000)
+    for(int i = 0; i <= 20; i++){
+        actions1.moveByOffset(locatableTarget.coordinates.onPage().x, locatableTarget.coordinates.onPage().y)
+        .build().perform()
     }
-    actions.release().perform();
-
-//    actions.clickAndHold(source).moveToElement(target).release(source).build().perform()
-//    actions.dragAndDrop(source, target).build().perform()
-//    actions.moveToElement(target).click(target).build().perform()
-    /*actions.clickAndHold(source).build().perform();
-    int xoffset, yoffset = 0
-    for(int i=0;i<200;i++) {
-        actions.moveToElement(source,xoffset*i,yoffset).build().perform();//builder.moveToElement(destination,xoffset,yoffset*i).build().perform();
-    }
-    actions.release(target).build().perform();*/
+    Thread.sleep(4000)
+    actions2.release(target).build().perform()
 }
 
 Then(~'I should be able to select item in the dropdown'){->
