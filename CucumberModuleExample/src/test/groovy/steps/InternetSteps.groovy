@@ -15,16 +15,20 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.interactions.Action
 import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.interactions.Keyboard
 import org.openqa.selenium.interactions.Mouse
 import org.openqa.selenium.interactions.internal.Coordinates
 import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.security.Credentials
 import org.openqa.selenium.security.UserAndPassword
+import org.openqa.selenium.support.events.internal.EventFiringKeyboard
+import org.openqa.selenium.support.events.internal.EventFiringMouse
 import org.openqa.selenium.support.ui.ExpectedCondition
 import org.openqa.selenium.support.ui.Select
 import org.openqa.selenium.support.ui.WebDriverWait
 
 import java.awt.Robot
+import java.awt.event.InputEvent
 import java.awt.event.KeyEvent
 
 /**
@@ -73,24 +77,36 @@ Given(~'I navigate to the internet application with (.*) and password (.*)'){ us
 }
 
 Then(~'^I drag A and drop into B box$'){->
+    Actions actions = new Actions(driver)
+    driver.manage().window().maximize();
     WebElement source = driver.findElement(By.cssSelector(".column#column-a > header"))
     WebElement target = driver.findElement(By.cssSelector(".column#column-b > header"))
-    Locatable locatableSource = (Locatable)source
-    Locatable locatableTarget = (Locatable)target
-    println locatableSource.coordinates.onPage().x + ", "+locatableSource.coordinates.onPage().y
-    println locatableTarget.coordinates.onPage().x + ", "+locatableTarget.coordinates.onPage().y
-
-    Actions actions = new Actions(driver)
-    Actions actions1 = new Actions(driver)
-    Actions actions2 = new Actions(driver)
     actions.clickAndHold(source).build().perform()
     Thread.sleep(4000)
-    for(int i = 0; i <= 20; i++){
-        actions1.moveByOffset(locatableTarget.coordinates.onPage().x, locatableTarget.coordinates.onPage().y)
-        .build().perform()
-    }
+
+    moveMouseToElementPosition(target)
     Thread.sleep(4000)
-    actions2.release(target).build().perform()
+    actions.release().build().perform()
+}
+
+def moveMouseToElementPosition(WebElement element){
+    Locatable locatable = (Locatable)element
+    def getXPositionOfLocatable = locatable.coordinates.onPage().x
+    def getYPositionOfLocatable = locatable.coordinates.onPage().y
+
+    println "get element postion"
+    println "${getXPositionOfLocatable},${getYPositionOfLocatable}"
+    def getLeftPositionOfWindow = driver.manage().window().getPosition().x
+    def getTopPositionOfWindow = driver.manage().window().getPosition().y
+    def xPosition = getLeftPositionOfWindow+getXPositionOfLocatable
+    def yPosition = getYPositionOfLocatable+getTopPositionOfWindow
+    Robot robot = new Robot()
+
+    println "${xPosition}, ${yPosition}"
+    robot.mouseMove(xPosition,yPosition+80 )
+    Thread.sleep(2000)
+    robot.mousePress(InputEvent.BUTTON1_MASK)
+    robot.mouseRelease(InputEvent.BUTTON1_MASK)
 }
 
 Then(~'I should be able to select item in the dropdown'){->
@@ -221,3 +237,22 @@ Then(~'I should see the notification message'){->
 After("@end"){
     driver.close()
 }
+
+
+/*
+
+    Keyboard keyboard = new EventFiringKeyboard(driver,null)
+    Mouse mouse = new EventFiringMouse(driver, null)
+    Actions newTry = new Actions(keyboard, mouse)
+    newTry.moveToElement(target)
+    Point targetCoordinate = source.getLocation()
+    Locatable locatableSource = (Locatable)source
+    Locatable locatableTarget = (Locatable)target
+    println ".........................onPage"
+    println "Source position : " +locatableSource.coordinates.onPage().x + ", "+locatableSource.coordinates.onPage().y
+    println "Target position : " +locatableTarget.coordinates.onPage().x + ", "+locatableTarget.coordinates.onPage().y
+
+    println ".........................onScreen"
+   // println "Source position : " +locatableSource.getCoordinates()+ ", "+locatableSource.coordinates.onScreen().y
+    //println "Target position : " +locatableTarget.coordinates.onScreen().x + ", "+locatableTarget.coordinates.onScreen().y
+*/
