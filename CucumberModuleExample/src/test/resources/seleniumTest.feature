@@ -11,7 +11,6 @@ Feature: I want to test all the fields using selenium
       |link       | page  |
       |A/B Testing| abtest|
 
-
     Scenario: I am login with username and password
       Given I navigate to the internet application with admin and password admin
       Given I click on Basic Auth link
@@ -27,7 +26,6 @@ Feature: I want to test all the fields using selenium
       Then I should see the drag_and_drop page
       Then I drag A and drop into B box
 
-
     Scenario: I verify I am able to select the option from the dropdown
       Given I click on Dropdown link
       Then I should see the dropdown page
@@ -41,17 +39,16 @@ Feature: I want to test all the fields using selenium
         |/dynamic_loading/2 |
 
 
-#    Scenario: I verify I am able to download the file
-#      Given I click on File Download link
-#      Then I should see the download page
-#      Then I should be able to download a file
+  Scenario: I verify I am able to download the file
+    Given I click on File Download link
+    Then I should see the download page
+    Then I should be able to download a file avatar
+    Then I should be able to download a file hello-world
 
   Scenario: I verify forgot password
     Given I click on Forgot Password link
     Then I should see the forgot_password page
     Then I should be able reset the password
-
-
 
   Scenario: I verify form authentication
     Given I click on Form Authentication link

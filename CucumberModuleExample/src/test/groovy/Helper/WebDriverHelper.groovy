@@ -40,4 +40,6 @@ class WebDriverHelper {
        webdriver = null
     }
 
+    public static final String baseUrl = "http://the-internet.herokuapp.com/"
+
 }

@@ -6,6 +6,7 @@ ext{
     seleniumSupport = "org.seleniumhq.selenium:selenium-support:${seleniumVersion}"
     seleniumChrome = "org.seleniumhq.selenium:selenium-chrome-driver:2.31.0"
     seleniumhtmlunit = "org.seleniumhq.selenium:selenium-htmlunit-driver:${seleniumVersion}"
+    log4j = 'log4j:log4j:1.2.17'
 
     testng = "org.testng:testng:6.8.1"
     jacksonVersion="2.2.2"

@@ -1,5 +1,6 @@
 package steps
 
+import Helper.UrlStatusChecker
 import Helper.WebDriverHelper
 import cucumber.api.DataTable
 import cucumber.api.groovy.EN
@@ -47,7 +48,7 @@ this.metaClass.mixin(EN)
 
 
 Given(~'^I navigate to the internet application$'){->
-    driver.get("http://the-internet.herokuapp.com/")
+    driver.get(WebDriverHelper.baseUrl)
 }
 
 Given(~'I click on (.*) link'){ text->
@@ -104,6 +105,7 @@ def moveMouseToElementPosition(WebElement element){
 
     println "${xPosition}, ${yPosition}"
     robot.mouseMove(xPosition,yPosition+80 )
+
     Thread.sleep(2000)
     robot.mousePress(InputEvent.BUTTON1_MASK)
     robot.mouseRelease(InputEvent.BUTTON1_MASK)
@@ -128,11 +130,15 @@ Then(~'I click on element containing href'){DataTable table ->
     }
 }
 
-Then(~'I should be able to download a file'){->
-    driver.findElement(By.xpath("//a[contains(.,'avatar.jpg')]")).click()
-    Robot robot = new Robot()
-    robot.keyPress(KeyEvent.VK_ENTER)
-    robot.keyRelease(KeyEvent.VK_ENTER);
+Then(~'I should be able to download a file (.*)'){ elementName ->
+    String elementHref = elementToVerify(elementName).getAttribute("href")
+    UrlStatusChecker urlStatusChecker = new UrlStatusChecker(driver)
+    urlStatusChecker.setURIToCheck(elementHref)
+    assert urlStatusChecker.getHttpStatusCode() == HttpURLConnection.HTTP_OK
+}
+
+WebElement elementToVerify(String elementName){
+    driver.findElement(By.xpath("//a[contains(.,'${elementName}')]"))
 }
 
 Then(~'I should be able reset the password'){->
@@ -177,14 +183,14 @@ Then(~'I should be able to work with jquery'){->
 
     Actions actions = new Actions(driver)
     actions.moveToElement(driver.findElement(By.cssSelector("#ui-id-2"))).perform()
-    waitForElement("#ui-id-5")
+//    waitForElement("#ui-id-5")
     driver.findElement(By.cssSelector("#ui-id-4")).click()
     driver.findElement(By.cssSelector("#ui-id-6")).click()
     actions.moveToElement(driver.findElement(By.cssSelector("#ui-id-4")))
-    waitForElement("#ui-id-6")
+//    waitForElement("#ui-id-6")
 
 }
-
+/*
 private waitForElement(String cssPath){
     (new WebDriverWait(driver, 10).until(new ExpectedCondition<Boolean>() {
         Boolean apply(WebDriver input) {
@@ -192,7 +198,7 @@ private waitForElement(String cssPath){
             //To change body of implemented methods use File | Settings | File Templates.
         }
     }))
-}
+}*/
 Then(~'I should be able to validate javascript'){->
     JavascriptExecutor js = (JavascriptExecutor)driver
     js.executeScript("jsAlert();")
@@ -237,22 +243,3 @@ Then(~'I should see the notification message'){->
 After("@end"){
     driver.close()
 }
-
-
-/*
-
-    Keyboard keyboard = new EventFiringKeyboard(driver,null)
-    Mouse mouse = new EventFiringMouse(driver, null)
-    Actions newTry = new Actions(keyboard, mouse)
-    newTry.moveToElement(target)
-    Point targetCoordinate = source.getLocation()
-    Locatable locatableSource = (Locatable)source
-    Locatable locatableTarget = (Locatable)target
-    println ".........................onPage"
-    println "Source position : " +locatableSource.coordinates.onPage().x + ", "+locatableSource.coordinates.onPage().y
-    println "Target position : " +locatableTarget.coordinates.onPage().x + ", "+locatableTarget.coordinates.onPage().y
-
-    println ".........................onScreen"
-   // println "Source position : " +locatableSource.getCoordinates()+ ", "+locatableSource.coordinates.onScreen().y
-    //println "Target position : " +locatableTarget.coordinates.onScreen().x + ", "+locatableTarget.coordinates.onScreen().y
-*/
