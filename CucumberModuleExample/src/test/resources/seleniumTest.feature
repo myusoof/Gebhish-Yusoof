@@ -45,6 +45,11 @@ Feature: I want to test all the fields using selenium
     Then I should be able to download a file avatar
     Then I should be able to download a file hello-world
 
+  Scenario: I verify I am able to upload the file
+    Given I click on File Upload link
+    Then I should see the upload page
+    Then I should be able to upload the file
+
   Scenario: I verify forgot password
     Given I click on Forgot Password link
     Then I should see the forgot_password page

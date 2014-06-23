@@ -1,5 +1,6 @@
 package steps
 
+import Helper.FileDownloader
 import Helper.UrlStatusChecker
 import Helper.WebDriverHelper
 import cucumber.api.DataTable
@@ -29,6 +30,9 @@ import org.openqa.selenium.support.ui.Select
 import org.openqa.selenium.support.ui.WebDriverWait
 
 import java.awt.Robot
+import java.awt.Toolkit
+import java.awt.datatransfer.Clipboard
+import java.awt.datatransfer.StringSelection
 import java.awt.event.InputEvent
 import java.awt.event.KeyEvent
 
@@ -130,11 +134,44 @@ Then(~'I click on element containing href'){DataTable table ->
     }
 }
 
+Then(~'I should be able to upload the file'){->
+    Robot robot = new Robot()
+
+    WebElement upload = driver.findElement(By.xpath("//*[@id='file-upload']"))
+
+    upload.click()
+
+    StringSelection ss = new StringSelection("\\home\\yusoof\\Desktop\\images.jpg")
+    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null)
+    Thread.sleep(5000)
+
+    robot.keyPress(KeyEvent.VK_ENTER)
+    robot.keyRelease(KeyEvent.VK_ENTER)
+
+    robot.keyPress(KeyEvent.VK_CONTROL)
+    robot.keyPress(KeyEvent.VK_V)
+    robot.keyRelease(KeyEvent.VK_V)
+    robot.keyRelease(KeyEvent.VK_CONTROL)
+
+    robot.keyPress(KeyEvent.VK_ENTER)
+    robot.keyRelease(KeyEvent.VK_ENTER)
+
+}
 Then(~'I should be able to download a file (.*)'){ elementName ->
-    String elementHref = elementToVerify(elementName).getAttribute("href")
+    WebElement element = elementToVerify(elementName)
+    String elementHref = element.getAttribute("href")
     UrlStatusChecker urlStatusChecker = new UrlStatusChecker(driver)
     urlStatusChecker.setURIToCheck(elementHref)
     assert urlStatusChecker.getHttpStatusCode() == HttpURLConnection.HTTP_OK
+    FileDownloader fileDownloader = new FileDownloader(driver)
+    fileDownloader.localDownloadPath("/home/yusoof/")
+    if(elementHref.endsWith("jpg")){
+        println fileDownloader.downloadImage(element)
+    } else{
+        println fileDownloader.downloadFile(element)
+    }
+
+
 }
 
 WebElement elementToVerify(String elementName){

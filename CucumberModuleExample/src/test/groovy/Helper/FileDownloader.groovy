@@ -53,7 +53,7 @@ class FileDownloader {
     }
 
     public String downloadImage(WebElement element) throws Exception {
-        return downloader(element, "src");
+        return downloader(element, "href");
     }
 
     public int getHTTPStatusOfLastDownloadAttempt() {
@@ -81,11 +81,13 @@ class FileDownloader {
     private String downloader(WebElement element, String attribute){
         String fileToDownloadLocation = element.getAttribute(attribute)
 
+        def fileName = fileToDownloadLocation =~ /(.*)\/(.*)/
+
         if(fileToDownloadLocation.trim().equals(""))
             throw new NullPointerException("The element you have specified does not link to anything!");
 
-        URL fileToDownload = new URI(fileToDownloadLocation)
-        File downloadedFile = new File(this.localDownloadPath + fileToDownload.getFile().replaceFirst("/|\\\\", ""));
+        URL fileToDownload = new URL(fileToDownloadLocation)
+        File downloadedFile = new File(this.localDownloadPath + fileName[0][2]);
         if (downloadedFile.canWrite() == false) downloadedFile.setWritable(true);
 
         HttpClient client = new DefaultHttpClient()
@@ -106,6 +108,7 @@ class FileDownloader {
         response.getEntity().getContent().close();
 
         String downloadedFileAbsolutePath = downloadedFile.getAbsolutePath();
+        assert new File(downloadedFileAbsolutePath).exists()
         return downloadedFileAbsolutePath
     }
 
