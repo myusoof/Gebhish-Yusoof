@@ -190,6 +190,23 @@ Then(~'I should be able to switch the frame'){->
     driver.switchTo().defaultContent();
 }
 
+Then(~'I should be able to verify whether mouse hover'){->
+    WebElement firstHover = driver.findElement(By.xpath("//*[@id='content']/div/div[1]/img"))
+    WebElement secondHover = driver.findElement(By.xpath("//*[@id='content']/div/div[2]/img"))
+    WebElement thirdHover = driver.findElement(By.xpath("//*[@id='content']/div/div[3]/img"))
+    Actions action = new Actions(driver)
+    action.moveToElement(firstHover)
+    action.build().perform()
+    assert driver.findElement(By.xpath("//*[@id='content']/div/div[1]/div")).getText() == "name: user1\nView profile"
+    action.moveToElement(secondHover)
+    action.build().perform()
+    assert driver.findElement(By.xpath("//*[@id='content']/div/div[2]/div")).getText() == "name: user2\nView profile"
+    action.moveToElement(thirdHover)
+    action.build().perform()
+    assert driver.findElement(By.xpath("//*[@id='content']/div/div[3]/div")).getText() == "name: user3\nView profile"
+
+}
+
 Then(~'I should be able to look at google page'){->
     driver.findElement(By.cssSelector("button[onclick='getLocation()']")).click()
     Thread.sleep(5000)
@@ -199,6 +216,7 @@ Then(~'I should be able to look at google page'){->
     new Actions(driver).doubleClick(element).perform()
 }
 
+
 Then(~'I should be able to work with jquery'){->
 //    ((JavascriptExecutor) driver).executeScript("document.getElementById(\"ui-id-5\").style.visibility='visible'")
 
@@ -206,16 +224,19 @@ Then(~'I should be able to work with jquery'){->
 //    ((JavascriptExecutor) driver).executeScript("document.getElementById('ui-id-2').style.display='block';");
 //    new Select(driver.findElement(By.xpath("//*@id='ctl00_ContentPlaceHolder1_ddlOnbehalfOf']"))).selectByIndex(2);
 
-    Actions actions = new Actions(driver)
-    actions.moveToElement(driver.findElement(By.cssSelector("#ui-id-2"))).perform()
-//    waitForElement("#ui-id-5")
-    driver.findElement(By.cssSelector("#ui-id-4")).click()
-    driver.findElement(By.cssSelector("#ui-id-6")).click()
-    actions.moveToElement(driver.findElement(By.cssSelector("#ui-id-4")))
-//    waitForElement("#ui-id-6")
+    Double test = ((JavascriptExecutor) driver).executeScript("\$('#ui-id-1').parent().css('opacity')")
+    println test
+    ((JavascriptExecutor) driver).executeScript("\$('#ui-id-2').parent().trigger('click')")
 
+    Actions actions = new Actions(driver)
+    assert !driver.findElement(By.cssSelector("#ui-id-1")).isEnabled()
+
+    actions.moveToElement(driver.findElement(By.cssSelector("#ui-id-2"))).build().perform()
+//    waitForElement("#ui-id-5")
+    actions.moveToElement(driver.findElement(By.cssSelector("#ui-id-4"))).build().perform()
+    assert driver.findElement(By.cssSelector("#ui-id-6")).isDisplayed()
 }
-/*
+
 private waitForElement(String cssPath){
     (new WebDriverWait(driver, 10).until(new ExpectedCondition<Boolean>() {
         Boolean apply(WebDriver input) {
@@ -223,8 +244,9 @@ private waitForElement(String cssPath){
             //To change body of implemented methods use File | Settings | File Templates.
         }
     }))
-}*/
-Then(~'I should be able to validate javascript'){->
+}
+
+    Then(~'I should be able to validate javascript'){->
     JavascriptExecutor js = (JavascriptExecutor)driver
     js.executeScript("jsAlert();")
     Alert alert = driver.switchTo().alert()
@@ -248,15 +270,16 @@ Then(~'I should be able to validate javascript'){->
 
 }
 
+
 Then(~'I should be able to handle multiple windows'){->
     String parentWindow = driver.getWindowHandle()
     driver.findElement(By.cssSelector(".example >a")).click()
 
-    for(String window: driver.getWindowHandles()){
-        driver.switchTo().window(window)
-    }
-    driver.close()
-    driver.switchTo().window(parentWindow)
+        for(String window: driver.getWindowHandles()){
+            driver.switchTo().window(window)
+        }
+        driver.close()
+        driver.switchTo().window(parentWindow)
 }
 
 Then(~'I should see the notification message'){->

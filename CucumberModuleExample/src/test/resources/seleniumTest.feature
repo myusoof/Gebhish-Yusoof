@@ -69,6 +69,11 @@ Feature: I want to test all the fields using selenium
     Then I should see the geolocation page
     Then I should be able to look at google page
 
+  Scenario: I verify whether the hover mouse
+    Given I click on Hovers link
+    Then I should see the hovers page
+    Then I should be able to verify whether mouse hover
+
   Scenario: I verify the JQuery UI Menus
     Given I click on JQuery UI Menus link
     Then I should see the jqueryui page
