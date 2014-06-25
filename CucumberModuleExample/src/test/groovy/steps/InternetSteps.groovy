@@ -1,6 +1,7 @@
 package steps
 
 import Helper.FileDownloader
+import Helper.MailVerifier
 import Helper.UrlStatusChecker
 import Helper.WebDriverHelper
 import cucumber.api.DataTable
@@ -135,27 +136,11 @@ Then(~'I click on element containing href'){DataTable table ->
 }
 
 Then(~'I should be able to upload the file'){->
-    Robot robot = new Robot()
 
     WebElement upload = driver.findElement(By.xpath("//*[@id='file-upload']"))
-
-    upload.click()
-
-    StringSelection ss = new StringSelection("\\home\\yusoof\\Desktop\\images.jpg")
-    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null)
-    Thread.sleep(5000)
-
-    robot.keyPress(KeyEvent.VK_ENTER)
-    robot.keyRelease(KeyEvent.VK_ENTER)
-
-    robot.keyPress(KeyEvent.VK_CONTROL)
-    robot.keyPress(KeyEvent.VK_V)
-    robot.keyRelease(KeyEvent.VK_V)
-    robot.keyRelease(KeyEvent.VK_CONTROL)
-
-    robot.keyPress(KeyEvent.VK_ENTER)
-    robot.keyRelease(KeyEvent.VK_ENTER)
-
+    upload.sendKeys("/home/ee/Desktop/379742_1882113871705_1600339459_n.jpg")
+    driver.findElement(By.xpath("//*[@id='file-submit']")).click()
+    assert driver.getPageSource().contains("File Uploaded!")
 }
 Then(~'I should be able to download a file (.*)'){ elementName ->
     WebElement element = elementToVerify(elementName)
@@ -179,8 +164,11 @@ WebElement elementToVerify(String elementName){
 }
 
 Then(~'I should be able reset the password'){->
-    driver.findElement(By.cssSelector("#email")).sendKeys("password")
+    driver.findElement(By.cssSelector("#email")).sendKeys("yusooftesting@gmail.com")
     driver.findElement(By.cssSelector("#form_submit")).click()
+    MailVerifier mailVerifier = new MailVerifier("imap.gmail.com","yusooftesting@gmail.com","Yusoof@1234")
+    Thread.sleep(10000)
+    assert mailVerifier.isMailFound()
     assert driver.findElement(By.cssSelector("#content")).getText() == "Your e-mail's been sent!"
 }
 

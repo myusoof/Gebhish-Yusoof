@@ -38,7 +38,6 @@ Feature: I want to test all the fields using selenium
         |/dynamic_loading/1 |
         |/dynamic_loading/2 |
 
-
   Scenario: I verify I am able to download the file
     Given I click on File Download link
     Then I should see the download page
@@ -59,7 +58,6 @@ Feature: I want to test all the fields using selenium
     Given I click on Form Authentication link
     Then I should see the login page
     Then I should be to login in the page
-
 
   Scenario: I verify form frame
     Given I click on Frames link
