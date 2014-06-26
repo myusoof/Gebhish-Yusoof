@@ -88,6 +88,7 @@ Feature: I want to test all the fields using selenium
   Scenario: I verify the javaScript onload event error for the page
     Given I click on JavaScript onload event error link
     Then I should see the javascript_error page
+    Then I validate whether page is loaded with error
 
   Scenario: I verify the Low and Deep Dom
     Given I click on Deep DOM link
@@ -102,3 +103,14 @@ Feature: I want to test all the fields using selenium
     Given I click on Notification Messages link
     Then I should see the notification_message_rendered page
     Then I should see the notification message
+
+  Scenario: I verify the redirection page
+    Given I click on Redirect Link link
+    Then I should see the redirector page
+    Then I click on redirected page
+
+  Scenario: I verify the status code
+    Given I click on Status Code link
+    Then I should see the status_codes page
+    Then I verify the status code
+

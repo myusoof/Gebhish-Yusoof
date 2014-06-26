@@ -288,6 +288,31 @@ Then(~'I should see the notification message'){->
     assert driver.findElement(By.cssSelector("#flash")).text.contains("Action")
 
 }
+
+Then(~'I click on redirected page'){->
+    driver.findElement(By.cssSelector("#redirect")).click()
+    assert driver.currentUrl.contains("status_codes")
+}
+
+Then(~'I verify the status code'){->
+    String urlToVerify = driver.findElement(By.xpath("//a[contains(., '200')]")).getAttribute("href")
+    UrlStatusChecker urlStatusChecker = new UrlStatusChecker(driver)
+
+    urlStatusChecker.setURIToCheck(urlToVerify)
+    assert urlStatusChecker.getHttpStatusCode() == 200
+
+    urlToVerify = driver.findElement(By.xpath("//a[contains(., '301')]")).getAttribute("href")
+    urlStatusChecker.setURIToCheck(urlToVerify)
+    assert urlStatusChecker.getHttpStatusCode() == 301
+
+    urlToVerify = driver.findElement(By.xpath("//a[contains(., '404')]")).getAttribute("href")
+    urlStatusChecker.setURIToCheck(urlToVerify)
+    assert urlStatusChecker.getHttpStatusCode() == 404
+
+    urlToVerify = driver.findElement(By.xpath("//a[contains(., '500')]")).getAttribute("href")
+    urlStatusChecker.setURIToCheck(urlToVerify)
+    assert urlStatusChecker.getHttpStatusCode() == 500
+}
 After("@end"){
     driver.close()
 }
