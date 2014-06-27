@@ -155,8 +155,6 @@ Then(~'I should be able to download a file (.*)'){ elementName ->
     } else{
         println fileDownloader.downloadFile(element)
     }
-
-
 }
 
 WebElement elementToVerify(String elementName){
@@ -313,6 +311,11 @@ Then(~'I verify the status code'){->
     urlStatusChecker.setURIToCheck(urlToVerify)
     assert urlStatusChecker.getHttpStatusCode() == 500
 }
+
+Then(~'I verify whether I am able to access the editor'){->
+    driver.findElement(By.xpath("//*[@id='mceu_33-text']")).click()
+}
+
 After("@end"){
     driver.close()
 }

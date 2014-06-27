@@ -114,3 +114,7 @@ Feature: I want to test all the fields using selenium
     Then I should see the status_codes page
     Then I verify the status code
 
+  Scenario: I verify the TinyMCE editor
+    Given I click on WYSIWYG Editor link
+    Then I should see the tinymce page
+    Then I verify whether I am able to access the editor
