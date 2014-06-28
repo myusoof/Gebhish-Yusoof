@@ -313,7 +313,15 @@ Then(~'I verify the status code'){->
 }
 
 Then(~'I verify whether I am able to access the editor'){->
-    driver.findElement(By.xpath("//*[@id='mceu_33-text']")).click()
+    driver.findElement(By.xpath("//*[@id='mceu_15-open']")).click()
+
+    JavascriptExecutor javascriptExecutor = (JavascriptExecutor)driver
+    javascriptExecutor.executeScript("\$('#mceu_32-text').trigger('click')")
+    driver.switchTo().frame("mce_0_ifr")
+    WebElement element = driver.findElement(By.tagName("body"))
+            element.sendKeys("<B>This is the bold text</B>")
+    //set the content using javascript
+    javascriptExecutor.executeScript("arguments[0].innerHTML = '<h1>Set text using innerHTML</h1>'", element)
 }
 
 After("@end"){
