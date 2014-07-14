@@ -24,6 +24,7 @@ class MailVerifier {
     Store store
 
     Message[] messages = null
+
     boolean mailFound = false
 
     public MailVerifier(String emailServer, String email, String password){

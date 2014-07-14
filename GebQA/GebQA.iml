@@ -578,7 +578,6 @@
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="JSErrorCollector-0.5" level="project" />
   </component>
 </module>
 

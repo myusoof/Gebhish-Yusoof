@@ -95,6 +95,13 @@ Then(~'^I drag A and drop into B box$'){->
     actions.release().build().perform()
 }
 
+Then(~'^the table (.*) looks like$'){table, DataTable dataTable->
+    WebElement tableContent = driver.findElement(By.xpath("//*[@id=\'${table}\']"))
+    List<WebElement> rows = tableContent.findElements(By.xpath("//tr"))
+    rows*.findElements(By.xpath("th,td")).collect {
+    }
+}
+
 def moveMouseToElementPosition(WebElement element){
     Locatable locatable = (Locatable)element
     def getXPositionOfLocatable = locatable.coordinates.onPage().x
