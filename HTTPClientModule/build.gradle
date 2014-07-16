@@ -12,5 +12,8 @@ dependencies{
     compile "org.apache.tomcat.embed:tomcat-embed-core:7.0.16"
     compile "org.apache.tomcat:tomcat-catalina:7.0.16"
     compile "org.apache.tomcat.embed:tomcat-embed-jasper:7.0.16"
+    compile 'org.apache.httpcomponents:httpclient:4.3.4'
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.1.4'
+
 }
 

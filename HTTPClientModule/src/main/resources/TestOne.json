@@ -1,0 +1,366 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "34",
+               "short_name" : "34",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Via Pasubio",
+               "short_name" : "Via Pasubio",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Dronero",
+               "short_name" : "Dronero",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Dronero",
+               "short_name" : "Dronero",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Cuneo",
+               "short_name" : "CN",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Piedmont",
+               "short_name" : "Piedmont",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Italy",
+               "short_name" : "IT",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "12025",
+               "short_name" : "12025",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Via Pasubio, 34, 12025 Dronero Cuneo, Italy",
+         "geometry" : {
+            "location" : {
+               "lat" : 44.4647452,
+               "lng" : 7.355383799999999
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 44.46609418029149,
+                  "lng" : 7.356732780291502
+               },
+               "southwest" : {
+                  "lat" : 44.46339621970849,
+                  "lng" : 7.354034819708497
+               }
+            }
+         },
+         "types" : [ "street_address" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Dronero",
+               "short_name" : "Dronero",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Dronero",
+               "short_name" : "Dronero",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Cuneo",
+               "short_name" : "CN",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Piedmont",
+               "short_name" : "Piedmont",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Italy",
+               "short_name" : "IT",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "12025",
+               "short_name" : "12025",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "12025 Dronero Cuneo, Italy",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 44.4725466,
+                  "lng" : 7.380186699999999
+               },
+               "southwest" : {
+                  "lat" : 44.4564415,
+                  "lng" : 7.3389068
+               }
+            },
+            "location" : {
+               "lat" : 44.4658423,
+               "lng" : 7.3656691
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 44.4725466,
+                  "lng" : 7.380186699999999
+               },
+               "southwest" : {
+                  "lat" : 44.4564415,
+                  "lng" : 7.3389068
+               }
+            }
+         },
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Dronero",
+               "short_name" : "Dronero",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Cuneo",
+               "short_name" : "CN",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Piedmont",
+               "short_name" : "Piedmont",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Italy",
+               "short_name" : "IT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Dronero, Cuneo, Italy",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 44.4861443,
+                  "lng" : 7.445563599999999
+               },
+               "southwest" : {
+                  "lat" : 44.4245393,
+                  "lng" : 7.229214100000001
+               }
+            },
+            "location" : {
+               "lat" : 44.4394719,
+               "lng" : 7.297661700000001
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 44.4861443,
+                  "lng" : 7.445563599999999
+               },
+               "southwest" : {
+                  "lat" : 44.4245393,
+                  "lng" : 7.229214100000001
+               }
+            }
+         },
+         "types" : [ "administrative_area_level_3", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "12025",
+               "short_name" : "12025",
+               "types" : [ "postal_code" ]
+            },
+            {
+               "long_name" : "Cuneo",
+               "short_name" : "CN",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Piedmont",
+               "short_name" : "Piedmont",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Italy",
+               "short_name" : "IT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "12025 Cuneo, Italy",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 44.486172,
+                  "lng" : 7.4455469
+               },
+               "southwest" : {
+                  "lat" : 44.417001,
+                  "lng" : 7.229196
+               }
+            },
+            "location" : {
+               "lat" : 44.4540825,
+               "lng" : 7.362459800000001
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 44.486172,
+                  "lng" : 7.4455469
+               },
+               "southwest" : {
+                  "lat" : 44.417001,
+                  "lng" : 7.229196
+               }
+            }
+         },
+         "types" : [ "postal_code" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Cuneo",
+               "short_name" : "CN",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Piedmont",
+               "short_name" : "Piedmont",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Italy",
+               "short_name" : "IT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Cuneo, Italy",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 44.8565911,
+                  "lng" : 8.2687425
+               },
+               "southwest" : {
+                  "lat" : 44.0600899,
+                  "lng" : 6.8534305
+               }
+            },
+            "location" : {
+               "lat" : 44.5970314,
+               "lng" : 7.6114217
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 44.8565911,
+                  "lng" : 8.2687425
+               },
+               "southwest" : {
+                  "lat" : 44.0600899,
+                  "lng" : 6.8534305
+               }
+            }
+         },
+         "types" : [ "administrative_area_level_2", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Piedmont",
+               "short_name" : "Piedmont",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Italy",
+               "short_name" : "IT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Piedmont, Italy",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 46.4644351,
+                  "lng" : 9.214264099999999
+               },
+               "southwest" : {
+                  "lat" : 44.0600899,
+                  "lng" : 6.6266304
+               }
+            },
+            "location" : {
+               "lat" : 45.0522366,
+               "lng" : 7.5153885
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 46.4644351,
+                  "lng" : 9.214264099999999
+               },
+               "southwest" : {
+                  "lat" : 44.0600899,
+                  "lng" : 6.6266304
+               }
+            }
+         },
+         "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Italy",
+               "short_name" : "IT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Italy",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 47.092,
+                  "lng" : 18.5205015
+               },
+               "southwest" : {
+                  "lat" : 35.4929201,
+                  "lng" : 6.6267201
+               }
+            },
+            "location" : {
+               "lat" : 41.87194,
+               "lng" : 12.56738
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 47.092,
+                  "lng" : 18.5205015
+               },
+               "southwest" : {
+                  "lat" : 35.4929201,
+                  "lng" : 6.6267201
+               }
+            }
+         },
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
