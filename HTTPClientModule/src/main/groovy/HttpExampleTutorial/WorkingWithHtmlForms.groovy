@@ -21,5 +21,8 @@ class WorkingWithHtmlForms {
         UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, Consts.UTF_8);
         HttpPost httppost = new HttpPost("http://localhost/handler.do");
         httppost.setEntity(entity);
+
+        println httppost.getURI()
+
     }
 }
