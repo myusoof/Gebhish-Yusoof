@@ -15,6 +15,7 @@ import org.apache.http.client.protocol.HttpClientContext
 import org.apache.http.conn.ConnectTimeoutException
 import org.apache.http.impl.client.CloseableHttpClient
 import org.apache.http.impl.client.HttpClients
+import org.apache.http.impl.client.LaxRedirectStrategy
 import org.apache.http.protocol.HttpContext
 import org.apache.http.protocol.HttpRequestInterceptorList
 
@@ -32,6 +33,7 @@ import java.util.concurrent.atomic.AtomicInteger
 class WorkingWithRequestRetryHandler {
     public static void main(String[] args) {
 
+        LaxRedirectStrategy redirectStrategy = new LaxRedirectStrategy();
         HttpRequestRetryHandler retryHandler = new HttpRequestRetryHandler() {
             @Override
             public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
@@ -68,7 +70,8 @@ class WorkingWithRequestRetryHandler {
             }
         }
 
-        CloseableHttpClient client = HttpClients.custom().setRetryHandler(retryHandler).addInterceptorLast(httpRequestInterceptor).build()
+        CloseableHttpClient client = HttpClients.custom().setRetryHandler(retryHandler).addInterceptorLast(httpRequestInterceptor)
+                .setRedirectStrategy(redirectStrategy).build()
 
         ResponseHandler<String> hr = new ResponseHandler<String>() {
             @Override
