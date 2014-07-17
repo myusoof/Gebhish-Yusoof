@@ -54,6 +54,7 @@ class WorkingWithRequestRetryHandler {
                 }
                 HttpClientContext clientContext = HttpClientContext.adapt(context)
                 HttpRequest request = clientContext.getRequest()
+                println request.requestLine
                 boolean idempotent = !(request instanceof HttpEntityEnclosingRequest)
                 if (idempotent) {
                     return true
