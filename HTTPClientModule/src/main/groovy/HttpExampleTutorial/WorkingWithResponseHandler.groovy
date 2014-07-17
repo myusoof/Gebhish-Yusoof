@@ -10,8 +10,11 @@ import org.apache.http.client.ClientProtocolException
 import org.apache.http.client.HttpResponseException
 import org.apache.http.client.ResponseHandler
 import org.apache.http.client.methods.HttpGet
+import org.apache.http.conn.ConnectionKeepAliveStrategy
 import org.apache.http.impl.client.CloseableHttpClient
+import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy
 import org.apache.http.impl.client.HttpClients
+import org.apache.http.protocol.HttpContext
 import org.apache.http.util.EntityUtils
 
 /**
@@ -23,7 +26,18 @@ import org.apache.http.util.EntityUtils
  */
 class WorkingWithResponseHandler {
     public static void main(String[] args) {
-        CloseableHttpClient client = HttpClients.createDefault()
+
+        ConnectionKeepAliveStrategy keepAliveStrategy = new DefaultConnectionKeepAliveStrategy(){
+            @Override
+            public long getKeepAliveDuration(HttpResponse response, HttpContext context){
+                long keepAlive = super.getKeepAliveDuration(response, context)
+                if(keepAlive == -1){
+                    keepAlive = 5000
+                }
+                return keepAlive
+            }
+        }
+        CloseableHttpClient client = HttpClients.custom().setKeepAliveStrategy(keepAliveStrategy).build()
         HttpGet get = new HttpGet("http://the-internet.herokuapp.com/")
 
         ResponseHandler<String> hr = new ResponseHandler<String>() {
@@ -37,11 +51,12 @@ class WorkingWithResponseHandler {
                 if(entity == null){
                     throw new ClientProtocolException("response contain no content")
                 }
-//                JsonFactory jsonFactory = new MappingJsonFactory()
-//                JsonParser parser = jsonFactory.createParser(entity.content)
-                return EntityUtils.toString(response.entity)
+                JsonFactory jsonFactory = new MappingJsonFactory()
+                JsonParser parser = jsonFactory.createParser(entity.content)
+                return EntityUtils.toString(entity)
             }
         }
+
 
         String object = client.execute(get, hr)
         println object
