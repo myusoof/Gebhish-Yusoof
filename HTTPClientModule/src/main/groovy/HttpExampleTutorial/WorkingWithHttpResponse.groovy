@@ -3,6 +3,7 @@ package HttpExampleTutorial
 import org.apache.http.HttpEntity
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.utils.URIBuilder
+import org.apache.http.entity.BufferedHttpEntity
 import org.apache.http.impl.client.CloseableHttpClient
 import org.apache.http.impl.client.HttpClients
 import org.apache.http.util.EntityUtils
@@ -24,6 +25,8 @@ class WorkingWithHttpResponse {
         println uri
         HttpGet get = new HttpGet(uri)
         HttpEntity entity =  client.execute(get).entity
+
+        entity = new BufferedHttpEntity(entity)
         println entity.getContentLength()
         println entity.getContentType()
 //        println entity.getContent().readLines()
