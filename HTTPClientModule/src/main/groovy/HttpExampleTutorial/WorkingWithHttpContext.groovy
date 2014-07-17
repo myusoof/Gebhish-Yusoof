@@ -26,12 +26,13 @@ class WorkingWithHttpContext {
         HttpClientContext clientContext = HttpClientContext.adapt(context);
 
         HttpClient client = HttpClients.createDefault()
-        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(1000).build()
+        RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(10000).setConnectTimeout(1000).build()
         HttpGet httpGet1 = new HttpGet("http://the-internet.herokuapp.com/abtest")
         httpGet1.setConfig(requestConfig)
         CloseableHttpResponse response1 = client.execute(httpGet1, context)
         try {
             HttpEntity entity1 = response1.getEntity();
+            println clientContext.getRequest()
         } finally {
             response1.close();
         }
@@ -40,7 +41,7 @@ class WorkingWithHttpContext {
         CloseableHttpResponse response2 = client.execute(httpget2, context);
         try {
             HttpEntity entity2 = response2.getEntity();
-            println clientContext.getResponse().entity.content.readLines()
+            println clientContext.getRequest()
         } finally {
             response2.close();
         }
