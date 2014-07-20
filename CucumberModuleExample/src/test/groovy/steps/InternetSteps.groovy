@@ -170,11 +170,12 @@ Then(~'I should be able to download a file (.*)'){ elementName ->
     FileDownloader fileDownloader = new FileDownloader(driver)
     println urlStatusChecker.localDownloadPath
     fileDownloader.localDownloadPath(urlStatusChecker.localDownloadPath)
-    if(elementHref.endsWith("jpg")){
+    println fileDownloader.downloadImage(element)
+    /*if(elementHref.endsWith("jpg")){
         println fileDownloader.downloadImage(element)
     } else{
         println fileDownloader.downloadFile(element)
-    }
+    }*/
 }
 
 WebElement elementToVerify(String elementName){
