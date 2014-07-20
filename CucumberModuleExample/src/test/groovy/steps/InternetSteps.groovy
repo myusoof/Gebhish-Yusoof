@@ -55,8 +55,6 @@ WebDriver driver = WebDriverHelper.getInstance()
 @Field
 Robot robot = new Robot()
 
-@Field
-ConfigurationHelper configurationHelper = ConfigurationHelper.getConfiguration()
 
 Given(~'^I navigate to the internet application$'){->
     driver.get(WebDriverHelper.baseUrl)
@@ -184,9 +182,9 @@ WebElement elementToVerify(String elementName){
 }
 
 Then(~'I should be able reset the password'){->
-    driver.findElement(By.cssSelector("#email")).sendKeys(configurationHelper.getProperty("emailAddress"))
+    driver.findElement(By.cssSelector("#email")).sendKeys(ConfigurationHelper.getConfiguration().getProperty("emailAddress"))
     driver.findElement(By.cssSelector("#form_submit")).click()
-    MailVerifier mailVerifier = new MailVerifier(configurationHelper.getProperty("mailServer"),configurationHelper.getProperty("emailAddress"),configurationHelper.getProperty("emailPassword"))
+    MailVerifier mailVerifier = new MailVerifier(ConfigurationHelper.getConfiguration().getProperty("mailServer"),ConfigurationHelper.getConfiguration().getProperty("emailAddress"),ConfigurationHelper.getConfiguration().getProperty("emailPassword"))
     Thread.sleep(10000)
     assert mailVerifier.isMailFound()
     assert driver.findElement(By.cssSelector("#content")).getText() == "Your e-mail's been sent!"

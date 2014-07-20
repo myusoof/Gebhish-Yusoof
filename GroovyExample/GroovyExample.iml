@@ -35,11 +35,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/2.42.0/8873243c692c1fd8f9cfdc13f89d1ea426938fec/selenium-firefox-driver-2.42.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/2.42.2/ea341c7a3b1e23b20656a76ab962ebf5fd0c02c3/selenium-firefox-driver-2.42.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/2.42.0/c531e644837c7615b59ec2df6be6c1d0a9be6b9/selenium-firefox-driver-2.42.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/2.42.2/fa2d326d72eea619c303f1901e2ac5c57f8d030/selenium-firefox-driver-2.42.2-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -57,11 +57,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.42.0/6d94545e583ae2bfbec5dfd510b0e821a473c987/selenium-support-2.42.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.42.2/77ea1515455e3c259188b29eec7775262bee2ba5/selenium-support-2.42.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.42.0/78ca29402f954d7814f2d1319d968108a95191b0/selenium-support-2.42.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.42.2/5563b2eecb66cb0d2a5bd494d0fe56c519bb2bca/selenium-support-2.42.2-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -222,11 +222,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.42.0/ec1bed98bebbb5b32b2aa5e4cdba8b8ae18b99ab/selenium-api-2.42.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.42.2/4aa197c299747cb0e8f36297f56c4ce76ecc4f80/selenium-api-2.42.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.42.0/d6eae114d30b102a019b9063a5aa79a71fcab2e4/selenium-api-2.42.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.42.2/cb3ffceca932bf60e8a8de40dae60b5e71eaf5a6/selenium-api-2.42.2-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -310,11 +310,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.42.0/32338d6fb8bdab7f79c2e98118234e18a23f7df7/selenium-remote-driver-2.42.0.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.42.2/230a6905f2cee5ca5fc2ab31bd342e757bccad2d/selenium-remote-driver-2.42.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.42.0/76cf0f6f054c0ec49da83e6d722e4d561a30ec94/selenium-remote-driver-2.42.0-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.42.2/7d25c9660437222d0a13be07b8792cbfb522bf7/selenium-remote-driver-2.42.2-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
