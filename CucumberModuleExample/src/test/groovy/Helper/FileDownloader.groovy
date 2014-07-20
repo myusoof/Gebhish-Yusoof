@@ -87,7 +87,8 @@ class FileDownloader {
             throw new NullPointerException("The element you have specified does not link to anything!");
 
         URL fileToDownload = new URL(fileToDownloadLocation)
-        File downloadedFile = new File(this.localDownloadPath + fileName[0][2]);
+//        File downloadedFile = new File(this.localDownloadPath + fileName[0][2]);
+        File downloadedFile = new File(ConfigurationHelper.getConfiguration().getProperty("localDownloadPath") + fileName[0][2]);
         if (downloadedFile.canWrite() == false) downloadedFile.setWritable(true);
 
         HttpClient client = new DefaultHttpClient()

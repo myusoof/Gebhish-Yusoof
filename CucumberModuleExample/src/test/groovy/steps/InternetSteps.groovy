@@ -1,5 +1,6 @@
 package steps
 
+import Helper.ConfigurationHelper
 import Helper.FileDownloader
 import Helper.MailVerifier
 import Helper.UrlStatusChecker
@@ -48,9 +49,14 @@ import java.awt.event.KeyEvent
 this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
- @Field
- WebDriver driver = WebDriverHelper.getInstance()
+@Field
+WebDriver driver = WebDriverHelper.getInstance()
 
+@Field
+Robot robot = new Robot()
+
+@Field
+ConfigurationHelper configurationHelper = ConfigurationHelper.getConfiguration()
 
 Given(~'^I navigate to the internet application$'){->
     driver.get(WebDriverHelper.baseUrl)
@@ -104,7 +110,10 @@ Then(~'^the table (.*) looks like$'){table, DataTable dataTable->
 
 def moveMouseToElementPosition(WebElement element){
     Locatable locatable = (Locatable)element
-    def getXPositionOfLocatable = locatable.coordinates.onPage().x
+    /*def getXPositionOfLocatable = locatable.coordinates.onPage().x
+    def getYPositionOfLocatable = locatable.coordinates.onPage().y
+    */
+    def getXPositionOfLocatable = locatable.coordinates.inViewPort().x
     def getYPositionOfLocatable = locatable.coordinates.onPage().y
 
     println "get element postion"
@@ -113,7 +122,6 @@ def moveMouseToElementPosition(WebElement element){
     def getTopPositionOfWindow = driver.manage().window().getPosition().y
     def xPosition = getLeftPositionOfWindow+getXPositionOfLocatable
     def yPosition = getYPositionOfLocatable+getTopPositionOfWindow
-    Robot robot = new Robot()
 
     println "${xPosition}, ${yPosition}"
     robot.mouseMove(xPosition,yPosition+80 )
@@ -124,8 +132,14 @@ def moveMouseToElementPosition(WebElement element){
 }
 
 Then(~'I should be able to select item in the dropdown'){->
-    new Select(driver.findElement(By.cssSelector("#dropdown"))).selectByValue("1")
-    new Select(driver.findElement(By.cssSelector("#dropdown"))).selectByValue("2")
+    Select select = new Select(driver.findElement(By.cssSelector("#dropdown")))
+    select.selectByVisibleText("Option 1")
+    select.selectByVisibleText("Option 2")
+//    select.selectByValue("1")
+//    select.selectByValue("2")
+
+    println select.isMultiple()
+    println select.getOptions().collect{it.text}
 }
 
 Then(~'I click on element containing href'){DataTable table ->
@@ -156,7 +170,8 @@ Then(~'I should be able to download a file (.*)'){ elementName ->
     urlStatusChecker.setURIToCheck(elementHref)
     assert urlStatusChecker.getHttpStatusCode() == HttpURLConnection.HTTP_OK
     FileDownloader fileDownloader = new FileDownloader(driver)
-    fileDownloader.localDownloadPath("/home/yusoof/")
+    println urlStatusChecker.localDownloadPath
+    fileDownloader.localDownloadPath(urlStatusChecker.localDownloadPath)
     if(elementHref.endsWith("jpg")){
         println fileDownloader.downloadImage(element)
     } else{
@@ -169,13 +184,14 @@ WebElement elementToVerify(String elementName){
 }
 
 Then(~'I should be able reset the password'){->
-    driver.findElement(By.cssSelector("#email")).sendKeys("yusooftesting@gmail.com")
+    driver.findElement(By.cssSelector("#email")).sendKeys(configurationHelper.getProperty("emailAddress"))
     driver.findElement(By.cssSelector("#form_submit")).click()
-    MailVerifier mailVerifier = new MailVerifier("imap.gmail.com","yusooftesting@gmail.com","Yusoof@1234")
+    MailVerifier mailVerifier = new MailVerifier(configurationHelper.getProperty("mailServer"),configurationHelper.getProperty("emailAddress"),configurationHelper.getProperty("emailPassword"))
     Thread.sleep(10000)
     assert mailVerifier.isMailFound()
     assert driver.findElement(By.cssSelector("#content")).getText() == "Your e-mail's been sent!"
 }
+
 
 Then(~'I should be to login in the page'){->
     driver.findElement(By.cssSelector("#username")).sendKeys("tomsmith")
