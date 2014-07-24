@@ -10,6 +10,11 @@ allprojects{
     }
 }
 
+subprojects {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
 dependencies{
     compile restClient, groovy, gebhish, seleniumFirefox, seleniumSupport, seleniumChrome, seleniumhtmlunit, testng,jackson, jacksonJaxRs, jacksonDataType, jExcel
 }

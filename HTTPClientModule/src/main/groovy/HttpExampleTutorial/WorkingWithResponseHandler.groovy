@@ -54,6 +54,7 @@ class WorkingWithResponseHandler {
                 JsonFactory jsonFactory = new MappingJsonFactory()
                 JsonParser parser = jsonFactory.createParser(entity.content)
 //                parser.readValueAs(String.class)
+                println parser
                 return EntityUtils.toString(entity)
             }
         }
