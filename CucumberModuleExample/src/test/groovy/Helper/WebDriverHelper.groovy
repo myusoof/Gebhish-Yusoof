@@ -1,5 +1,6 @@
 package Helper
 
+import org.openqa.selenium.Dimension
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
@@ -28,6 +29,7 @@ class WebDriverHelper {
 
                 if(webdriver == null){
                     webdriver = new FirefoxDriver()
+                    webdriver.manage().window().setSize(new Dimension(500, 500))
                     //FirefoxProfile profile = new FirefoxProfile(profileDir);
                     //webdriver = new HtmlUnitDriver()
                     //webdriver = new FirefoxDriver()

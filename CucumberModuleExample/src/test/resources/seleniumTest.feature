@@ -124,6 +124,7 @@ Feature: I want to test all the fields using selenium
       | Doe       | Jason      | jdoe@hotmail.com      | $100.00 | http://www.jdoe.com      |        |
       | Conway    | Tim        | tconway@earthlink.net | $50.00  | http://www.timconway.com |        |
 
+  @end
   Scenario: I verify the TinyMCE editor
     Given I click on WYSIWYG Editor link
     Then I should see the tinymce page

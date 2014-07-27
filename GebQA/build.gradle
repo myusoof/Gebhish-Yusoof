@@ -4,5 +4,7 @@ apply plugin : 'idea'
 
 
 dependencies{
+    testCompile 'org.gebish:geb-spock:0.9.3'
+    testCompile 'org.gebish:geb-core:0.9.3'
     compile  groovy, gebhish, seleniumFirefox, seleniumhtmlunit, seleniumChrome, seleniumSupport, testng,jackson, jacksonJaxRs, jacksonDataType
 }

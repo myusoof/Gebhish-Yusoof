@@ -11,6 +11,7 @@ import cucumber.api.groovy.Hooks
 import groovy.transform.Field
 import org.openqa.selenium.Alert
 import org.openqa.selenium.By
+import org.openqa.selenium.Dimension
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.Keys
 import org.openqa.selenium.Point
@@ -200,6 +201,7 @@ Then(~'I should be to login in the page'){->
 }
 
 Then(~'I should be able to switch the frame'){->
+    driver.findElement(By.xpath("//a[contains(.,'Nested Frames')]")).click()
     assert driver.switchTo().frame("frame-top").switchTo().frame("frame-left").findElement(By.cssSelector("body")).text == "LEFT"
     driver.switchTo().defaultContent();
     assert driver.switchTo().frame("frame-top").switchTo().frame(1).findElement(By.cssSelector("body")).text == "MIDDLE"
@@ -268,7 +270,10 @@ private waitForElement(String cssPath){
 
     Then(~'I should be able to validate javascript'){->
     JavascriptExecutor js = (JavascriptExecutor)driver
-    js.executeScript("jsAlert();")
+    //js.executeScript("jsAlert();")
+
+    driver.findElement(By.xpath("//button[1]")).click()
+
     Alert alert = driver.switchTo().alert()
     assert alert.getText() == "I am a JS Alert"
     alert.accept()
@@ -295,6 +300,7 @@ Then(~'I should be able to handle multiple windows'){->
     String parentWindow = driver.getWindowHandle()
     driver.findElement(By.cssSelector(".example >a")).click()
 
+        Set<String> windowHandles = driver.getWindowHandles()
         for(String window: driver.getWindowHandles()){
             driver.switchTo().window(window)
         }
