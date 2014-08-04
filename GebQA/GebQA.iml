@@ -578,6 +578,61 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-spock/0.9.3/6f2036216eccf18bdc06331031f73f7e400ba06d/geb-spock-0.9.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-spock/0.9.3/def3e6a556eb0a2b877324ec054d2ebd5ac47021/geb-spock-0.9.3-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-core/0.9.3/1e5f26de2eb8fbe9b50223710ad7939172cf8ec8/geb-core-0.9.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-core/0.9.3/4823454438d101069e56fc73ad5e05b19c723748/geb-core-0.9.3-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-ast/0.9.3/d8477c24bae67a70a75a3f3720b96ab9e133c01d/geb-ast-0.9.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-ast/0.9.3/d1f401b517081e815dc20d64007ae4b001743bf8/geb-ast-0.9.3-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-waiting/0.9.3/310ac09279989c1d150f4e058a0091b666f925fa/geb-waiting-0.9.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-waiting/0.9.3/7dece6572e15abc364fa33d64ce40c3bf9da64a5/geb-waiting-0.9.3-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-implicit-assertions/0.9.3/eafa2f449b32ed33d7f8e49fbecd2fc93e3c7226/geb-implicit-assertions-0.9.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-implicit-assertions/0.9.3/b09ba273fcf9309f1d0bf3ef25cd507219053353/geb-implicit-assertions-0.9.3-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
 

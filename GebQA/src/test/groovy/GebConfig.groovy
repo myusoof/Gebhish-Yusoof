@@ -19,10 +19,10 @@ import org.openqa.selenium.remote.RemoteWebDriver
 //driver = 'org.openqa.selenium.chrome.ChromeDriver'
 //driver = {new RemoteWebDriver(DesiredCapabilities.firefox())}
 
-System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver")
+//System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver")
 System.setProperty("geb.env", "firefox")
 
-driver = 'org.openqa.selenium.chrome.ChromeDriver'
+//driver = 'org.openqa.selenium.chrome.ChromeDriver'
 //System.setProperty("geb.env", 'firefox')
 //driver = 'chrome'
 cacheDriver = false

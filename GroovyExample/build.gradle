@@ -6,4 +6,5 @@ dependencies{
     compile  groovy, gebhish, seleniumFirefox, seleniumChrome, seleniumSupport, testng, jackson, jacksonJaxRs, jacksonDataType
     compile 'org.quartz-scheduler:quartz:1.7.3'
     compile 'log4j:log4j:1.2.15'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.4.1.1'
 }
