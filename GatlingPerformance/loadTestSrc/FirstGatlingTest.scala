@@ -1,6 +1,7 @@
 import com.excilys.ebi.gatling.core.Predef._
+import com.excilys.ebi.gatling.core.Predef.bootstrap._
 import com.excilys.ebi.gatling.http.Predef._
-import bootstrap._
+import assertions._
 /**
  * Created with IntelliJ IDEA.
  * User: yusoof
@@ -15,6 +16,9 @@ class FirstGatlingTest extends Simulation{
   val scn = scenario("test").repeat(10){
       exec(http("Monitoring url").get("admin/monitoring"))
   }
-  setUp(testScn.users(2).protocolConfig(httpConf))
+  setUp(scn.users(2).protocolConfig(httpConf))
 
+  assertThat(
+      global.failedRequests.count.is(0)
+  )
 }

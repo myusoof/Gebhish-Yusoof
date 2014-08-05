@@ -124,6 +124,10 @@ Feature: I want to test all the fields using selenium
       | Doe       | Jason      | jdoe@hotmail.com      | $100.00 | http://www.jdoe.com      |        |
       | Conway    | Tim        | tconway@earthlink.net | $50.00  | http://www.timconway.com |        |
 
+
+    Scenario: I should be able to perform context click
+      Then I context click on Status Code link
+
   @end
   Scenario: I verify the TinyMCE editor
     Given I click on WYSIWYG Editor link

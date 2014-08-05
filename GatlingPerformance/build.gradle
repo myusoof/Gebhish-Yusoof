@@ -20,3 +20,19 @@ sourceSets {
         }
     }
 }
+
+
+task gatling(dependsOn: ['compileTestScala', 'processTestResources']) << {
+    javaexec {
+        main = 'com.excilys.ebi.gatling.app.Gatling'
+        classpath = sourceSets.test.output + sourceSets.test.runtimeClasspath
+        args('--simulations-binaries-folder',
+                sourceSets.test.output.classesDir,
+                '--simulation',
+                "loadTestSrc.$simulation",
+                '--results-folder',
+                'build/reports/gatling',
+                '--request-bodies-folder')
+
+    }
+}

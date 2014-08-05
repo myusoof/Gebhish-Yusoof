@@ -66,6 +66,19 @@ Given(~'I click on (.*) link'){ text->
 
 }
 
+Given(~'I context click on (.*) link'){ text->
+
+    WebElement element = driver.findElement(By.xpath("//a[contains(., '${text}')]"))
+    Actions actions = new Actions(driver)
+    actions.contextClick(element).sendKeys(Keys.ARROW_DOWN).build().perform()
+    actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform()
+
+    for (String window: driver.getWindowHandles()){
+        driver.switchTo().window(window)
+        driver.close()
+    }
+}
+
 Then(~'I should see the (.*) page'){pageUrl->
     assert driver.getCurrentUrl().contains(pageUrl)
 }
@@ -112,7 +125,7 @@ def moveMouseToElementPosition(WebElement element){
     /*def getXPositionOfLocatable = locatable.coordinates.onPage().x
     def getYPositionOfLocatable = locatable.coordinates.onPage().y
     */
-    def getXPositionOfLocatable = locatable.coordinates.inViewPort().x
+    def getXPositionOfLocatable = locatable.coordinates.onPage().x
     def getYPositionOfLocatable = locatable.coordinates.onPage().y
 
     println "get element postion"
@@ -203,7 +216,9 @@ Then(~'I should be to login in the page'){->
 Then(~'I should be able to switch the frame'){->
     driver.findElement(By.xpath("//a[contains(.,'Nested Frames')]")).click()
     assert driver.switchTo().frame("frame-top").switchTo().frame("frame-left").findElement(By.cssSelector("body")).text == "LEFT"
-    driver.switchTo().defaultContent();
+    driver.switchTo().parentFrame()
+    driver.switchTo().parentFrame()
+    //driver.switchTo().defaultContent();
     assert driver.switchTo().frame("frame-top").switchTo().frame(1).findElement(By.cssSelector("body")).text == "MIDDLE"
     driver.switchTo().defaultContent();
     assert driver.switchTo().frame("frame-top").switchTo().frame(2).findElement(By.cssSelector("body")).text == "RIGHT"
@@ -352,6 +367,11 @@ Then(~'I verify whether I am able to access the editor'){->
     javascriptExecutor.executeScript("arguments[0].innerHTML = '<h1>Set text using innerHTML</h1>'", element)
 }
 
+Then(~'^I should be able to perform context click$'){->
+    WebElement element = driver.findElement(By.xpath("//a[contains(.,\'A/B Testing\')]"))
+    Actions action = new Actions(driver)
+    action.contextClick(element).build().perform()
+}
 After("@end"){
     driver.close()
 }

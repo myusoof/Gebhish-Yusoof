@@ -42,7 +42,7 @@ dependencies {
 
 mainClassName = "calc.ReportingClass"
 
-task cucumberReport(type:JavaExec) {
+task cucumberReport(dependsOn: test, type:JavaExec) {
     main = "calc.ReportingClass"
     classpath = sourceSets.main.runtimeClasspath
 }
