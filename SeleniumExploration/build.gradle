@@ -14,7 +14,7 @@ dependencies {
     }
 
     compile groovy, testng
-    testCompile seleniumFirefox,seleniumSupport,seleniumChrome, seleniumhtmlunit, totalLazy, jersey, jerseyMultipart
+    compile seleniumFirefox,seleniumSupport,seleniumChrome, seleniumhtmlunit, totalLazy, jersey, jerseyMultipart
     compile masterthought
     compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.1.4'
     compile 'javax.ws.rs:jsr311-api:0.11'

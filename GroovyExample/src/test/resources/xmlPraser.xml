@@ -1,0 +1,11 @@
+<transactions>
+    <account id="a">
+        <transaction amount="500" />
+        <transaction amount="1200" />
+    </account>
+    <account id="b">
+        <transaction amount="600" />
+        <transaction amount="800" />
+        <transaction amount="2000" />
+    </account>
+</transactions> 

@@ -63,7 +63,6 @@ Given(~'^I navigate to the internet application$'){->
 
 Given(~'I click on (.*) link'){ text->
     driver.findElement(By.xpath("//a[contains(., '${text}')]")).click()
-
 }
 
 Given(~'I context click on (.*) link'){ text->
