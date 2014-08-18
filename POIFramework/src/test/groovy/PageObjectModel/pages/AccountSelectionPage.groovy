@@ -28,4 +28,9 @@ class AccountSelectionPage extends WebDriverUtils implements Page{
             new DeviceListHomePage()
         }
     }
+
+    void enterTheMsisdnForSearch(String msisdn){
+        driver.findElement(By.cssSelector('[id=msisdn]')).sendKeys(msisdn)
+        driver.findElement(By.xpath(".searchBtn")).click()
+    }
 }

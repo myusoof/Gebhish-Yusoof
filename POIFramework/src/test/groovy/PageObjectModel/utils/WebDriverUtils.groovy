@@ -27,9 +27,9 @@ class WebDriverUtils {
         profile.setAssumeUntrustedCertificateIssuer(false);
         driver = new FirefoxDriver(profile);*/
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-        driver = new FirefoxDriver(capabilities);
+        //DesiredCapabilities capabilities = new DesiredCapabilities();
+        //capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        driver = new FirefoxDriver();
 
        /* var profile = new FirefoxProfile();
         profile.SetPreference("webdriver_assume_untrusted_issuer", false);
@@ -39,19 +39,19 @@ class WebDriverUtils {
     static void webBrowserStart(baseUrl, msisdn){
         driver = setFirefoxProfile()
 
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("${baseUrl}/search?msisdn=${msisdn}&portalId=&fun=&PartnerId=o2&submit=Search")
     }
 
     static void webBrowserStartAcquisition(baseUrl){
         driver = setFirefoxProfile()
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("${baseUrl}")
     }
 
     static void accessCCALinkToCheckout(url){
         driver = setFirefoxProfile();
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("${url}")
     }
 
