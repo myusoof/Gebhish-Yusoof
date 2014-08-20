@@ -2,6 +2,9 @@ package PageObjectModel.pages
 
 import PageObjectModel.utils.WebDriverUtils
 import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,16 +15,24 @@ import org.openqa.selenium.By
  */
 class PaymentPage extends WebDriverUtils implements Page{
     public void enterSecurityNumber(){
-        driver.findElement(By.id("txtCardSecurityCode")).sendKeys("1234")
+
+        waitForElement(By.id("txtCardSecurityCode"))
+        driver.findElement(By.id("txtCardSecurityCode")).sendKeys("123")
     }
 
     public void enterSecureNumberforVisa(){
            driver.findElement(By.id("txtCardSecurityCode")).sendKeys("123")
     }
 
-    public VisaProtectionPage clickOnPayNow(){
+//    public VisaProtectionPage clickOnPayNow(){
+//        driver.findElement(By.id("btnPayNow")).click();
+//        sleep(7000)
+//        return new VisaProtectionPage();
+//    }
+
+    public OrderConfirmationPage clickOnPayNow(){
         driver.findElement(By.id("btnPayNow")).click();
         sleep(7000)
-        return new VisaProtectionPage();
+        return new OrderConfirmationPage();
     }
 }

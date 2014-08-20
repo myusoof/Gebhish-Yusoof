@@ -2,7 +2,10 @@ package PageObjectModel.pages
 
 import PageObjectModel.utils.WebDriverUtils
 import org.openqa.selenium.By
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.support.ui.ExpectedCondition
 import org.openqa.selenium.support.ui.Select
+import org.openqa.selenium.support.ui.WebDriverWait
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -31,8 +34,8 @@ class RegistrationPage extends WebDriverUtils implements Page{
         String dob = newDate.replace("2014","1907")
 
         new Select(driver.findElement(By.id("ccTitle"))).selectByIndex(1);
-        driver.findElement(By.id("ccFirstName")).sendKeys("First Name")
-        driver.findElement(By.id("ccLastname")).sendKeys("Last Name")
+        driver.findElement(By.id("ccFirstName")).sendKeys("Derek")
+        driver.findElement(By.id("ccLastname")).sendKeys("Accept")
         //println "${emailId}"
         driver.findElement(By.id("ccEmail")).sendKeys(emailId)
         driver.findElement(By.id("ccDob")).sendKeys(dob)
@@ -54,8 +57,15 @@ class RegistrationPage extends WebDriverUtils implements Page{
 
         driver.findElement(By.id("agreeToCreditCheck")).click()
         driver.findElement(By.cssSelector("input.performCreditCheckBtn")).click()
-        sleep(7000)
+        WebDriverWait wait = new WebDriverWait(driver, 30)
 
+        ExpectedCondition<Boolean> expectedCondition = new ExpectedCondition<Boolean>() {
+            @Override
+            Boolean apply(WebDriver input) {
+                return input.findElement(By.xpath("//div[@id = 'registerContent']")).getAttribute("style") == 'display: block;'
+            }
+        }
+        wait.until(expectedCondition)
         driver.findElement(By.id("regPassword")).sendKeys("password-1")
         driver.findElement(By.id("regConfirmPswd")).sendKeys("password-1")
 
@@ -88,18 +98,19 @@ class RegistrationPage extends WebDriverUtils implements Page{
 
         sleep(5000)
 
+        waitForElement(By.id("txtCardHolderName"))
         driver.findElement(By.id("txtCardHolderName")).sendKeys("name")
         //new Select(driver.findElement(By.id("ddlCardType"))).selectByIndex(1);
         //driver.findElement(By.id("txtCardNumber")).sendKeys("374245455400001")
 
-        new Select(driver.findElement(By.id("ddlCardType"))).selectByIndex(3);
-        driver.findElement(By.id("txtCardNumber")).sendKeys("4462724438864231")
+        new Select(driver.findElement(By.id("ddlCardType"))).selectByIndex(2);
+        driver.findElement(By.id("txtCardNumber")).sendKeys("5453012633375825")
 
 
 
         new Select(driver.findElement(By.id("ddlMonth"))).selectByIndex(1);
         new Select(driver.findElement(By.id("ddlYr"))).selectByIndex(2);
-        driver.findElement(By.id("txtSecurityCode")).sendKeys("1234")
+        driver.findElement(By.id("txtSecurityCode")).sendKeys("123")
         driver.findElement(By.id("btnPayNow")).click()
 
         driver.switchTo().window(winHandleBefore);
@@ -126,7 +137,7 @@ class RegistrationPage extends WebDriverUtils implements Page{
     }
 
     PaymentPage clickPayByCard(){
-        sleep(5000)
+        sleep(10000)
         driver.findElement(By.cssSelector(".payByCard")).click()
         return new PaymentPage()
     }
