@@ -2,7 +2,7 @@ package HttpExampleTutorial
 
 import com.mongodb.util.JSON
 import groovyx.net.http.ContentType
-import jdk.nashorn.internal.parser.JSONParser
+//import jdk.nashorn.internal.parser.JSONParser
 import org.apache.http.HttpEntity
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.methods.HttpPost
@@ -30,7 +30,7 @@ class LowLevelResource {
         entity = new BufferedHttpEntity(entity)
 //        client.execute(get).getEntity().writeTo(new FileOutputStream("/home/yusoof/projects/Gebhish-Yusoof/HTTPClientModule/src/main/resources/TestOne.json"))
         String outputResponse = EntityUtils.toString(entity)
-        println JSON.parse(outputResponse).results[0].address_components[0].long_name
+       // println JSON.parse(outputResponse).results[0].address_components[0].long_name
 //        println JSON.parse(outputResponse).results[0].address_components[0].long_name
 //
 //        HttpEntity entity1 = client.execute(new HttpGet("http://localhost:8350/service/user")).entity
