@@ -26,8 +26,6 @@ public class FirstTestInterview {
         for (int i = 0, j = 0; i < stringValue.length(); i++) {
             j = i + 1;
             try{
-                 char currentValue = stringValue.charAt(i);
-                 char nextValue = stringValue.charAt(j);
                 if(stringValue.charAt(i) == stringValue.charAt(j)){
                     returnValue++;
                 }else{
