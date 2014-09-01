@@ -12,7 +12,7 @@ import java.util.List;
 public class FirstTestInterview {
 
     public static void main(String[] args) {
-        int a = maxConsecutiveValue("ruksoof");
+        int a = maxConsecutiveValue("lhkkkkkuiglugigiuglgig97gf6gii iuougiug7igiuhioohoihy iuuihuihoihiuh9ihy9yopiuhy9phy9phy8io8y09y8y888888888888888888888888888");
         System.out.println(a);
     }
 

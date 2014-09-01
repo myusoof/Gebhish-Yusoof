@@ -19,4 +19,11 @@ class Box<T> {
         this.t = t
     }
 
+    public <K> void genericMethod(K k){
+        println k.getClass().getName()
+    }
+
+    public <K extends T> void boundedGenericMethod(K k){
+        println k.getClass().name
+    }
 }

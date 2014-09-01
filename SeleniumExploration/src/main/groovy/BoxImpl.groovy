@@ -10,12 +10,18 @@ class BoxImpl {
     public static void main(String[] args) {
 
         Box<Integer> integerBox = new Box<>()
-
         Box rawBox = new Box()
-        rawBox = integerBox
-        integerBox.setT(12)
-        println rawBox.getT()
+        integerBox = rawBox
+        integerBox.setT("tests")
         println integerBox.getT()
+
+        integerBox.<Integer>genericMethod(new Integer(1))
+
+
+        Box<Number> boundedClass = new Box()
+        boundedClass.boundedGenericMethod(new Integer(2))
+        boundedClass.boundedGenericMethod(new Long(1L))
+
 
     }
 }
