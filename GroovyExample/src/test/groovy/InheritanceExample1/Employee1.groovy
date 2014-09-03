@@ -7,7 +7,7 @@ package InheritanceExample1
  * Time: 13:51
  * To change this template use File | Settings | File Templates.
  */
-class Employee {
+class Employee1 {
     def salary
     private delegate = new Person()
 

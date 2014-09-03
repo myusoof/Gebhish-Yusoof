@@ -12,12 +12,12 @@ import java.util.List;
 public class FirstTestInterview {
 
     public static void main(String[] args) {
-        int a = maxConsecutiveValue("lhkkkkkuiglugigiuglgig97gf6gii iuougiug7igiuhioohoihy iuuihuihoihiuh9ihy9yopiuhy9phy9phy8io8y09y8y888888888888888888888888888");
+        int a = maxConsecutiveValue("yusf");
         System.out.println(a);
     }
 
     static Integer maxConsecutiveValue(String stringValue) {
-        List<Integer> maxvalue = new ArrayList<>();
+        List<Integer> maxvalue = new ArrayList<Integer>();
         int returnValue = 1;
         if(stringValue.length() < 1){
             returnValue = 0;
@@ -25,16 +25,16 @@ public class FirstTestInterview {
         }
         for (int i = 0, j = 0; i < stringValue.length(); i++) {
             j = i + 1;
-            try{
-                if(stringValue.charAt(i) == stringValue.charAt(j)){
-                    returnValue++;
+                if(j <= stringValue.length()){
+                    if(stringValue.charAt(i) == stringValue.charAt(j)){
+                        returnValue++;
+                    }else{
+                        maxvalue.add(returnValue);
+                        returnValue = 1;
+                    }
                 }else{
                     maxvalue.add(returnValue);
-                    returnValue = 1;
                 }
-            }catch (StringIndexOutOfBoundsException e){
-                maxvalue.add(returnValue);
-            }
 
         }
         returnValue = Collections.max(maxvalue);

@@ -9,7 +9,7 @@ package InheritanceExample1
  */
 class TraditionalInheritance {
     public static void main(String[] args) {
-        def employee = new Employee(address: "test", age: "28", salary: "23033", name:"yusoof")
+        def employee = new Employee1(address: "test", age: "28", salary: "23033", name:"yusoof")
         employee.describe()
 
         MopEmployee mopEmployee = new MopEmployee(name : "Yusoof", newProperty: "newPropertyValue")

@@ -19,24 +19,7 @@ class AgentInsuranceOrderCreation extends ProductDetails {
     @DataProvider(name = 'productName')
     public Object[][] productNameDetails(){
         Object[][] productNameVariable = [
-                ["fef945e3-84eb-4916-bbd6-965641f0bcaa","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","742e279c-3baa-47ff-8a97-ae76986621ae"],
-                ["c148702d-d1e6-4e38-b71c-146cbe9c16dc","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","742e279c-3baa-47ff-8a97-ae76986621ae"],
-                ["88657fe9-74d3-4d90-bb53-e177f8a4a2c5","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","742e279c-3baa-47ff-8a97-ae76986621ae"],
-                ["fb46cecb-284e-49fd-8bba-dad2fef5d407","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["09e23066-f961-4cf8-8ac1-af128d401d3b","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["fb10ffe9-5e92-40da-9ab1-675ac09a2146","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["c5d88539-57d5-4d68-9707-cb8a3513b0c5","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["53874f51-913c-4917-86cb-771744fd1627","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["11d79a6f-1041-4de1-a195-085f718498f9","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","9b00f110-adb4-48f0-83ed-386a20b1d0fc"],
-                ["927ce533-5e2d-4d9a-8c76-d9025705d806","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["28168be7-6c8b-4d17-af3e-4d8bb350a405","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["66563c4e-d4d7-4d78-81fd-fed235596f6e","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["abe7ceeb-e4ae-4dad-b431-4b4cc769b668","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["197d8fed-d62c-4da5-b203-40a6aa8abacd","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["f24afcc9-feb6-48c5-95e2-52149a6ea0a9","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["f3931bd2-8af5-4ed4-b4d3-4e7ff5533bb8","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["9857f8c8-9df7-42d6-9484-d836c97d6610","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"],
-                ["11d79a6f-1041-4de1-a195-085f718498f9","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","f9c0f97a-3cd9-4259-be7f-4035e8de55e8"]
+                ["9857f8c8-9df7-42d6-9484-d836c97d6610","9a47209f-c168-481c-9de9-b84f54043b2c","ip-5b7df398-2cae-4f83-8c07-7882c08c722f","742e279c-3baa-47ff-8a97-ae76986621ae"]
         ]
         productNameVariable
     }
