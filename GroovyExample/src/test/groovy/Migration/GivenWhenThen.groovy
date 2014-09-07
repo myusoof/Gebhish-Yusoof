@@ -13,7 +13,7 @@ class GivenWhenThen {
     }
 
 
-    def callClosure = { func, args ->
+    def callClosure = { Closure func, args ->
         if (args == null) {
             func()
         } else {
