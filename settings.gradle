@@ -14,3 +14,5 @@ include 'SpringProject'
 include 'SeleniumExploration'
 include 'Gatlink-Performance'
 include 'GatlingPerformance'
+include 'GrinderPerformance'
+
