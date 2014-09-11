@@ -1,0 +1,16 @@
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'java'
+
+
+dependencies{
+    compile groovy
+    compile fileTree(dir: 'GrinderPackage/grinder-3.11', include: '*.jar')
+    compile 'net.sf.grinder:grinder:3.11'
+}
+
+task testOneYusuf << {
+    ProcessBuilder builder = new ProcessBuilder(["java", "-cp", "/home/yusoof/projects/o2/Gebhish-Yusoof/GrinderPerformance/src/main/java", "TestGrinder"])
+    Process process = builder.start()
+    println process.inputStream.text
+}
