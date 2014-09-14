@@ -4,6 +4,9 @@ apply plugin : 'groovy'
 
 repositories{
     mavenCentral()
+    maven{
+        url 'http://repo.bodar.com'
+    }
 }
 
 dependencies {
@@ -13,8 +16,10 @@ dependencies {
     }
 
     compile groovy
-    testCompile seleniumFirefox,seleniumSupport,seleniumChrome, seleniumhtmlunit, totalLazy, jersey, jerseyMultipart, testng
+    testCompile seleniumFirefox,seleniumSupport,seleniumChrome, seleniumhtmlunit, jersey, jerseyMultipart, testng
     compile masterthought
+//    testCompile group: 'totallylazy', name: 'totallylazy', version: '1.1'
+    testCompile 'com.googlecode.totallylazy:totallylazy:1.1'
     compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.1.4'
     compile 'javax.ws.rs:jsr311-api:0.11'
     testCompile "junit:junit:4.11"
@@ -23,15 +28,25 @@ dependencies {
     compile "org.glassfish.jersey.core:jersey-client:${jerseyVersion}"
     compile "org.glassfish.jersey.media:jersey-media-multipart:${jerseyVersion}"
     //compile 'org.sikuli:sikuli-webdriver:1.0.1'
+
 }
-
-
 
 def functionalTest = {
     description = "This is the functional test"
-    println "This is the fucntional test"
+    println "This is the functional test"
 }
 
 task qaYusoof(type : Test){
     functionalTest.delegate = delegate
+}
+
+
+task testngTask(type: Test) {
+
+    useTestNG(){
+        suites file("${projectDir}/testng.xml")
+    }
+    file("${reportsDir}/YusoofReport").delete()
+    println reportsDir
+    //testReportDir = file("${reportsDir}/YusoofReport")
 }

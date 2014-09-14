@@ -5,16 +5,20 @@ apply plugin : 'groovy'
 
 repositories{
     mavenCentral()
+    maven{
+        url 'http://repo.bodar.com/com/googlecode'
+    }
 }
 
 dependencies {
     ext {
         cucumberVersion = "1.1.5"
         jerseyVersion = "2.5.1"
+        totalLazy =[group: 'totallyLazy', name: 'totallyLazy', version: '1.1']
     }
 
     compile groovy
-    testCompile jackson, seleniumFirefox,seleniumSupport, restClient, seleniumChrome, seleniumhtmlunit, totalLazy, jersey, jerseyMultipart, log4j
+    testCompile jackson, totalLazy, seleniumFirefox,seleniumSupport, restClient, seleniumChrome, seleniumhtmlunit, jersey, jerseyMultipart, log4j
     compile masterthought
     testCompile 'javax.ws.rs:javax.ws.rs-api:2.0'
     compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.1.4'

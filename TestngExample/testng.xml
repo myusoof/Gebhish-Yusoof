@@ -1,0 +1,9 @@
+<suite name ="testYusoofSuite">
+
+    <test name = 'testYusoofTest'>
+        <classes>
+            <class name="TestAccountTest" />
+            <class name="TestAccountTest2" />
+        </classes>
+    </test>
+</suite>
