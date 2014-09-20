@@ -42,8 +42,15 @@ class TestAccountTest {
     }
 
     @Test
-    void  testTwo() {
+    String  testTwo() {
         println "test method two"
+        return "String to pass"
+    }
+
+    @Test
+    String testThree() {
+        println "test method two"
+        return "String to pass"
     }
 
     @AfterSuite

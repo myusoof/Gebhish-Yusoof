@@ -40,13 +40,8 @@ task qaYusoof(type : Test){
     functionalTest.delegate = delegate
 }
 
-
 task testngTask(type: Test) {
-
     useTestNG(){
         suites file("${projectDir}/testng.xml")
     }
-    file("${reportsDir}/YusoofReport").delete()
-    println reportsDir
-    //testReportDir = file("${reportsDir}/YusoofReport")
 }

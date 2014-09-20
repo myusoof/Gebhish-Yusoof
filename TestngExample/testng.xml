@@ -1,8 +1,12 @@
-<suite name ="testYusoofSuite">
-
+<suite name ="testYusoofSuite" allow-return-values="true">
     <test name = 'testYusoofTest'>
         <classes>
-            <class name="TestAccountTest" />
+            <class name="Package1.FactoryMethod"/>
+            <class name="TestAccountTest">
+                <methods>
+                    <include name="testThree"/>
+                </methods>
+            </class>
             <class name="TestAccountTest2" />
         </classes>
     </test>
