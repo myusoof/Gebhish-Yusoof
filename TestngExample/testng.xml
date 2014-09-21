@@ -9,6 +9,7 @@
         <classes>
             <class name = "TestAccountTest"/>
             <class name = "TestAccountTest2"/>
+            <class name = "Package1.FactoryTestImpl"/>
         </classes>
     </test>
 </suite>
