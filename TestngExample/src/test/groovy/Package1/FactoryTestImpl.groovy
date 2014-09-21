@@ -14,23 +14,22 @@ class FactoryTestImpl {
     public FactoryTestImpl(){
 
     }
-
     public FactoryTestImpl(String firstName, String lastName){
         this.firstName = firstName
         this.lastName = lastName
     }
 
-    @Test(groups = "runTest")
+    @Test
     public final void createMethod(){
         println "fullName: ${firstName}, ${lastName}"
     }
 
-    @Test(groups = "runTest")
+    @Test
     public final void createMethodOne(){
         println "fullName: ${firstName}, ${lastName}"
     }
 
-    @Test(groups = "runTest")
+    @Test
     public final void createMethodTwo(){
         println "fullName: ${firstName}, ${lastName}"
     }

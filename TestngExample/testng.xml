@@ -3,7 +3,7 @@
         <classes>
             <class name = "TestAccountTest"/>
             <class name = "TestAccountTest2"/>
-            <!--<class name = "Package1.FactoryTestImpl"/>-->
+            <class name = "Package1.Factory"/>
         </classes>
     </test>
 </suite>
