@@ -9,6 +9,7 @@ import org.testng.annotations.Test
 /**
  * Created by yusoof on 14/09/14.
  */
+@Test(groups = "classGroup")
 class TestAccountTest {
 
     @Test(groups = "runTest", enabled = true)

@@ -1,9 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name ="testYusoofSuite" verbose ="1">
+
     <test name = 'YusoofTest'>
+        <parameter name = "first-name" value = "Yusoof"/>
         <classes>
             <class name = "TestAccountTest"/>
+            <class name = "Package1.ParameterTests"/>
             <class name = "TestAccountTest2"/>
             <class name = "Package1.Factory"/>
         </classes>
     </test>
+    <test name = 'YusoofTest1'>
+        <parameter name = "first-name" value = "Mohmed"/>
+        <classes>
+            <class name = "Package1.ParameterTests"/>
+        </classes>
+    </test>
+
 </suite>
