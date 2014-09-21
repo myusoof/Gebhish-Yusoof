@@ -7,7 +7,10 @@ class Factory {
 
     @org.testng.annotations.Factory
     public Object[] createTest(){
-        Object[] returnClass = [new FactoryTestImpl(1,1,2), new FactoryTestImpl(5,6,7)]
+        Object[] returnClass = [new FactoryTestImpl("Yusoof", "Mohmed"),
+                                new FactoryTestImpl("ShamugamPriyan", "Gagadeeshan"),
+                                new FactoryTestImpl("DineshKumar", "Damodharan"),
+                                new FactoryTestImpl("Ankit", "Patnekar")]
         returnClass
     }
 }

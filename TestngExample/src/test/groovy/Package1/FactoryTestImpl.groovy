@@ -7,21 +7,27 @@ import org.testng.annotations.Test
  */
 class FactoryTestImpl {
 
-    int op1
-    int op2
-    int result
+    String firstName
+    String lastName
 
-    public FactoryTestImpl(int op1, int op2, int result){
-        this.op1 = op1
-        this.op2 = op2
-        this.result = result
+    public FactoryTestImpl(String firstName, String lastName){
+        this.firstName = firstName
+        this.lastName = lastName
     }
 
     @Test
     public final void createMethod(){
-        println op1
-        println op2
-        println result
+        println "fullName: ${firstName}, ${lastName}"
+    }
+
+    @Test
+    public final void createMethodOne(){
+        println "fullName: ${firstName}, ${lastName}"
+    }
+
+    @Test
+    public final void createMethodTwo(){
+        println "fullName: ${firstName}, ${lastName}"
     }
 
 

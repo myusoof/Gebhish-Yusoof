@@ -7,7 +7,7 @@ import org.testng.annotations.Test
  */
 class TestAccountTest2 {
 
-    @Test
+    @Test(groups = "runTest")
     void SecondClassTestOne(){
         println "SecondClassTestOne"
     }

@@ -11,50 +11,8 @@ import org.testng.annotations.Test
  */
 class TestAccountTest {
 
-    @BeforeSuite
-    void suiteMethod(){
-        println "before suite"
-    }
-
-    @BeforeClass
-    void beforeClass(){
-        println "before class"
-    }
-
-    @AfterClass
-    void afterClass(){
-        println "after group"
-    }
-
-    @BeforeGroups
-    void beforeGroups(){
-        println "before group"
-    }
-
-    @AfterGroups
-    void afterGroups(){
-        println "after class"
-    }
-
-    @Test(groups = ['firstclass'])
-    void  testOne() {
-        println "test method"
-    }
-
-    @Test
-    String  testTwo() {
-        println "test method two"
-        return "String to pass"
-    }
-
-    @Test
-    String testThree() {
-        println "test method two"
-        return "String to pass"
-    }
-
-    @AfterSuite
-    void afterSuite(){
-        println "after suite"
+    @Test(groups = "runTest", enabled = true)
+    public void testAccountClassMethodOne(){
+        println "test"
     }
 }

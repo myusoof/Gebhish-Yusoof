@@ -1,7 +1,14 @@
-<suite name ="testYusoofSuite">
-    <test name = 'testYusoofTest'>
-        <packages>
-            <package name = "Package1"/>
-        </packages>
+<suite name ="testYusoofSuite" verbose ="1">
+    <test name = 'YusoofTest'>
+
+        <groups>
+            <run>
+                <include name = "runTest"/>
+            </run>
+        </groups>
+        <classes>
+            <class name = "TestAccountTest"/>
+            <class name = "TestAccountTest2"/>
+        </classes>
     </test>
 </suite>
