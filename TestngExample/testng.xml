@@ -1,15 +1,9 @@
 <suite name ="testYusoofSuite" verbose ="1">
     <test name = 'YusoofTest'>
-
-        <groups>
-            <run>
-                <include name = "runTest"/>
-            </run>
-        </groups>
         <classes>
             <class name = "TestAccountTest"/>
             <class name = "TestAccountTest2"/>
-            <class name = "Package1.FactoryTestImpl"/>
+            <!--<class name = "Package1.FactoryTestImpl"/>-->
         </classes>
     </test>
 </suite>

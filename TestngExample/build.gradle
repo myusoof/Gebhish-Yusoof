@@ -40,7 +40,10 @@ task qaYusoof(type : Test){
     functionalTest.delegate = delegate
 }
 
-task testngTask(type: Test) {
+task deleteTestngReportDir(type: Delete){
+    new File("${projectDir}/build/reports").deleteDir()
+}
+task testngTask(dependsOn: deleteTestngReportDir, type: Test) {
     useTestNG(){
         suites file("${projectDir}/testng.xml")
     }

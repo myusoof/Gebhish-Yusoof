@@ -5,10 +5,15 @@ import org.testng.annotations.Test
 /**
  * Created by yusoof on 20/09/14.
  */
+@Test(groups = "factoryTest")
 class FactoryTestImpl {
 
-    static String firstName
-    static String lastName
+    String firstName
+    String lastName
+
+    public FactoryTestImpl(){
+
+    }
 
     public FactoryTestImpl(String firstName, String lastName){
         this.firstName = firstName
@@ -16,17 +21,17 @@ class FactoryTestImpl {
     }
 
     @Test(groups = "runTest")
-    public static void createMethod(){
+    public final void createMethod(){
         println "fullName: ${firstName}, ${lastName}"
     }
 
     @Test(groups = "runTest")
-    public static void createMethodOne(){
+    public final void createMethodOne(){
         println "fullName: ${firstName}, ${lastName}"
     }
 
     @Test(groups = "runTest")
-    public static void createMethodTwo(){
+    public final void createMethodTwo(){
         println "fullName: ${firstName}, ${lastName}"
     }
 
