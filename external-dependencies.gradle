@@ -42,4 +42,5 @@ ext{
     ]
 
     embeddedTomcat = ["org.apache.tomcat.embed:tomcat-embed-core:7.0.16", "org.apache.tomcat:tomcat-catalina:7.0.16", "org.apache.tomcat.embed:tomcat-embed-jasper:7.0.16"]
+    mysql = 'mysql:mysql-connector-java:5.1.32'
 }

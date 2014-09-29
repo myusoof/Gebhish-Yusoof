@@ -10,6 +10,7 @@ class TestAccountTest2 {
     @Test(groups = "runTest")
     void SecondClassTestOne(){
         println "SecondClassTestOne"
+        assert false
     }
 
     @BeforeClass

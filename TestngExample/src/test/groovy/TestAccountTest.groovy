@@ -12,8 +12,10 @@ import org.testng.annotations.Test
 @Test(groups = "classGroup")
 class TestAccountTest {
 
-    @Test(groups = "runTest", enabled = true)
+    int i = 0
+    @Test(groups = "runTest", invocationCount = 10, enabled = true)
     public void testAccountClassMethodOne(){
-        println "test"
+        i++
+        println i
     }
 }
