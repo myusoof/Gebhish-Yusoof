@@ -14,12 +14,6 @@ import org.apache.poi.hssf.record.formula.functions.Cell*/
  */
 class JExcelOne{
     public static void main(String[] args) {
-/*
-        Workbook workbook = Workbook.getWorkbook(new File("/home/yusoof/yusoofExtend/q1_tariffs_publish_6th_march_updated18thfebupdated.xlsx"))
-        Sheet refresh = workbook.getSheet("Refresh")
-        Cell[] cells = refresh.getRow(1)
-        println cells
-*/
 
     }
 }

@@ -44,7 +44,7 @@ class SqlUtils implements SqlInterceptor{
     @Override
     static void insertContent() {
         String sql;
-        sql = "SELECT id, first, last, age FROM Employees";
+        sql = "insert into table_name values( id, first, last, age FROM Employees";
         ResultSet rs = stmt.executeQuery(sql);
     }
 

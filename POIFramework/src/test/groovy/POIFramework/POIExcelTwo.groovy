@@ -14,7 +14,7 @@ import org.testng.annotations.Test
  * To change this template use File | Settings | File Templates.
  */
 class POIExcelTwo {
-    FileInputStream fileInputStream = new FileInputStream("/home/yusoof/yusoofExtend/q1_tariffs_publish_6th_march_updated18thfebupdated.xlsx");
+    FileInputStream fileInputStream = new FileInputStream("/home/yusoof/yusoofExtend/q1_tariffs_publish_6th_march_updated18thfebupdated.xlsx")
     XSSFWorkbook workbook = new XSSFWorkbook(("/home/yusoof/yusoofExtend/q1_tariffs_publish_6th_march_updated18thfebupdated.xlsx"))
     @Test
     void testOneTwo(){
@@ -31,6 +31,5 @@ class POIExcelTwo {
                 println cell
             }
         }
-
     }
 }
