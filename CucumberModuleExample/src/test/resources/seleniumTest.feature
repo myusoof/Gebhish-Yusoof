@@ -10,6 +10,7 @@ Feature: I want to test all the fields using selenium
   Examples:
     | link        | page   |
     | A/B Testing | abtest |
+    | test1 | test1 |
 
   Scenario: I am login with username and password
     Given I navigate to the internet application with admin and password admin
