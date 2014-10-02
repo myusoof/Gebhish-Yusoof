@@ -23,6 +23,7 @@ class ExcelReadAndWrite {
         HSSFCell cell1= row0.createCell(1)
 
         cell0.setCellValue("This is a string")
+        cell1.setCellValue(createHelper.createRichTextString("This is a string's"))
         FileOutputStream fileOutputStream = new FileOutputStream(new File("./workbook.xls"))
         workbook.write(fileOutputStream)
         fileOutputStream.close()
