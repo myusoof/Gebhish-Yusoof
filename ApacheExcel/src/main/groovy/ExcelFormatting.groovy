@@ -1,9 +1,11 @@
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFCellStyle
 import org.apache.poi.hssf.usermodel.HSSFComment
+import org.apache.poi.hssf.usermodel.HSSFFont
 import org.apache.poi.hssf.usermodel.HSSFRow
 import org.apache.poi.hssf.usermodel.HSSFSheet
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.hssf.util.HSSFColor
 import org.apache.poi.ss.usermodel.CellStyle
 import org.apache.poi.ss.usermodel.Comment
 import org.apache.poi.ss.usermodel.CreationHelper
@@ -11,7 +13,7 @@ import org.apache.poi.ss.usermodel.IndexedColors
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.ss.util.WorkbookUtil
 
-class ExcelReadAndWrite {
+class ExcelFormatting {
     public static void main(String[] args) {
         HSSFWorkbook workbook = new HSSFWorkbook()
         CreationHelper createHelper = workbook.getCreationHelper();
@@ -19,7 +21,6 @@ class ExcelReadAndWrite {
         HSSFSheet sheet1 = workbook.createSheet("sheet1")
         HSSFSheet sheet2 = workbook.createSheet("sheet2")
         HSSFSheet saveSheet = workbook.createSheet(WorkbookUtil.createSafeSheetName("['yusoof's]"))
-
         int i = 0
         (0..15).each {
             HSSFRow row = sheet1.createRow(it)
@@ -28,8 +29,11 @@ class ExcelReadAndWrite {
                     cell.setCellValue(i)
                     if(i % 2 == 0){
                         HSSFCellStyle cellStyle = workbook.createCellStyle()
-                        cellStyle.setFillForegroundColor(IndexedColors.WHITE.getIndex())
+                        cellStyle.setFillForegroundColor(IndexedColors.LIME.getIndex())
                         cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+                        HSSFFont font = workbook.createFont();
+                        font.setColor(HSSFColor.RED.index);
+                        cellStyle.setFont(font);
                         cell.setCellStyle(cellStyle)
                     }
                     i++
@@ -40,4 +44,6 @@ class ExcelReadAndWrite {
         workbook.write(fileOutputStream)
         fileOutputStream.close()
     }
+
+
 }
