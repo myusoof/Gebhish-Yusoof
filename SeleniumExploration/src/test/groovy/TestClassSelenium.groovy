@@ -18,16 +18,17 @@ import org.openqa.selenium.remote.RemoteWebDriver
  */
 class TestClassSelenium {
 
-    @Rule
+   /* @Rule
     public Recorder recorder = new Recorder()
-
-    @Betamax(tape='my tape')
+*/
+//    @Betamax(tape='my tape')
     @Test
     public void testOne(){
         WebDriver driver = new FirefoxDriver()
+//        driver.manage().ime().activateEngine("Yusoof")
 //        WebDriver driver = new HtmlUnitDriver(BrowserVersion.getDefault())
         println BrowserVersion.getDefault()
-      //  println driver.determineBrowserVersion(DesiredCapabilities.firefox())
+        //  println driver.determineBrowserVersion(DesiredCapabilities.firefox())
         println driver.getWindowHandle()
         driver.switchTo().window(driver.getWindowHandle())
         driver.get("http://google.co.uk")
