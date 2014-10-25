@@ -11,7 +11,7 @@ class SeleniumGridExample {
     @Before
     void setup(){
         DesiredCapabilities capabilities = DesiredCapabilities.firefox()
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities)
+        driver = new RemoteWebDriver(new URL("http://172.31.209.241:4444/wd/hub"), capabilities)
         }
 
 
