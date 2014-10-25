@@ -1,3 +1,4 @@
+package groovyexample
 /**
  * Created with IntelliJ IDEA.
  * User: yusoof

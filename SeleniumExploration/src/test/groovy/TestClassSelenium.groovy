@@ -1,14 +1,18 @@
 import co.freeside.betamax.Betamax
 import co.freeside.betamax.Recorder
 import com.gargoylesoftware.htmlunit.BrowserVersion
+import com.thoughtworks.selenium.Selenium
 import org.junit.Rule
 import org.junit.Test
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
+import org.openqa.selenium.remote.Augmenter
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
+import org.openqa.selenium.support.ui.ExpectedConditions
 
 /**e
  * User: yusoof
@@ -25,6 +29,9 @@ class TestClassSelenium {
     @Test
     public void testOne(){
         WebDriver driver = new FirefoxDriver()
+        DesiredCapabilities
+
+        Augmenter
 //        driver.manage().ime().activateEngine("Yusoof")
 //        WebDriver driver = new HtmlUnitDriver(BrowserVersion.getDefault())
         println BrowserVersion.getDefault()
@@ -34,10 +41,12 @@ class TestClassSelenium {
         driver.get("http://google.co.uk")
         driver.manage().getCookies().toString().split(";")
 //        By.className()
-        driver.findElement(By.name("q")).sendKeys("Rukhsar")
+        WebElement element = driver.findElement(By.name("q")).sendKeys("Rukhsar")
+        element.submit()
         //File srcFile = driver.getScreenshotAs(OutputType.FILE)
         //FileUtils.moveFile(srcFile, new File("./${new Date()}.png"))
         driver.quit()
+        By.className()
     }
 
     @Test

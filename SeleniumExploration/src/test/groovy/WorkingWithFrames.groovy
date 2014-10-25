@@ -1,7 +1,12 @@
+import org.jetbrains.annotations.Nullable
 import org.junit.Test
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.support.ui.ExpectedCondition
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +22,12 @@ class WorkingWithFrames {
         WebDriver driver = new FirefoxDriver()
         driver.navigate().to("http://the-internet.herokuapp.com")
 
+        new WebDriverWait(driver, 10).until(new ExpectedCondition<List<WebElement>>() {
+            @Override
+            public List<WebElement> apply(WebDriver webDriver) {
+                WebElement element = webDriver.findElement(By.className(""))
+                return new ArrayList<WebElement>().add(element)
+            }})
         driver.findElement(By.xpath("//a[contains(.,'Frames')]")).click()
         driver.findElement(By.xpath("//a[contains(.,'Nested Frames')]")).click()
 

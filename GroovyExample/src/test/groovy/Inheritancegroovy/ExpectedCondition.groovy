@@ -8,4 +8,5 @@ package Inheritancegroovy
  * To change this template use File | Settings | File Templates.
  */
 class ExpectedCondition {
+
 }
