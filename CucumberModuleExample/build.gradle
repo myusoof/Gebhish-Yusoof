@@ -61,6 +61,11 @@ test.doFirst{
     System.setProperty("webdriver.chrome.driver", "${project(":CucumberModuleExample").projectDir}/chromedriver")
 }
 
+task cucumbertests(){
+
+}
+
+
 test.finalizedBy(cucumberReport)
 
 

@@ -10,7 +10,7 @@ class ServerStart extends Thread{
         println list2
         list1 = list1.plus(['c': "three"])
         println list1.entrySet().value
-        ProcessBuilder processBuilder =  new ProcessBuilder("java", "-jar","/home/yusoof/projects/o2/Gebhish-Yusoof/SeleniumExploration/src/main/resources/seleniumrc.jar")
+        ProcessBuilder processBuilder =  new ProcessBuilder("java", "-jar","/home/ee/projects/o2/Gebhish-Yusoof/SeleniumExploration/src/main/resources/seleniumrc.jar")
         Process process = processBuilder.start()
         process.inputStream.eachLine {println it}
         println "test"

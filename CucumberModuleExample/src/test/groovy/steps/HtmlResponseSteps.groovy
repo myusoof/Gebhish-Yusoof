@@ -23,4 +23,6 @@ WebDriver driver = WebDriverHelper.getInstance()
 
 Given(~'I am on the htmlPage'){->
 //    println driver.webClient.getPage("http://the-internet.herokuapp.com/status_codes/200").cook
+
+    driver.close()
 }

@@ -12,7 +12,7 @@ class SeleniumRCExample {
 
     @Before
     void setUp(){
-       // new ServerStart().start()
+       new ServerStart().start()
 //        new Thread().run()
 //        ProcessBuilder builder = new ProcessBuilder("java", "-jar","/home/yusoof/projects/o2/Gebhish-Yusoof/SeleniumExploration/src/main/resources/seleniumrc.jar")
 
@@ -20,13 +20,14 @@ class SeleniumRCExample {
 
     @Test
     void testSeleniumRC(){
-/*        Socket socket = new Socket("localhost", 4444)
+        Socket socket = new Socket("localhost", 4444)
         while(!socket.isConnected()){
             Thread.sleep(1000)
-        }*/
+        }
 
-        Thread.sleep(5000)
-        Selenium selenium = new DefaultSelenium("localhost", 4444 , "*firefox", "http://the-internet.herokuapp.com");
+
+//        Selenium selenium = new DefaultSelenium("localhost", 4444 , "*chrome", "http://the-internet.herokuapp.com");
+        Selenium selenium = new DefaultSelenium("localhost", 4444 , "*googlechrome", "http://the-internet.herokuapp.com");
         selenium.start();
         selenium.open("/")
 //        selenium.type("","test")
