@@ -1,6 +1,7 @@
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
+import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeClass
 import org.testng.annotations.BeforeMethod
@@ -11,7 +12,7 @@ class SeleniumGridExample {
     WebDriver driver = null
     @BeforeTest
     void setup(){
-        driver = WebDriverInitialization.initializeDriver(WebDriverInitialization.DriverType.firefox, new URL("http://localhost:5000/wd/hub"))
+        driver = WebDriverInitialization.initializeDriver(WebDriverInitialization.DriverType.chrome, new URL("http://localhost:5000/wd/hub"))
         }
 
 

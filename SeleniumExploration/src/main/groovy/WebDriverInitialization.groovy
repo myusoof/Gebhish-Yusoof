@@ -43,7 +43,7 @@ class WebDriverInitialization {
                 capabilities.setCapability("platform", Platform.LINUX)
                 capabilities.setJavascriptEnabled(true)
                 capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true)
-                driver = new RemoteWebDriver(new URL("http://localhost:5000/wd/hub"), capabilities)
+                driver = new RemoteWebDriver(hubUrl, capabilities)
 
             driver
         }
