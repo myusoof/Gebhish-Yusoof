@@ -7,6 +7,11 @@ repositories{
     mavenCentral()
 }
 
+sourceSets.main.groovy.srcDirs =['src/main/groovy']
+sourceSets.main.resources.srcDirs =['src/main/resources']
+sourceSets.test.groovy.srcDirs = ['src/test/groovy']
+sourceSets.test.resources.srcDirs = ['src/test/resources']
+
 dependencies {
     ext {
         cucumberVersion = "1.1.5"
@@ -15,7 +20,7 @@ dependencies {
 
     compile groovy, testng
     compile seleniumFirefox,seleniumSupport,seleniumChrome, seleniumhtmlunit, jersey, jerseyMultipart
-    compile masterthought
+//    compile masterthought
     compile 'org.seleniumhq.selenium:selenium-java:2.43.1'
     compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.1.4'
     compile 'javax.ws.rs:jsr311-api:0.11'
@@ -27,4 +32,18 @@ dependencies {
     testCompile 'co.freeside:betamax:1.1.2'
     //compile 'org.sikuli:sikuli-webdriver:1.0.1'
 }
+/*
 
+task seleniumGridTask(type: Test) {
+    useTestNG() {
+        suiteXmlBuilder().suite(name: 'functional-tests') {
+            test(name: "all") {
+                classes {
+                    'class'(name: "SeleniumGridExample")
+                }
+
+            }
+        }
+    }
+}
+*/

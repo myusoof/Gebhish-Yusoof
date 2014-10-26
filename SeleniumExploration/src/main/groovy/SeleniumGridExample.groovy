@@ -5,15 +5,26 @@ import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeClass
 import org.testng.annotations.BeforeMethod
+import org.testng.annotations.BeforeSuite
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
 
 class SeleniumGridExample {
     WebDriver driver = null
-    @BeforeTest
-    void setup(){
-        driver = WebDriverInitialization.initializeDriver(WebDriverInitialization.DriverType.chrome, new URL("http://localhost:5000/wd/hub"))
+    @BeforeSuite
+    void startServer(){
+        Thread thread1 = new Thread(new SeleniumServerNodeStart("5000", "hub"), "selenium server start")
+        Thread thread2 = new Thread(new SeleniumServerNodeStart("5555", "node"), "selenium node start")
+        Thread thread3 = new Thread(new SeleniumServerNodeStart("5556", "node"), "selenium node start")
+        [thread1, thread2, thread3].each {
+            it.start()
         }
+        driver = WebDriverInitialization.initializeDriver(WebDriverInitialization.DriverType.chrome, new URL("http://localhost:5000/wd/hub"))
+    }
+    @BeforeClass
+    void setup(){
+
+    }
 
 
     @Test()

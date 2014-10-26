@@ -1,0 +1,52 @@
+{  
+   "capabilities":[
+        {
+          "browserName": "*firefox",
+          "maxInstances": 5,
+          "seleniumProtocol": "Selenium"
+        },
+        {
+          "browserName": "*googlechrome",
+          "maxInstances": 5,
+          "seleniumProtocol": "Selenium"
+        },
+        {
+          "browserName": "*iexplore",
+          "maxInstances": 1,
+          "seleniumProtocol": "Selenium"
+        },
+        {
+          "browserName": "firefox",
+          "maxInstances": 5,
+          "seleniumProtocol": "WebDriver"
+        },
+        {
+          "browserName": "chrome",
+          "maxInstances": 5,
+          "seleniumProtocol": "WebDriver"
+        },
+        {
+          "browserName": "internet explorer",
+          "maxInstances": 1,
+          "seleniumProtocol": "WebDriver"
+        },
+        {        
+          "browserName": "htmlunit",
+          "maxInstances": 1,
+          "version": "firefox",
+          "seleniumProtocol": "WebDriver"
+        }
+      ],
+   "configuration":{  
+      "nodeTimeout":120,
+      "hubPort":5000,
+      "hubHost":"localhost",
+      "nodePolling":2000,
+      "registerCycle":10000,
+      "register":true,
+      "cleanUpCycle":2000,
+      "timeout":30000,
+      "maxSession":1
+   }
+}
+

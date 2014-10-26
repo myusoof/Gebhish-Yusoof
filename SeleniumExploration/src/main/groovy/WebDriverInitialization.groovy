@@ -1,9 +1,11 @@
+import com.gargoylesoftware.htmlunit.BrowserVersion
 import org.openqa.selenium.Capabilities
 import org.openqa.selenium.Platform
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxProfile
+import org.openqa.selenium.htmlunit.HtmlUnitDriver
 import org.openqa.selenium.remote.CapabilityType
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
@@ -40,10 +42,11 @@ class WebDriverInitialization {
                 break
             case DriverType.html:
                 capabilities = DesiredCapabilities.htmlUnit()
-                capabilities.setJavascriptEnabled(true)
+                capabilities.setCapability("platform", Platform.LINUX)
+                capabilities.setJavascriptEnabled(false)
                 driver = new RemoteWebDriver(hubUrl, capabilities)
+//                driver = new HtmlUnitDriver(capabilities)
                 break
-
             case DriverType.chrome:
                 System.setProperty("webdriver.chrome.driver", WebDriverInitialization.class.getResource("/chromedriver").getPath());
                 capabilities = DesiredCapabilities.chrome();

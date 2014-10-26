@@ -18,6 +18,7 @@ class ServerStart extends Thread{
     }
 
     public static void main(String[] args) {
-        new ServerStart().start()
+//        new ServerStart().start()
+        this.class.getResource("/testingconfig.json").file
     }
 }
