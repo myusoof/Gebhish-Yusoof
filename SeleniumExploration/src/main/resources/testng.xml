@@ -1,5 +1,10 @@
-<suite name="Suite1" verbose="1" parallel="methods" thread-count="2">
+<suite name="Suite1" verbose="1" parallel="tests">
     <test name="Nopackage" >
+        <classes>
+            <class name="SeleniumGridExample" />
+        </classes>
+    </test>
+    <test name="another" >
         <classes>
             <class name="SeleniumGridExample" />
         </classes>

@@ -1,6 +1,7 @@
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
+import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeClass
 import org.testng.annotations.BeforeMethod
 import org.testng.annotations.BeforeTest
@@ -8,10 +9,9 @@ import org.testng.annotations.Test
 
 class SeleniumGridExample {
     WebDriver driver = null
-    @BeforeMethod
+    @BeforeTest
     void setup(){
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox()
-        driver = new RemoteWebDriver(new URL("http://172.31.209.241:4444/wd/hub"), capabilities)
+        driver = WebDriverInitialization.initializeDriver(WebDriverInitialization.DriverType.firefox, new URL("http://localhost:5000/wd/hub"))
         }
 
 
@@ -44,5 +44,10 @@ class SeleniumGridExample {
     @Test
     void firstSeleniumGrid11(){
         driver.get("http://the-internet.herokuapp.com/")
+    }
+
+    @AfterTest
+    void tearDown(){
+        driver.quit()
     }
 }
