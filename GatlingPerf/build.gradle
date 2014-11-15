@@ -1,0 +1,17 @@
+apply plugin: 'scala'
+apply plugin: 'idea'
+apply plugin: 'java'
+
+
+scalaVersion = "2.10"
+scalaMicroVersion = "${scalaVersion}.4"
+scalaLibrary = [
+        "org.scala-lang:scala-library:${scalaMicroVersion}",
+        "org.scala-lang:scala-actors:${scalaMicroVersion}"
+]
+
+dependencies{
+    compile 'io.gatling:gatling-app:2.0.1'
+    compile 'io.gatling.highcharts:gatling-charts-highcharts:2.0.1'
+    compile scalaLibrary
+}
